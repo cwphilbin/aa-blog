@@ -1,0 +1,62 @@
+{
+  "zip": "95816",
+  "territoryCode": "T0032",
+  "name": "Sacramento — Midtown / East Sacramento",
+  "url": "https://agentsautomated.com/market/95816",
+  "updatedAt": "2026-06-15T10:00:00Z",
+  "agent": {
+    "name": "Jane Doe",
+    "tier": "elite",
+    "brokerage": "Lyon Real Estate",
+    "license": "DRE# 01234567",
+    "photoUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop",
+    "siteUrl": "https://janedoehomes.com",
+    "ctaUrl": "https://janedoehomes.com/contact?src=aa",
+    "phone": "+1-916-555-0142",
+    "email": "jane@lyonre.com"
+  },
+  "posts": [
+    {
+      "id": "2026-06-market-update",
+      "slug": "june-2026-market-update",
+      "title": "Midtown & East Sacramento Market Update — June 2026",
+      "date": "2026-06-15",
+      "summary": "Inventory ticked up but so did demand. What 95816 buyers and sellers need to know heading into summer.",
+      "videoUrl": "https://www.youtube.com/embed/aqz-KE-bpKQ",
+      "slideImages": [
+        "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1200&h=630&fit=crop",
+        "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&h=600&fit=crop"
+      ],
+      "bodyHtml": "<p>The Midtown and East Sacramento market stayed firmly in sellers' favor through June, even as new inventory finally started to loosen. The median sale price in 95816 landed at <strong>$685,000</strong>, up 4.2% from a year ago, while well-priced homes continued to move in under two weeks.</p><h2>What's driving demand</h2><p>Walkability and the neighborhood's restaurant corridor remain the biggest pulls. We're seeing strong interest from remote-flexible buyers relocating from the Bay Area, who consistently note that a renovated Midtown bungalow costs roughly half of a comparable home in Oakland.</p><h2>Advice for sellers</h2><p>Homes that are prepped, professionally photographed, and priced to the comps are still drawing multiple offers. The mistake we see is over-pricing on the assumption that scarcity will carry a stale listing — it won't. Buyers are disciplined.</p><h2>Advice for buyers</h2><p>The uptick in active listings gives you slightly more room to negotiate than you had in March. Get fully underwritten before you tour, and be ready to move on the right property within 48 hours.</p>",
+      "metrics": {
+        "medianPrice": 685000,
+        "yoyChange": 4.2,
+        "inventory": 38,
+        "daysOnMarket": 12,
+        "newListings": 27,
+        "pricePerSqft": 512
+      }
+    },
+    {
+      "id": "2026-04-bungalow-values",
+      "slug": "why-midtown-bungalows-hold-value",
+      "title": "Why Midtown's Historic Bungalows Hold Their Value",
+      "date": "2026-04-02",
+      "summary": "Character homes in 95816 have outperformed the broader Sacramento market for a decade. Here's the case.",
+      "videoUrl": "",
+      "slideImages": [
+        "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1200&h=630&fit=crop"
+      ],
+      "bodyHtml": "<p>There's a reason Midtown's pre-war bungalows keep setting price records: they're irreplaceable. New construction can't replicate the lot sizes, the tree canopy, or the architectural detail — and buyers know it.</p><h2>Scarcity is structural</h2><p>The neighborhood is effectively built out. Every renovated Craftsman that sells removes one more from a fixed pool, which is why price per square foot has climbed even as mortgage rates stayed elevated.</p><p>If you own a bungalow in 95816, you're holding one of the region's most durable assets. If you're trying to buy one, patience and pre-approval are everything.</p>",
+      "metrics": {
+        "medianPrice": 712000,
+        "yoyChange": 5.1,
+        "inventory": 0,
+        "daysOnMarket": 0,
+        "newListings": 0,
+        "pricePerSqft": 528
+      }
+    }
+  ]
+}

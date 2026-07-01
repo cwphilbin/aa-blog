@@ -1,0 +1,7 @@
+# NOTE: under path-based deployment the main app owns /robots.txt at the apex.
+# This file is for standalone preview + as the reference to merge into the main
+# app's robots.txt. Add the sitemap line there.
+User-agent: *
+Allow: /
+
+Sitemap: https://agentsautomated.com/sitemap-index.xml

@@ -1,0 +1,59 @@
+---
+import type { Metrics } from '../types';
+
+interface Props {
+  metrics: Metrics;
+}
+const { metrics } = Astro.props;
+
+const usd = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  maximumFractionDigits: 0,
+});
+const num = new Intl.NumberFormat('en-US');
+
+// Display config for the fixed-key metrics object. 0 == "not available", so
+// most fields are hidden when 0; yoyChange is kept even at 0 (== flat).
+const FIELDS = [
+  { key: 'medianPrice', label: 'Median Price', fmt: (v: number) => usd.format(v) },
+  {
+    key: 'yoyChange',
+    label: 'YoY Change',
+    fmt: (v: number) => `${v > 0 ? '+' : ''}${v.toFixed(1)}%`,
+    trend: (v: number) => (v > 0 ? 'up' : v < 0 ? 'down' : 'flat'),
+    keepZero: true,
+  },
+  { key: 'inventory', label: 'Active Inventory', fmt: (v: number) => num.format(v) },
+  { key: 'daysOnMarket', label: 'Median Days on Market', fmt: (v: number) => num.format(v) },
+  { key: 'newListings', label: 'New Listings', fmt: (v: number) => num.format(v) },
+  { key: 'pricePerSqft', label: 'Price / Sq Ft', fmt: (v: number) => usd.format(v) },
+] as const;
+
+const rows = FIELDS.map((f) => {
+  const value = metrics[f.key];
+  return {
+    label: f.label,
+    display: f.fmt(value),
+    trend: 'trend' in f ? f.trend(value) : undefined,
+    show: value !== 0 || ('keepZero' in f && f.keepZero),
+  };
+}).filter((r) => r.show);
+---
+{rows.length > 0 && (
+  <dl class="metrics" aria-label="Market metrics">
+    {rows.map((r) => (
+      <div class="metric">
+        <dt class="metric__label">{r.label}</dt>
+        <dd>
+          <span class="metric__value">{r.display}</span>
+          {r.trend && (
+            <span class={`metric__change trend-${r.trend}`}>
+              {r.trend === 'up' ? '▲' : r.trend === 'down' ? '▼' : '■'} year over year
+            </span>
+          )}
+        </dd>
+      </div>
+    ))}
+  </dl>
+)}

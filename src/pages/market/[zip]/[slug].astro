@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AgentBlock from '../../../components/AgentBlock.astro';
+import Metrics from '../../../components/Metrics.astro';
+import VideoEmbed from '../../../components/VideoEmbed.astro';
+import {
+  getAllMarkets,
+  placementFor,
+  hasText,
+  coverImage,
+  postCanonical,
+} from '../../../lib/posts';
+
+export function getStaticPaths() {
+  return getAllMarkets().flatMap((m) =>
+    m.posts.map((post) => ({
+      params: { zip: m.zip, slug: post.slug },
+      props: { market: m, post },
+    })),
+  );
+}
+
+const { market, post } = Astro.props;
+const { zip } = Astro.params;
+const { agent } = market;
+const placement = placementFor(agent.tier);
+
+const description =
+  post.summary || `${post.title} — local real estate insight for ${market.name} (ZIP ${zip}).`;
+const cover = coverImage(post);
+
+// Canonical from the feed's authored territory `url` + slug (source of truth).
+const canonical = postCanonical(market, post);
+const marketsHome = new URL('/market', Astro.site).href;
+const orgHome = new URL('/', Astro.site).href;
+
+// Author = the sponsoring agent. url only when the agent has a site backlink.
+const author = {
+  '@type': 'Person',
+  name: agent.name,
+  ...(hasText(agent.siteUrl) && { url: agent.siteUrl }),
+};
+
+// schema.org BlogPosting — the heart of the SEO ask.
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description,
+    datePublished: post.date,
+    dateModified: post.date,
+    ...(cover && { image: [cover] }),
+    ...(hasText(post.videoUrl) && {
+      video: {
+        '@type': 'VideoObject',
+        name: post.title,
+        description,
+        contentUrl: post.videoUrl,
+        ...(cover && { thumbnailUrl: [cover] }),
+        uploadDate: post.date,
+      },
+    }),
+    author,
+    publisher: {
+      '@type': 'Organization',
+      name: 'Agents Automated',
+      url: orgHome,
+    },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Markets', item: marketsHome },
+      { '@type': 'ListItem', position: 2, name: `${market.name} (${zip})`, item: market.url },
+      { '@type': 'ListItem', position: 3, name: post.title, item: canonical },
+    ],
+  },
+];
+
+const publishedLabel = new Date(post.date).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout
+  title={post.title}
+  description={description}
+  image={cover}
+  imageAlt={cover ? post.title : undefined}
+  ogType="article"
+  jsonLd={jsonLd}
+  publishedTime={post.date}
+  modifiedTime={post.date}
+  authorName={agent.name}
+  canonical={canonical}
+>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/market">Markets</a> /
+    <a href={`/market/${zip}`}>{market.name} ({zip})</a> /
+    <span>{post.title}</span>
+  </nav>
+
+  <div class={`post-layout ${placement === 'sidebar' ? 'has-sidebar' : ''}`}>
+    <article class="article">
+      <header>
+        <h1>{post.title}</h1>
+        <p class="meta-line">
+          <time datetime={post.date}>{publishedLabel}</time>
+          &nbsp;·&nbsp; By {hasText(agent.siteUrl)
+            ? <a href={agent.siteUrl} rel="noopener">{agent.name}</a>
+            : agent.name}
+          &nbsp;·&nbsp; {market.name}
+        </p>
+      </header>
+
+      {placement === 'hero' && <AgentBlock agent={agent} />}
+
+      {cover && (
+        <img
+          src={cover}
+          alt={post.title}
+          width="1200"
+          height="630"
+          loading="eager"
+          style="border-radius:12px;margin:16px 0;"
+        />
+      )}
+
+      {hasText(post.videoUrl) && <VideoEmbed url={post.videoUrl} title={post.title} />}
+
+      <Metrics metrics={post.metrics} />
+
+      {/* Trusted, pipeline-sanitized HTML from the feed. */}
+      <div class="article-body" set:html={post.bodyHtml} />
+
+      {post.slideImages.filter(hasText).length > 0 && (
+        <div class="slides" aria-label="Gallery">
+          {post.slideImages.filter(hasText).map((src, i) => (
+            <figure>
+              <img src={src} alt={`${post.title} — image ${i + 1}`} loading="lazy" />
+            </figure>
+          ))}
+        </div>
+      )}
+
+      {placement === 'footer' && <AgentBlock agent={agent} />}
+
+      <p class="disclaimer">
+        Published on behalf of {agent.name}
+        {hasText(agent.brokerage) ? `, ${agent.brokerage}` : ''}
+        {hasText(agent.license) ? ` (${agent.license})` : ''}. Market data is
+        illustrative and not a guarantee of future results.
+      </p>
+    </article>
+
+    {placement === 'sidebar' && <AgentBlock agent={agent} />}
+  </div>
+</BaseLayout>

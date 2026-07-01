@@ -1,0 +1,91 @@
+---
+/**
+ * Renders the sponsoring agent's feature block. Prominence is driven by tier:
+ *
+ *   elite    → hero placement (above the fold), CTA button
+ *   premium  → sidebar card, photo + CTA
+ *   standard → footer "presented by" line + link
+ *
+ * The real feed has NO bio / title / ctaLabel fields, so:
+ *   - the elite hero shows brokerage + license instead of a bio paragraph
+ *     (⚠️ to restore "full bio", the Lambda must emit an agent.bio field),
+ *   - the CTA label is generated from the agent's first name.
+ *
+ * siteUrl / ctaUrl / photoUrl may be "" in the feed — each is guarded so an
+ * empty value simply drops that link/image rather than emitting a dead <a>.
+ *   - siteUrl → the agent's SEO backlink (followed)
+ *   - ctaUrl  → the lead CTA (rel="nofollow sponsored")
+ */
+import type { Agent } from '../types';
+import { placementFor, hasText } from '../lib/posts';
+
+interface Props {
+  agent: Agent;
+}
+const { agent } = Astro.props;
+
+const firstName = agent.name.split(' ')[0];
+const ctaLabel = `Work with ${firstName}`;
+const variant = placementFor(agent.tier);
+const credentials = [agent.brokerage, agent.license].filter(hasText).join(' · ');
+
+const hasSite = hasText(agent.siteUrl);
+const hasCta = hasText(agent.ctaUrl);
+const hasPhoto = hasText(agent.photoUrl);
+---
+
+{variant === 'hero' && (
+  <section class="agent-hero" aria-label={`Presented by ${agent.name}`}>
+    {hasPhoto && (
+      <img src={agent.photoUrl} alt={`Portrait of ${agent.name}`} width="160" height="160" loading="eager" />
+    )}
+    <div>
+      <p class="eyebrow">Your local expert</p>
+      <h2>{agent.name}</h2>
+      {credentials && <p class="title">{credentials}</p>}
+      <div class="actions">
+        {hasCta && (
+          <a class="btn" href={agent.ctaUrl} rel="nofollow sponsored">{ctaLabel}</a>
+        )}
+        {hasSite && (
+          <a class="btn btn--ghost" href={agent.siteUrl} rel="noopener">
+            Visit {firstName}'s website
+          </a>
+        )}
+      </div>
+    </div>
+  </section>
+)}
+
+{variant === 'sidebar' && (
+  <aside class="agent-sidebar" aria-label={`Presented by ${agent.name}`}>
+    {hasPhoto && (
+      <img src={agent.photoUrl} alt={`Portrait of ${agent.name}`} width="88" height="88" loading="lazy" />
+    )}
+    <p class="eyebrow">Presented by</p>
+    <h3>{hasSite ? <a href={agent.siteUrl} rel="noopener">{agent.name}</a> : agent.name}</h3>
+    {credentials && <p class="title">{credentials}</p>}
+    {hasCta && <a class="btn" href={agent.ctaUrl} rel="nofollow sponsored">{ctaLabel}</a>}
+  </aside>
+)}
+
+{variant === 'footer' && (
+  <section class="agent-presented" aria-label={`Presented by ${agent.name}`}>
+    {hasPhoto && (
+      <img src={agent.photoUrl} alt={`Portrait of ${agent.name}`} width="48" height="48" loading="lazy" />
+    )}
+    <div>
+      <span class="label">Presented by</span>
+      <div>
+        {hasSite ? <a href={agent.siteUrl} rel="noopener">{agent.name}</a> : <strong>{agent.name}</strong>}
+        {hasText(agent.brokerage) && <span class="meta-line"> · {agent.brokerage}</span>}
+        {hasCta && (
+          <>
+            &nbsp;—&nbsp;
+            <a href={agent.ctaUrl} rel="nofollow sponsored">{ctaLabel}</a>
+          </>
+        )}
+      </div>
+    </div>
+  </section>
+)}

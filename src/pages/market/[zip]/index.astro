@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AgentBlock from '../../../components/AgentBlock.astro';
+import {
+  getAllMarkets,
+  getMarket,
+  getPosts,
+  placementFor,
+  coverImage,
+} from '../../../lib/posts';
+
+export function getStaticPaths() {
+  return getAllMarkets().map((m) => ({ params: { zip: m.zip } }));
+}
+
+const { zip } = Astro.params;
+const market = getMarket(zip!);
+if (!market) throw new Error(`No market data for ZIP ${zip}`);
+
+const posts = getPosts(market);
+const { agent } = market;
+const placement = placementFor(agent.tier);
+
+const title = `${market.name} Real Estate Market (${zip})`;
+const description = `Local real estate market updates, home prices, and trends for ${market.name} (ZIP ${zip}).`;
+const heroImage = posts[0] && coverImage(posts[0]);
+
+// Canonical comes from the feed's authored `url` (source of truth).
+const canonical = market.url;
+const marketsHome = new URL('/market', Astro.site).href;
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: title,
+    description,
+    url: canonical,
+    about: {
+      '@type': 'Place',
+      name: market.name,
+      address: {
+        '@type': 'PostalAddress',
+        postalCode: zip,
+        addressCountry: 'US',
+      },
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Agents Automated',
+      url: new URL('/', Astro.site).href,
+    },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: posts.map((p, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: `${canonical.replace(/\/$/, '')}/${p.slug}`,
+        name: p.title,
+      })),
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Markets', item: marketsHome },
+      { '@type': 'ListItem', position: 2, name: `${market.name} (${zip})`, item: canonical },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  image={heroImage}
+  imageAlt={`${market.name} real estate`}
+  ogType="website"
+  jsonLd={jsonLd}
+  canonical={canonical}
+>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/market">Markets</a> / <span>{market.name} ({zip})</span>
+  </nav>
+
+  <h1>{market.name} — {zip}</h1>
+  <p class="meta-line">Real estate market updates for ZIP {zip}</p>
+
+  {placement === 'hero' && <AgentBlock agent={agent} />}
+
+  <section aria-label="Latest posts">
+    <h2>Latest market updates</h2>
+    {posts.length === 0 ? (
+      <p>No posts yet for this market.</p>
+    ) : (
+      <div class="post-grid">
+        {posts.map((post) => {
+          const cover = coverImage(post);
+          return (
+            <article class="card">
+              {cover && (
+                <a href={`/market/${zip}/${post.slug}`}>
+                  <img src={cover} alt={post.title} width="1200" height="630" loading="lazy" />
+                </a>
+              )}
+              <div class="card__body">
+                <time datetime={post.date}>
+                  {new Date(post.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </time>
+                <h3><a href={`/market/${zip}/${post.slug}`}>{post.title}</a></h3>
+                {post.summary && <p>{post.summary}</p>}
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    )}
+  </section>
+
+  {placement === 'sidebar' && <AgentBlock agent={agent} />}
+  {placement === 'footer' && <AgentBlock agent={agent} />}
+</BaseLayout>

@@ -1,0 +1,66 @@
+---
+import SeoHead from '../components/SeoHead.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  imageAlt?: string;
+  ogType?: 'website' | 'article';
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  publishedTime?: string;
+  modifiedTime?: string;
+  authorName?: string;
+  canonical?: string;
+}
+
+const props = Astro.props;
+// Browser tab / SERP title. Keep the brand suffix consistent.
+const pageTitle = `${props.title} | Agents Automated`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <SeoHead
+      title={props.title}
+      description={props.description}
+      image={props.image}
+      imageAlt={props.imageAlt}
+      ogType={props.ogType}
+      jsonLd={props.jsonLd}
+      publishedTime={props.publishedTime}
+      modifiedTime={props.modifiedTime}
+      authorName={props.authorName}
+      canonical={props.canonical}
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="/">Agents<span>Automated</span></a>
+        <nav aria-label="Primary">
+          <a href="/market">Markets</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>
+          &copy; {new Date().getFullYear()} Agents Automated. Local market
+          content published on behalf of independent real estate professionals.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

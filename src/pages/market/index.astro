@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getAllMarkets, getPosts, coverImage } from '../../lib/posts';
+
+const markets = getAllMarkets();
+const title = 'Local Real Estate Market Reports';
+const description =
+  'Neighborhood-level real estate market reports, home price trends, and video updates — published by local agents on Agents Automated.';
+---
+
+<BaseLayout title={title} description={description} ogType="website">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a> / <span>Markets</span>
+  </nav>
+
+  <h1>Local Real Estate Markets</h1>
+  <p>Neighborhood-level market reports and trends, published by local experts.</p>
+
+  <div class="post-grid">
+    {markets.map((m) => {
+      const posts = getPosts(m);
+      const cover = posts[0] && coverImage(posts[0]);
+      return (
+        <article class="card">
+          {cover && (
+            <a href={`/market/${m.zip}`}>
+              <img src={cover} alt={`${m.name} real estate`} width="1200" height="630" loading="lazy" />
+            </a>
+          )}
+          <div class="card__body">
+            <h3><a href={`/market/${m.zip}`}>{m.name}</a></h3>
+            <p class="meta-line">ZIP {m.zip}</p>
+            <p>{posts.length} {posts.length === 1 ? 'post' : 'posts'} · Presented by {m.agent.name}</p>
+          </div>
+        </article>
+      );
+    })}
+  </div>
+</BaseLayout>

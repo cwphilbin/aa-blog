@@ -1,0 +1,29 @@
+---
+/**
+ * Zero-JS responsive video embed.
+ * - YouTube/Vimeo/other iframe hosts → <iframe> (lazy).
+ * - Direct .mp4/.webm files → native <video controls>.
+ */
+interface Props {
+  url: string;
+  title?: string;
+}
+const { url, title = 'Video' } = Astro.props;
+const isFile = /\.(mp4|webm|ogg)(\?.*)?$/i.test(url);
+---
+<div class="embed">
+  {isFile ? (
+    <video controls preload="metadata" playsinline>
+      <source src={url} />
+    </video>
+  ) : (
+    <iframe
+      src={url}
+      title={title}
+      loading="lazy"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  )}
+</div>
