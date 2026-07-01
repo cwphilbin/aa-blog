@@ -8,6 +8,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
+    "postbuild": "rm -rf dist/embed-test.html dist/dev-data",
     "preview": "astro preview",
     "astro": "astro"
   },

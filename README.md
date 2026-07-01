@@ -2,8 +2,13 @@
 
 Astro static site (SSG) that generates SEO-optimized real estate market pages
 from per-ZIP `posts.json` feeds. **This is the canonical SEO asset** — the agent
-embeds shipped later canonical back to these pages, so the canonical domain here
-is authoritative.
+[embed](#embed-the-product-embedjs) canonicals back to these pages, so the
+canonical domain here is authoritative.
+
+Two products in this repo:
+1. **The static site** (`src/`) — the canonical pages at `agentsautomated.com/market/*`.
+2. **The embed** (`public/embed.js`) — the drop-in widget agents paste on their
+   own site; it renders our content inline and injects `rel=canonical` back here.
 
 ## Domain & routing (important)
 
@@ -112,6 +117,47 @@ they come from `s3://aa-content/market/{zip}/posts.json`. Replace the glob with 
 async fetch (list ZIPs → GET each `posts.json`); the templates only call
 `getAllMarkets()` / `getMarket()` / `getPosts()` and don't care about the source.
 
+## Embed — the product (`embed.js`)
+
+The drop-in widget agents paste on their **own** site. It renders our blog
+content inline and — the whole point — injects `rel=canonical` back to our page
+so we keep the SEO ranking (the DropInBlog model). Self-contained vanilla JS, no
+framework, no build step, one file served from our domain.
+
+**What the agent pastes (two lines):**
+
+```html
+<div id="aa-blog" data-zip="95816"></div>
+<script async src="https://agentsautomated.com/embed.js"></script>
+```
+
+**Behavior:**
+- Reads `data-zip`, fetches `{base}/{zip}/posts.json`. `base` is a config
+  constant at the top of `embed.js` (**stubbed** to `cdn.agentsautomated.com/market`
+  — point it at the real S3/CloudFront origin once provisioned). Overridable per
+  embed via `data-base`, or globally via `window.AA_BLOG_CONFIG = { base, canonicalBase }`.
+- Renders list + individual post views; hash routing (`#post={slug}`) so deep
+  links and back/forward work.
+- **Canonical injection (load-bearing):** on a post view it sets aside any host
+  `rel=canonical`, injects `<link rel="canonical" href="https://agentsautomated.com/market/{zip}/{slug}" data-aa-blog>`,
+  and restores the host's when you return to the list — so there's always exactly
+  one canonical and ours wins on post pages.
+- **Lazy video:** click-to-load facade (YouTube thumbnail, zero third-party
+  requests until play) → `youtube-nocookie` iframe on click; direct files use
+  native `<video>`. Protects the agent's Core Web Vitals.
+- **Coming-soon** state if `posts.json` 404s (new signup before first content).
+- Inherits host typography (`font-family: inherit`) but sets its own layout
+  (cards, spacing, 16:9 video); all styles scoped under `#aa-blog`. XSS-safe:
+  text via `textContent`, `innerHTML` only for the trusted `bodyHtml`.
+
+**Test it locally:** `npm run dev`, then open
+[`http://localhost:4321/embed-test.html`](http://localhost:4321/embed-test.html)
+— a mock agent site (serif host font) with a live canonical-inspector bar.
+Switch tiers with `?zip=95816` (elite) · `94110` (premium) · `78704` (standard) ·
+`00000` (coming-soon). `embed-test.html` + `public/dev-data/` are dev-only
+fixtures — kept in the repo but **stripped from the production build** by the
+`postbuild` script.
+
 ## Deployment (path-based on the apex)
 
 `agentsautomated.com` already serves the main app, so this static site is
@@ -129,7 +175,13 @@ best first:
 Either way, keep Astro `site = https://agentsautomated.com` (already set) so
 canonicals/OG/sitemap stay on the apex.
 
-Two path-ownership follow-ups (the main app owns the apex root):
+Path-ownership follow-ups (the main app owns the apex root, so these live outside
+`/market/*` and each needs its own proxy rule or handling):
+- **`/embed.js`** — the embed loads from `https://agentsautomated.com/embed.js`,
+  at the apex root. The apex must proxy **`/embed.js`** (status 200) to this
+  Netlify site, alongside the `/market/*` rule. The `posts.json` origin the embed
+  fetches (`base` constant in `embed.js`) is served directly from S3/CloudFront,
+  not the apex, so it needs no rule — just CORS allowing the agents' origins.
 - **Sitemap** is emitted at `/sitemap-index.xml`. Either proxy `/sitemap*.xml`
   to this site too, or add these URLs to the main app's sitemap.
 - **robots.txt** at the apex is the main app's; merge the `Sitemap:` line from

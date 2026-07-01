@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bay Area Homes by Example Agent — Blog</title>
+
+  <!-- The HOST page's own canonical. The embed sets this aside while a post is
+       open (so OUR canonical wins) and restores it on the list view. Watch the
+       inspector bar at the bottom. -->
+  <link rel="canonical" href="https://agent-example.com/blog" />
+
+  <!-- Deliberately distinctive host typography (serif) to prove the embed
+       inherits the host font but owns its own layout. -->
+  <style>
+    :root { --host: #2b2b3a; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--host);
+      margin: 0;
+      background: #fffdf9;
+      line-height: 1.7;
+    }
+    .host-header {
+      background: #2b2b3a; color: #fff; padding: 18px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .host-header strong { font-size: 1.25rem; letter-spacing: .02em; }
+    .host-header nav a { color: #d9d4c7; margin-left: 20px; text-decoration: none; }
+    .host-wrap { max-width: 1040px; margin: 0 auto; padding: 32px 24px 80px; }
+    .host-intro { border-bottom: 2px solid #ece7db; padding-bottom: 20px; margin-bottom: 28px; }
+    .host-intro h1 { font-size: 2.1rem; margin: 0 0 .3rem; }
+    .zip-switch { margin: 18px 0 4px; font-size: .95rem; }
+    .zip-switch a { color: #7a5c1e; font-weight: bold; margin-right: 14px; }
+    .zip-switch a.active { text-decoration: none; border-bottom: 2px solid #7a5c1e; }
+    .host-footer { background:#2b2b3a; color:#bdb8ab; padding: 24px; text-align:center; font-size:.85rem; }
+    /* Canonical inspector (test harness only — not part of the embed) */
+    #inspector {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 9999;
+      background: #111; color: #d7ffd7; font-family: ui-monospace, Menlo, monospace;
+      font-size: 12px; padding: 8px 14px; border-top: 2px solid #2f7d32;
+      display: flex; gap: 18px; flex-wrap: wrap; align-items: center;
+    }
+    #inspector b { color: #fff; }
+    #inspector .ours { color: #7fd7ff; }
+  </style>
+</head>
+<body>
+  <header class="host-header">
+    <strong>Bay Area Homes · Example Agent</strong>
+    <nav>
+      <a href="#">Listings</a>
+      <a href="#">About</a>
+      <a href="#">Blog</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <main class="host-wrap">
+    <div class="host-intro">
+      <h1>Neighborhood Market Journal</h1>
+      <p>Local reports and trends, updated regularly. (This surrounding page is a
+        mock "agent site" — everything below the line is our embed rendering inline.)</p>
+      <div class="zip-switch" id="zipSwitch">
+        <span>Try a ZIP:</span>
+        <a href="?zip=95816" data-zip="95816">95816 · elite</a>
+        <a href="?zip=94110" data-zip="94110">94110 · premium</a>
+        <a href="?zip=78704" data-zip="78704">78704 · standard</a>
+        <a href="?zip=00000" data-zip="00000">00000 · coming-soon</a>
+      </div>
+    </div>
+
+    <!-- ================= THE TWO LINES AN AGENT PASTES ================= -->
+    <div id="aa-blog" data-zip="95816"></div>
+    <!-- For local dev we override `base` to the fixtures served at /dev-data.
+         In production this whole config object is omitted (embed.js defaults to
+         the CDN), and the src is https://agentsautomated.com/embed.js -->
+    <script>
+      (function () {
+        var params = new URLSearchParams(location.search);
+        var zip = params.get('zip') || '95816';
+        var mount = document.getElementById('aa-blog');
+        mount.setAttribute('data-zip', zip);
+        // highlight active switcher link
+        var links = document.querySelectorAll('#zipSwitch a');
+        for (var i = 0; i < links.length; i++) {
+          if (links[i].getAttribute('data-zip') === zip) links[i].className = 'active';
+        }
+        // point the embed at local fixtures (prod uses the default CDN)
+        window.AA_BLOG_CONFIG = { base: '/dev-data' };
+      })();
+    </script>
+    <script async src="/embed.js"></script>
+    <!-- =============================================================== -->
+  </main>
+
+  <footer class="host-footer">© 2026 Example Agent — mock host site for embed testing</footer>
+
+  <!-- Canonical inspector: shows which rel=canonical is live in <head> right now. -->
+  <div id="inspector">
+    <span><b>&lt;head&gt; canonical inspector:</b></span>
+    <span id="canonList">reading…</span>
+  </div>
+  <script>
+    function refreshInspector() {
+      var links = document.head.querySelectorAll('link[rel="canonical"]');
+      var out = [];
+      links.forEach(function (l) {
+        var ours = l.hasAttribute('data-aa-blog');
+        out.push((ours ? '★ OUR embed → ' : 'host → ') + l.getAttribute('href'));
+      });
+      var span = document.getElementById('canonList');
+      span.textContent = out.join('     |     ') || '(none)';
+      span.className = links.length && links[0].hasAttribute('data-aa-blog') ? 'ours' : '';
+    }
+    setInterval(refreshInspector, 400);
+  </script>
+</body>
+</html>
