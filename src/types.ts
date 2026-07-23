@@ -2,9 +2,10 @@
  * Schema for a market feed file — matches exactly what the pipeline's
  * WritePostsJson Lambda produces.
  *
- * Production source:  s3://aa-content/market/{zip}/posts.json
- * One file == one ZIP territory. Local dev reads the equivalent files from
- * src/data/{zip}.json (see src/lib/posts.ts).
+ * Production source:
+ * s3://agentsautomated-content/market/{zip}/posts.json
+ * One file == one ZIP territory. Astro reads these files from the bucket at
+ * build time; embed.js reads them directly from the public S3 HTTPS origin.
  *
  * Field names are the Lambda's contract — do not rename without changing the
  * Lambda. Notes on shape:

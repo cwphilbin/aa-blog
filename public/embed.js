@@ -13,11 +13,10 @@
   'use strict';
 
   // ---- Config -------------------------------------------------------------
-  // STUB: point `base` at the real S3/CloudFront origin once provisioned.
   // posts.json is fetched from `{base}/{zip}/posts.json`.
   // `canonicalBase` is the load-bearing SEO target — always OUR domain.
   var DEFAULTS = {
-    base: 'https://cdn.agentsautomated.com/market',
+    base: 'https://agentsautomated-content.s3.us-east-2.amazonaws.com/market',
     canonicalBase: 'https://agentsautomated.com/market'
   };
   var cfg = assign(assign({}, DEFAULTS), window.AA_BLOG_CONFIG || {});
@@ -47,7 +46,7 @@
       route(false);
     })
     .catch(function () {
-      // 404 / network / parse → graceful "coming soon" (new signup, no content yet).
+      // Missing object / network / parse → graceful "coming soon".
       clearCanonical();
       renderComingSoon();
     });

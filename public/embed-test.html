@@ -72,9 +72,8 @@
 
     <!-- ================= THE TWO LINES AN AGENT PASTES ================= -->
     <div id="aa-blog" data-zip="95816"></div>
-    <!-- For local dev we override `base` to the fixtures served at /dev-data.
-         In production this whole config object is omitted (embed.js defaults to
-         the CDN), and the src is https://agentsautomated.com/embed.js -->
+    <!-- Production uses https://agentsautomated.com/embed.js. This local copy
+         keeps the same direct-S3 data origin as production. -->
     <script>
       (function () {
         var params = new URLSearchParams(location.search);
@@ -86,8 +85,6 @@
         for (var i = 0; i < links.length; i++) {
           if (links[i].getAttribute('data-zip') === zip) links[i].className = 'active';
         }
-        // point the embed at local fixtures (prod uses the default CDN)
-        window.AA_BLOG_CONFIG = { base: '/dev-data' };
       })();
     </script>
     <script async src="/embed.js"></script>

@@ -1,24 +1,71 @@
+import { ListObjectsV2Command, S3Client } from '@aws-sdk/client-s3';
 import type { Agent, MarketFile, Post } from '../types';
 
+/** Production feed location written by WritePostsJson. */
+export const POSTS_ORIGIN =
+  'https://agentsautomated-content.s3.us-east-2.amazonaws.com/market';
+
+const POSTS_BUCKET = 'agentsautomated-content';
+const POSTS_PREFIX = 'market/';
+const POSTS_REGION = 'us-east-2';
+const POSTS_KEY = /^market\/(\d{5})\/posts\.json$/;
+
 /**
- * Loads all market feeds at build time.
+ * Loads all market feeds from production S3 during the Astro build.
  *
- * TODAY: reads local sample files from src/data/*.json.
- * LATER: swap the glob for an S3 fetch of aa-content/market/{zip}/posts.json.
- *        The page templates only call the helpers below, so the source swap is
- *        contained to this file:
- *          const zips = await listMarketZips();          // S3 ListObjects
- *          return Promise.all(zips.map(getMarketFromS3)); // GET each posts.json
+ * Object listing uses the AWS SDK credential chain and requires only
+ * s3:ListBucket on `market/`. Each feed is then fetched through the same public
+ * HTTPS origin used by embed.js, so a bad public-read policy fails the build
+ * instead of producing pages that the embed cannot load.
  */
+async function loadMarkets(): Promise<MarketFile[]> {
+  const s3 = new S3Client({ region: POSTS_REGION });
+  const zips = new Set<string>();
+  let continuationToken: string | undefined;
 
-const feeds = import.meta.glob<MarketFile>('../data/*.json', {
-  eager: true,
-  import: 'default',
-});
+  do {
+    const page = await s3.send(
+      new ListObjectsV2Command({
+        Bucket: POSTS_BUCKET,
+        Prefix: POSTS_PREFIX,
+        ContinuationToken: continuationToken,
+      }),
+    );
 
-const markets: MarketFile[] = Object.values(feeds).sort((a, b) =>
-  a.zip.localeCompare(b.zip),
-);
+    for (const object of page.Contents ?? []) {
+      const match = object.Key?.match(POSTS_KEY);
+      if (match) zips.add(match[1]);
+    }
+
+    continuationToken = page.IsTruncated
+      ? page.NextContinuationToken
+      : undefined;
+  } while (continuationToken);
+
+  const feeds = await Promise.all(
+    [...zips].sort().map(async (zip): Promise<MarketFile> => {
+      const url = `${POSTS_ORIGIN}/${encodeURIComponent(zip)}/posts.json`;
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error(
+          `Could not load posts for ZIP ${zip}: ${response.status} ${response.statusText} (${url})`,
+        );
+      }
+
+      const market = (await response.json()) as MarketFile;
+      if (market.zip !== zip || !Array.isArray(market.posts)) {
+        throw new Error(`Invalid posts.json for ZIP ${zip} (${url})`);
+      }
+
+      return market;
+    }),
+  );
+
+  return feeds.sort((a, b) => a.zip.localeCompare(b.zip));
+}
+
+const markets = await loadMarkets();
 
 export function getAllMarkets(): MarketFile[] {
   return markets;

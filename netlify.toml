@@ -13,6 +13,7 @@
 
 [build.environment]
   NODE_VERSION = "24"
+  AWS_REGION = "us-east-2"
   # Canonical origin. Pages resolve to agentsautomated.com/market/{zip}.
   # SITE_URL = "https://agentsautomated.com"
 

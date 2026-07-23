@@ -71,11 +71,10 @@ values (`""`) are treated as "not provided" and the link/image is dropped.
 
 ## Data & schema
 
-Sample feeds in `src/data/{zip}.json` (mirror `aa-content/market/{zip}/posts.json`):
-
-- `95816.json` — Sacramento Midtown/East Sac, **elite** agent, 2 posts
-- `94110.json` — SF Mission, **premium** agent
-- `78704.json` — South Austin, **standard** agent
+The production feeds are written to
+`s3://agentsautomated-content/market/{zip}/posts.json` in `us-east-2` and served
+publicly at
+`https://agentsautomated-content.s3.us-east-2.amazonaws.com/market/{zip}/posts.json`.
 
 Schema (exactly the WritePostsJson Lambda output — documented in `src/types.ts`):
 
@@ -110,12 +109,19 @@ Template assumptions worth confirming against real feed data:
   drives the trend arrow. A metric of `0` is hidden (treated as "not available"),
   except `yoyChange` where `0` renders as flat.
 
-### Swapping local samples for S3
+### Static build data flow
 
-Feeds are read from `src/data/*.json` (glob in `src/lib/posts.ts`). In production
-they come from `s3://aa-content/market/{zip}/posts.json`. Replace the glob with an
-async fetch (list ZIPs → GET each `posts.json`); the templates only call
-`getAllMarkets()` / `getMarket()` / `getPosts()` and don't care about the source.
+`src/lib/posts.ts` lists `market/` objects in the production bucket during the
+Astro build, extracts ZIPs from keys matching `market/{zip}/posts.json`, and
+fetches each feed from the public HTTPS origin. The route templates call
+`getStaticPaths()`, so `/market/{zip}` and `/market/{zip}/{slug}` are generated
+as static HTML only when that ZIP has a `posts.json` object at build time.
+
+The Netlify build needs AWS credentials with `s3:ListBucket` limited to the
+`market/` prefix. Feed downloads themselves are anonymous HTTPS requests; a
+public-read or JSON error fails the build. A ZIP with no object is absent from
+the object listing, so no static page is generated until a later build after
+WritePostsJson creates it.
 
 ## Embed — the product (`embed.js`)
 
@@ -132,9 +138,8 @@ framework, no build step, one file served from our domain.
 ```
 
 **Behavior:**
-- Reads `data-zip`, fetches `{base}/{zip}/posts.json`. `base` is a config
-  constant at the top of `embed.js` (**stubbed** to `cdn.agentsautomated.com/market`
-  — point it at the real S3/CloudFront origin once provisioned). Overridable per
+- Reads `data-zip`, fetches `{base}/{zip}/posts.json`. `base` is the production
+  S3 HTTPS origin at the top of `embed.js`. Overridable per
   embed via `data-base`, or globally via `window.AA_BLOG_CONFIG = { base, canonicalBase }`.
 - Renders list + individual post views; hash routing (`#post={slug}`) so deep
   links and back/forward work.
@@ -145,7 +150,8 @@ framework, no build step, one file served from our domain.
 - **Lazy video:** click-to-load facade (YouTube thumbnail, zero third-party
   requests until play) → `youtube-nocookie` iframe on click; direct files use
   native `<video>`. Protects the agent's Core Web Vitals.
-- **Coming-soon** state if `posts.json` 404s (new signup before first content).
+- **Coming-soon** state if `posts.json` is missing or cannot be loaded (new
+  signup before first content).
 - Inherits host typography (`font-family: inherit`) but sets its own layout
   (cards, spacing, 16:9 video); all styles scoped under `#aa-blog`. XSS-safe:
   text via `textContent`, `innerHTML` only for the trusted `bodyHtml`.
@@ -153,10 +159,9 @@ framework, no build step, one file served from our domain.
 **Test it locally:** `npm run dev`, then open
 [`http://localhost:4321/embed-test.html`](http://localhost:4321/embed-test.html)
 — a mock agent site (serif host font) with a live canonical-inspector bar.
-Switch tiers with `?zip=95816` (elite) · `94110` (premium) · `78704` (standard) ·
-`00000` (coming-soon). `embed-test.html` + `public/dev-data/` are dev-only
-fixtures — kept in the repo but **stripped from the production build** by the
-`postbuild` script.
+Use `?zip={zip}` to load any production feed, or a ZIP with no feed to exercise
+the coming-soon state. `embed-test.html` is a dev-only harness and is
+**stripped from the production build** by the `postbuild` script.
 
 ## Deployment (path-based on the apex)
 
@@ -165,10 +170,9 @@ published separately and mounted at `/market/*` by the apex's edge. Options,
 best first:
 
 1. **Reverse-proxy / rewrite at the apex (recommended).** Deploy this as its own
-   Netlify site; on whatever serves `agentsautomated.com`, add a rewrite
-   `("/market/*" → this site)`. Keeps the two codebases and deploy cadences
-   independent. On Netlify that's a `[[redirects]]` rule with `status = 200`
-   (proxy) to this site's URL; on Vercel a `rewrites` entry.
+   Netlify site. The apex app's `public/_redirects` proxies `/market/*` and
+   `/embed.js` to `https://aa-blog.netlify.app` with status `200`, before its SPA
+   catch-all. This keeps the two codebases and deploy cadences independent.
 2. **Build artifact merge.** Have the main app's build pull `dist/market/**` into
    its own output. Simplest routing, but couples the deploys.
 
@@ -180,8 +184,8 @@ Path-ownership follow-ups (the main app owns the apex root, so these live outsid
 - **`/embed.js`** — the embed loads from `https://agentsautomated.com/embed.js`,
   at the apex root. The apex must proxy **`/embed.js`** (status 200) to this
   Netlify site, alongside the `/market/*` rule. The `posts.json` origin the embed
-  fetches (`base` constant in `embed.js`) is served directly from S3/CloudFront,
-  not the apex, so it needs no rule — just CORS allowing the agents' origins.
+  fetches (`base` constant in `embed.js`) is served directly from S3, not the
+  apex, so it needs no rule — just CORS allowing the agents' origins.
 - **Sitemap** is emitted at `/sitemap-index.xml`. Either proxy `/sitemap*.xml`
   to this site too, or add these URLs to the main app's sitemap.
 - **robots.txt** at the apex is the main app's; merge the `Sitemap:` line from

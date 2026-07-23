@@ -8,11 +8,12 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "postbuild": "rm -rf dist/embed-test.html dist/dev-data",
+    "postbuild": "rm -f dist/embed-test.html",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.1093.0",
     "@astrojs/sitemap": "^3.4.0",
     "astro": "^5.6.1"
   }
