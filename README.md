@@ -123,6 +123,24 @@ public-read or JSON error fails the build. A ZIP with no object is absent from
 the object listing, so no static page is generated until a later build after
 WritePostsJson creates it.
 
+### Required Netlify build environment variables
+
+Add these variables in the Netlify UI with **Builds** scope:
+
+| Variable | Purpose |
+| --- | --- |
+| `AA_AWS_ACCESS_KEY_ID` | Access key for the list-only Netlify build IAM user |
+| `AA_AWS_SECRET_ACCESS_KEY` | Secret key for the list-only Netlify build IAM user |
+
+Netlify reserves the standard `AWS_ACCESS_KEY_ID` and
+`AWS_SECRET_ACCESS_KEY` names, so `src/lib/posts.ts` passes the AA-prefixed
+values explicitly to `S3Client`. The build fails immediately with the missing
+variable names if either value is absent. Never commit credential values.
+
+The S3 region is fixed to `us-east-2` in `src/lib/posts.ts`. `AWS_REGION` in
+`netlify.toml` is build configuration rather than a secret; no
+`AA_AWS_REGION` variable is required in the Netlify UI.
+
 ## Embed — the product (`embed.js`)
 
 The drop-in widget agents paste on their **own** site. It renders our blog

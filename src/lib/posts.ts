@@ -10,16 +10,36 @@ const POSTS_PREFIX = 'market/';
 const POSTS_REGION = 'us-east-2';
 const POSTS_KEY = /^market\/(\d{5})\/posts\.json$/;
 
+const accessKeyId = process.env.AA_AWS_ACCESS_KEY_ID?.trim();
+const secretAccessKey = process.env.AA_AWS_SECRET_ACCESS_KEY?.trim();
+
+if (!accessKeyId || !secretAccessKey) {
+  const missingCredentialVariables = [
+    !accessKeyId && 'AA_AWS_ACCESS_KEY_ID',
+    !secretAccessKey && 'AA_AWS_SECRET_ACCESS_KEY',
+  ].filter((name): name is string => Boolean(name));
+
+  throw new Error(
+    `Missing required Netlify build environment variable(s): ${missingCredentialVariables.join(', ')}. Add them in Netlify with Builds scope.`,
+  );
+}
+
 /**
  * Loads all market feeds from production S3 during the Astro build.
  *
- * Object listing uses the AWS SDK credential chain and requires only
- * s3:ListBucket on `market/`. Each feed is then fetched through the same public
- * HTTPS origin used by embed.js, so a bad public-read policy fails the build
- * instead of producing pages that the embed cannot load.
+ * Object listing uses explicit, Netlify-scoped AWS credentials and requires
+ * only s3:ListBucket on `market/`. Each feed is then fetched through the same
+ * public HTTPS origin used by embed.js, so a bad public-read policy fails the
+ * build instead of producing pages that the embed cannot load.
  */
 async function loadMarkets(): Promise<MarketFile[]> {
-  const s3 = new S3Client({ region: POSTS_REGION });
+  const s3 = new S3Client({
+    region: POSTS_REGION,
+    credentials: {
+      accessKeyId,
+      secretAccessKey,
+    },
+  });
   const zips = new Set<string>();
   let continuationToken: string | undefined;
 
