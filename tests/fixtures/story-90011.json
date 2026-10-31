@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "storyId": "2026-09/90011",
+  "storyVersion": "d57643c2cf933c649e00",
+  "zip": "90011",
+  "month": "2026-09",
+  "status": "ready",
+  "county": "Los Angeles",
+  "state": "CA",
+  "generatedAt": "2026-10-31T21:14:30.216901+00:00",
+  "headline": "List-to-sale price gap: $-44,000 in ZIP 90011",
+  "tldr": "List-to-sale price gap is $-44,000, with a -191.7% year-over-year change. Buyers can compare these local figures with their budget and timing; sellers can use them when discussing pricing and preparation.",
+  "context": "Median sale price is $590,000, with a 31.1% year-over-year change. The mortgage reference rate is 7.24%, per Freddie Mac PMMS via FRED.",
+  "shift": "The largest reported year-over-year move is in list-to-sale price gap: -191.7%.",
+  "proof": "Active listings is 16, with a 166.7% year-over-year change. Homes sold is 5, with a 66.7% year-over-year change.",
+  "takeaway": "Buyers can compare these local figures with their budget and timing; sellers can use them when discussing pricing and preparation.",
+  "cta": "Agents can claim this territory and help local buyers and sellers understand the market figures in this report.",
+  "findings": [
+    {
+      "metric": "for_sale_vs_sold",
+      "text": "List-to-sale price gap is $-44,000, with a -191.7% year-over-year change.",
+      "changePct": -191.7,
+      "current": -44000.0,
+      "prior": 48000.0
+    },
+    {
+      "metric": "inventory",
+      "text": "Active listings is 16, with a 166.7% year-over-year change.",
+      "changePct": 166.7,
+      "current": 16,
+      "prior": 6
+    },
+    {
+      "metric": "sold_homes",
+      "text": "Homes sold is 5, with a 66.7% year-over-year change.",
+      "changePct": 66.7,
+      "current": 5,
+      "prior": 3
+    },
+    {
+      "metric": "pct_price_drop",
+      "text": "Listings with price reductions is 6.25%, with a -62.5% year-over-year change.",
+      "changePct": -62.5,
+      "current": 6.25,
+      "prior": 16.67
+    },
+    {
+      "metric": "median_price",
+      "text": "Median sale price is $590,000, with a 31.1% year-over-year change.",
+      "changePct": 31.1,
+      "current": 590000.0,
+      "prior": 450000.0
+    }
+  ],
+  "charts": {
+    "trend": {
+      "url": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/stories/2026-09/90011/chart-trend.png",
+      "metric": "for_sale_vs_sold",
+      "label": "List-to-sale price gap",
+      "months": [
+        "2025-10",
+        "2025-11",
+        "2025-12",
+        "2026-01",
+        "2026-02",
+        "2026-03",
+        "2026-04",
+        "2026-05",
+        "2026-06",
+        "2026-07",
+        "2026-08",
+        "2026-09"
+      ],
+      "values": [
+        28000.0,
+        -10000.0,
+        7000.0,
+        48000.0,
+        21000.0,
+        4000.0,
+        -33000.0,
+        25000.0,
+        5000.0,
+        85000.0,
+        21000.0,
+        -44000.0
+      ],
+      "sources": "s3://realtor-listings-clean-9-20-2022/analysis/zip_county/image-8/run_date=2026-10/part-00000-tid-7857911725895179524-151f862d-7aa1-4239-8f34-91bc1aa57eb3-1030-1-c000.csv"
+    },
+    "comparison": {
+      "url": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/stories/2026-09/90011/chart-comparison.png",
+      "currentMonth": "2026-09",
+      "priorMonth": "2025-09",
+      "metrics": [
+        {
+          "metric": "for_sale_vs_sold",
+          "label": "List-to-sale price gap",
+          "current": -44000.0,
+          "prior": 48000.0,
+          "changePct": -191.7,
+          "unit": "money"
+        },
+        {
+          "metric": "inventory",
+          "label": "Active listings",
+          "current": 16,
+          "prior": 6,
+          "changePct": 166.7,
+          "unit": "count"
+        },
+        {
+          "metric": "sold_homes",
+          "label": "Homes sold",
+          "current": 5,
+          "prior": 3,
+          "changePct": 66.7,
+          "unit": "count"
+        },
+        {
+          "metric": "pct_price_drop",
+          "label": "Listings with price reductions",
+          "current": 6.25,
+          "prior": 16.67,
+          "changePct": -62.5,
+          "unit": "percent"
+        },
+        {
+          "metric": "median_price",
+          "label": "Median sale price",
+          "current": 590000.0,
+          "prior": 450000.0,
+          "changePct": 31.1,
+          "unit": "money"
+        },
+        {
+          "metric": "avg_price_drop",
+          "label": "Average price reduction",
+          "current": -60000.0,
+          "prior": -48000.0,
+          "changePct": 25.0,
+          "unit": "money"
+        }
+      ]
+    }
+  }
+}

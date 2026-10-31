@@ -18,6 +18,8 @@
  *     feed — alt text is synthesized in the templates).
  */
 
+import type { CanonicalStory } from './lib/story';
+
 export type AgentTier = 'elite' | 'premium' | 'standard';
 
 export interface Agent {
@@ -54,6 +56,8 @@ export interface Metrics {
 }
 
 export interface Post {
+  /** Canonical month/ZIP story, attached at build time when published. */
+  story?: CanonicalStory;
   /** Stable feed id (e.g. "2026-06-market-update"). */
   id: string;
   /** URL-safe; becomes /market/{zip}/{slug}. Unique within the file. */

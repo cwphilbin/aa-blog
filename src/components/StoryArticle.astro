@@ -1,0 +1,75 @@
+---
+import type { CanonicalStory } from '../lib/story';
+import type { Agent } from '../types';
+
+interface Props { story: CanonicalStory; agent: Agent; marketName: string }
+const { story, agent, marketName } = Astro.props;
+const location = [story.county, story.state].filter(Boolean).join(', ') || marketName;
+const month = new Date(`${story.month}-01T12:00:00Z`).toLocaleDateString('en-US', {
+  month: 'long', year: 'numeric', timeZone: 'UTC',
+});
+const branded = Boolean(agent.name.trim());
+let contact = '/buyers-sellers';
+try {
+  const url = new URL(agent.ctaUrl || agent.siteUrl);
+  if (url.protocol === 'https:') contact = url.href;
+} catch { /* Use the site's public buyer/seller page when no contact URL exists. */ }
+---
+
+<article class="story" data-story-id={story.storyId} data-story-version={story.storyVersion}>
+  <header class="story-header" data-story-section="headline">
+    <p class="story-eyebrow">{location} <span>·</span> ZIP {story.zip}</p>
+    <h1>{story.headline}</h1>
+    <p class="story-meta"><time datetime={story.month}>{month} market report</time><span>·</span>{branded ? agent.name : 'Agents Automated'}</p>
+  </header>
+
+  <section class="story-summary" aria-labelledby="story-tldr" data-story-section="tldr">
+    <h2 id="story-tldr">TL;DR</h2>
+    <p>{story.tldr}</p>
+  </section>
+
+  <section class="story-chart-section" aria-label="Market trend chart" data-story-section="chart">
+    {story.charts.trend ? (
+      <figure class="story-chart">
+        <img src={story.charts.trend.url} alt={`${story.charts.trend.label || 'Market trend'} in ZIP ${story.zip}`} loading="eager" />
+        <figcaption>{story.charts.trend.label || 'Market trend'} · ZIP {story.zip}</figcaption>
+      </figure>
+    ) : <p class="meta-line">Trend chart unavailable for this report.</p>}
+  </section>
+
+  <section class="story-section" aria-labelledby="story-findings" data-story-section="findings">
+    <p class="story-eyebrow">The numbers behind the story</p>
+    <h2 id="story-findings">Key findings</h2>
+    <ol class="story-findings">
+      {story.findings.map((finding, i) => (
+        <li><span class="finding-number" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span><p>{finding.text}</p></li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="story-section" aria-labelledby="story-context" data-story-section="context">
+    <h2 id="story-context">The context</h2><p>{story.context}</p>
+  </section>
+  <section class="story-section story-shift" aria-labelledby="story-shift" data-story-section="shift">
+    <h2 id="story-shift">What changed</h2><p>{story.shift}</p>
+  </section>
+  <section class="story-section" aria-labelledby="story-proof" data-story-section="proof">
+    <h2 id="story-proof">The supporting figures</h2><p>{story.proof}</p>
+    {story.charts.comparison && (
+      <figure class="story-chart">
+        <img src={story.charts.comparison.url} alt={`Current and prior-year market figures for ZIP ${story.zip}`} loading="lazy" />
+        <figcaption>Current and prior-year figures · ZIP {story.zip}</figcaption>
+      </figure>
+    )}
+  </section>
+  <section class="story-section" aria-labelledby="story-takeaway" data-story-section="takeaway">
+    <h2 id="story-takeaway">What this means for you</h2><p>{story.takeaway}</p>
+  </section>
+  <section class="story-cta" aria-labelledby="story-cta" data-story-section="cta">
+    <p class="story-eyebrow">Your next step</p>
+    <h2 id="story-cta">{branded ? `Talk with ${agent.name}` : 'Bring local insight to your next move.'}</h2>
+    <p>{story.cta}</p>
+    <a class="btn" href={branded ? contact : '/'}>{branded ? 'Get in touch' : 'Explore county availability'} <span aria-hidden="true">↗</span></a>
+  </section>
+  <p class="disclaimer">Market figures describe reported activity, not a valuation of an individual home or a guarantee of future results.</p>
+</article>

@@ -2,6 +2,7 @@ import { ListObjectsV2Command, S3Client } from '@aws-sdk/client-s3';
 import type { Agent, MarketFile, Post } from '../types';
 import { mapWithConcurrency } from './concurrency';
 import { parseMarketFeed } from './market-feed';
+import { attachCanonicalStories } from './stories';
 
 /** Production feed location written by WritePostsJson. */
 export const POSTS_ORIGIN =
@@ -25,6 +26,8 @@ if (!accessKeyId || !secretAccessKey) {
     `Missing required Netlify build environment variable(s): ${missingCredentialVariables.join(', ')}. Add them in Netlify with Builds scope.`,
   );
 }
+
+const buildCredentials = { accessKeyId, secretAccessKey };
 
 /**
  * Loads all market feeds from production S3 during the Astro build.
@@ -54,10 +57,7 @@ async function fetchFeed(url: string): Promise<Response> {
 async function loadMarkets(): Promise<MarketFile[]> {
   const s3 = new S3Client({
     region: POSTS_REGION,
-    credentials: {
-      accessKeyId,
-      secretAccessKey,
-    },
+    credentials: buildCredentials,
   });
   const zips = new Set<string>();
   let continuationToken: string | undefined;
@@ -98,6 +98,7 @@ async function loadMarkets(): Promise<MarketFile[]> {
 
   const validFeeds = feeds.filter((feed): feed is MarketFile => feed !== undefined);
   console.info(`[markets] Loaded ${validFeeds.length} valid feeds; skipped ${feeds.length - validFeeds.length} malformed feeds.`);
+  await attachCanonicalStories(validFeeds, s3);
   return validFeeds.sort((a, b) => a.zip.localeCompare(b.zip));
 }
 
@@ -132,7 +133,7 @@ export function hasText(value?: string | null): value is string {
 
 /** First slide image, used as the cover / OG image (feed has no coverImage). */
 export function coverImage(post: Post): string | undefined {
-  return post.slideImages.find(hasText);
+  return post.story?.charts.trend?.url ?? post.slideImages.find(hasText);
 }
 
 /**

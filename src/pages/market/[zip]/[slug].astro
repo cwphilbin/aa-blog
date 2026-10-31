@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import StoryArticle from '../../../components/StoryArticle.astro';
 import AgentBlock from '../../../components/AgentBlock.astro';
 import Metrics from '../../../components/Metrics.astro';
 import VideoEmbed from '../../../components/VideoEmbed.astro';
@@ -25,8 +26,10 @@ const { zip } = Astro.params;
 const { agent } = market;
 const placement = placementFor(agent.tier);
 
+const story = post.story;
+const title = story?.headline ?? post.title;
 const description =
-  post.summary || `${post.title} — local real estate insight for ${market.name} (ZIP ${zip}).`;
+  story?.tldr || post.summary || `${title} — local real estate insight for ${market.name} (ZIP ${zip}).`;
 const cover = coverImage(post);
 
 // Canonical from the feed's authored territory `url` + slug (source of truth).
@@ -36,8 +39,8 @@ const orgHome = new URL('/', Astro.site).href;
 
 // Author = the sponsoring agent. url only when the agent has a site backlink.
 const author = {
-  '@type': 'Person',
-  name: agent.name,
+  '@type': hasText(agent.name) ? 'Person' : 'Organization',
+  name: hasText(agent.name) ? agent.name : 'Agents Automated',
   ...(hasText(agent.siteUrl) && { url: agent.siteUrl }),
 };
 
@@ -46,15 +49,15 @@ const jsonLd = [
   {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
-    headline: post.title,
+    headline: title,
     description,
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: story?.generatedAt ?? post.date,
     ...(cover && { image: [cover] }),
-    ...(hasText(post.videoUrl) && {
+    ...(!story && hasText(post.videoUrl) && {
       video: {
         '@type': 'VideoObject',
-        name: post.title,
+        name: title,
         description,
         contentUrl: post.videoUrl,
         ...(cover && { thumbnailUrl: [cover] }),
@@ -75,7 +78,7 @@ const jsonLd = [
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Markets', item: marketsHome },
       { '@type': 'ListItem', position: 2, name: `${market.name} (${zip})`, item: market.url },
-      { '@type': 'ListItem', position: 3, name: post.title, item: canonical },
+      { '@type': 'ListItem', position: 3, name: title, item: canonical },
     ],
   },
 ];
@@ -88,27 +91,28 @@ const publishedLabel = new Date(post.date).toLocaleDateString('en-US', {
 ---
 
 <BaseLayout
-  title={post.title}
+  title={title}
   description={description}
   image={cover}
-  imageAlt={cover ? post.title : undefined}
+  imageAlt={cover ? title : undefined}
   ogType="article"
   jsonLd={jsonLd}
   publishedTime={post.date}
-  modifiedTime={post.date}
+  modifiedTime={story?.generatedAt ?? post.date}
   authorName={agent.name}
   canonical={canonical}
 >
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/market">Markets</a> /
     <a href={`/market/${zip}`}>{market.name} ({zip})</a> /
-    <span>{post.title}</span>
+    <span>{title}</span>
   </nav>
 
+  {story ? <StoryArticle story={story} agent={agent} marketName={market.name} /> : (
   <div class={`post-layout ${placement === 'sidebar' ? 'has-sidebar' : ''}`}>
     <article class="article">
       <header>
-        <h1>{post.title}</h1>
+        <h1>{title}</h1>
         <p class="meta-line">
           <time datetime={post.date}>{publishedLabel}</time>
           &nbsp;·&nbsp; By {hasText(agent.siteUrl)
@@ -123,7 +127,7 @@ const publishedLabel = new Date(post.date).toLocaleDateString('en-US', {
       {cover && (
         <img
           src={cover}
-          alt={post.title}
+          alt={title}
           width="1200"
           height="630"
           loading="eager"
@@ -131,7 +135,7 @@ const publishedLabel = new Date(post.date).toLocaleDateString('en-US', {
         />
       )}
 
-      {hasText(post.videoUrl) && <VideoEmbed url={post.videoUrl} title={post.title} />}
+      {hasText(post.videoUrl) && <VideoEmbed url={post.videoUrl} title={title} />}
 
       <Metrics metrics={post.metrics} />
 
@@ -142,7 +146,7 @@ const publishedLabel = new Date(post.date).toLocaleDateString('en-US', {
         <div class="slides" aria-label="Gallery">
           {post.slideImages.filter(hasText).map((src, i) => (
             <figure>
-              <img src={src} alt={`${post.title} — image ${i + 1}`} loading="lazy" />
+              <img src={src} alt={`${title} — image ${i + 1}`} loading="lazy" />
             </figure>
           ))}
         </div>
@@ -160,4 +164,5 @@ const publishedLabel = new Date(post.date).toLocaleDateString('en-US', {
 
     {placement === 'sidebar' && <AgentBlock agent={agent} />}
   </div>
+  )}
 </BaseLayout>

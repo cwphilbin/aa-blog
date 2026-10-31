@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import StoryArticle from '../../../components/StoryArticle.astro';
 import AgentBlock from '../../../components/AgentBlock.astro';
 import {
   getAllMarkets,
@@ -18,11 +19,12 @@ const market = getMarket(zip!);
 if (!market) throw new Error(`No market data for ZIP ${zip}`);
 
 const posts = getPosts(market);
+const story = posts[0]?.story;
 const { agent } = market;
 const placement = placementFor(agent.tier);
 
-const title = `${market.name} Real Estate Market (${zip})`;
-const description = `Local real estate market updates, home prices, and trends for ${market.name} (ZIP ${zip}).`;
+const title = story?.headline ?? `${market.name} Real Estate Market (${zip})`;
+const description = story?.tldr ?? `Local real estate market updates, home prices, and trends for ${market.name} (ZIP ${zip}).`;
 const heroImage = posts[0] && coverImage(posts[0]);
 
 // Canonical comes from the feed's authored `url` (source of truth).
@@ -56,7 +58,7 @@ const jsonLd = [
         '@type': 'ListItem',
         position: i + 1,
         url: `${canonical.replace(/\/$/, '')}/${p.slug}`,
-        name: p.title,
+        name: p.story?.headline ?? p.title,
       })),
     },
   },
@@ -84,13 +86,15 @@ const jsonLd = [
     <a href="/market">Markets</a> / <span>{market.name} ({zip})</span>
   </nav>
 
+  {story ? <StoryArticle story={story} agent={agent} marketName={market.name} /> : (<>
   <h1>{market.name} — {zip}</h1>
   <p class="meta-line">Real estate market updates for ZIP {zip}</p>
 
-  {placement === 'hero' && <AgentBlock agent={agent} />}
+  {agent.name.trim() && placement === 'hero' && <AgentBlock agent={agent} />}
+  </>)}
 
   <section aria-label="Latest posts">
-    <h2>Latest market updates</h2>
+    <h2>{story ? 'Monthly reports' : 'Latest market updates'}</h2>
     {posts.length === 0 ? (
       <p>No posts yet for this market.</p>
     ) : (
@@ -101,7 +105,7 @@ const jsonLd = [
             <article class="card">
               {cover && (
                 <a href={`/market/${zip}/${post.slug}`}>
-                  <img src={cover} alt={post.title} width="1200" height="630" loading="lazy" />
+                  <img src={cover} alt={post.story?.headline ?? post.title} width="1200" height="630" loading="lazy" />
                 </a>
               )}
               <div class="card__body">
@@ -112,8 +116,8 @@ const jsonLd = [
                     day: 'numeric',
                   })}
                 </time>
-                <h3><a href={`/market/${zip}/${post.slug}`}>{post.title}</a></h3>
-                {post.summary && <p>{post.summary}</p>}
+                <h3><a href={`/market/${zip}/${post.slug}`}>{post.story?.headline ?? post.title}</a></h3>
+                {(post.story?.tldr || post.summary) && <p>{post.story?.tldr || post.summary}</p>}
               </div>
             </article>
           );
@@ -122,6 +126,6 @@ const jsonLd = [
     )}
   </section>
 
-  {placement === 'sidebar' && <AgentBlock agent={agent} />}
-  {placement === 'footer' && <AgentBlock agent={agent} />}
+  {!story && agent.name.trim() && placement === 'sidebar' && <AgentBlock agent={agent} />}
+  {!story && agent.name.trim() && placement === 'footer' && <AgentBlock agent={agent} />}
 </BaseLayout>

@@ -71,6 +71,22 @@ values (`""`) are treated as "not provided" and the link/image is dropped.
 
 ## Data & schema
 
+Published canonical stories are read at build time from
+`s3://aa-zip-metrics-prod/stories/{month}/{zip}.json` (schema version 1).
+The newest post's story appears on its ZIP landing page; each monthly post uses
+its own month, derived from its content ID before its publication date. Both
+render headline, TL;DR, trend chart, findings, context, what changed (`shift`),
+proof (including the comparison chart), takeaway, and CTA in that order.
+Story text is escaped, not inserted as HTML. Chart URLs must belong to the same
+story's public S3 directory. Page titles and descriptions use the canonical story.
+
+The build lists `stories/` and reads only matching JSON objects, with bounded
+concurrency. Missing or malformed stories retain the existing feed-based pages;
+they never remove routes. Malformed stories log a ZIP/month warning. AWS access
+failures still fail the build. Existing null-metric and malformed-feed safeguards
+remain in place. The build IAM user needs the additional read-only permissions in
+`infra/netlify-story-read-policy.json`; chart images must be publicly readable.
+
 The production feeds are written to
 `s3://agentsautomated-content/market/{zip}/posts.json` in `us-east-2` and served
 publicly at
