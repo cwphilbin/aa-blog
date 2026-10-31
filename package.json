@@ -5,6 +5,7 @@
   "private": true,
   "description": "SEO-optimized real estate market pages generated from posts.json (Agents Automated)",
   "scripts": {
+    "test": "node --test tests/*.test.ts tests/*.test.mjs",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",

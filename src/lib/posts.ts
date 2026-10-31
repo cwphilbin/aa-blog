@@ -1,6 +1,7 @@
 import { ListObjectsV2Command, S3Client } from '@aws-sdk/client-s3';
 import type { Agent, MarketFile, Post } from '../types';
 import { mapWithConcurrency } from './concurrency';
+import { parseMarketFeed } from './market-feed';
 
 /** Production feed location written by WritePostsJson. */
 export const POSTS_ORIGIN =
@@ -81,7 +82,7 @@ async function loadMarkets(): Promise<MarketFile[]> {
   } while (continuationToken);
 
   const feeds = await mapWithConcurrency(
-    [...zips].sort(), 12, async (zip): Promise<MarketFile> => {
+    [...zips].sort(), 12, async (zip): Promise<MarketFile | undefined> => {
       const url = `${POSTS_ORIGIN}/${encodeURIComponent(zip)}/posts.json`;
       const response = await fetchFeed(url);
 
@@ -91,16 +92,13 @@ async function loadMarkets(): Promise<MarketFile[]> {
         );
       }
 
-      const market = (await response.json()) as MarketFile;
-      if (market.zip !== zip || !Array.isArray(market.posts)) {
-        throw new Error(`Invalid posts.json for ZIP ${zip} (${url})`);
-      }
-
-      return market;
+      return parseMarketFeed(await response.text(), zip);
     },
   );
 
-  return feeds.sort((a, b) => a.zip.localeCompare(b.zip));
+  const validFeeds = feeds.filter((feed): feed is MarketFile => feed !== undefined);
+  console.info(`[markets] Loaded ${validFeeds.length} valid feeds; skipped ${feeds.length - validFeeds.length} malformed feeds.`);
+  return validFeeds.sort((a, b) => a.zip.localeCompare(b.zip));
 }
 
 const markets = await loadMarkets();

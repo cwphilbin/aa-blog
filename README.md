@@ -119,7 +119,12 @@ as static HTML only when that ZIP has a `posts.json` object at build time.
 
 The Netlify build needs AWS credentials with `s3:ListBucket` limited to the
 `market/` prefix. Feed downloads themselves are anonymous HTTPS requests; a
-public-read or JSON error fails the build. A ZIP with no object is absent from
+public-read or object-listing error fails the build. Malformed JSON or invalid
+template data skips that ZIP's feed with a warning identifying the ZIP and field;
+valid feeds continue to build. Null metric values mean unavailable and their
+cells are hidden; they do not cause a feed to be skipped. The build reports
+loaded/skipped feed counts. Skipped feeds have no generated pages or sitemap
+entries until corrected. A ZIP with no object is absent from
 the object listing, so no static page is generated until a later build after
 WritePostsJson creates it.
 
