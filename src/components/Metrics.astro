@@ -1,5 +1,6 @@
 ---
 import type { Metrics } from '../types';
+import { displayableMetric } from '../lib/metrics';
 
 interface Props {
   metrics: Metrics;
@@ -30,15 +31,15 @@ const FIELDS = [
   { key: 'pricePerSqft', label: 'Price / Sq Ft', fmt: (v: number) => usd.format(v) },
 ] as const;
 
-const rows = FIELDS.map((f) => {
-  const value = metrics[f.key];
-  return {
+const rows = FIELDS.flatMap((f) => {
+  const value = metrics?.[f.key];
+  if (!displayableMetric(value, 'keepZero' in f && f.keepZero)) return [];
+  return [{
     label: f.label,
     display: f.fmt(value),
     trend: 'trend' in f ? f.trend(value) : undefined,
-    show: value !== 0 || ('keepZero' in f && f.keepZero),
-  };
-}).filter((r) => r.show);
+  }];
+});
 ---
 {rows.length > 0 && (
   <dl class="metrics" aria-label="Market metrics">

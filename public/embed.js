@@ -309,7 +309,7 @@
       { k: 'pricePerSqft', label: 'Price / Sq Ft', fmt: function (v) { return usd.format(v); } }
     ];
     var rows = FIELDS.filter(function (f) {
-      return typeof m[f.k] === 'number' && (m[f.k] !== 0 || f.keepZero);
+      return typeof m[f.k] === 'number' && Number.isFinite(m[f.k]) && (m[f.k] !== 0 || f.keepZero);
     });
     if (!rows.length) return null;
     var dl = el('dl', { class: 'aa-metrics', 'aria-label': 'Market metrics' });

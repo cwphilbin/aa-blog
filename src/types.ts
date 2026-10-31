@@ -37,20 +37,20 @@ export interface Agent {
   email: string;
 }
 
-/** Fixed-key market metrics. 0 means "not available". */
+/** Fixed-key market metrics. null means unavailable; legacy zero values are hidden except YoY change. */
 export interface Metrics {
   /** Median sale price, whole dollars. */
-  medianPrice: number;
+  medianPrice: number | null;
   /** Year-over-year change, as a percentage number (e.g. 4.2 == +4.2%). */
-  yoyChange: number;
+  yoyChange: number | null;
   /** Active inventory (count of listings). */
-  inventory: number;
+  inventory: number | null;
   /** Median days on market. */
-  daysOnMarket: number;
+  daysOnMarket: number | null;
   /** New listings in the period. */
-  newListings: number;
+  newListings: number | null;
   /** Price per square foot, whole dollars. */
-  pricePerSqft: number;
+  pricePerSqft: number | null;
 }
 
 export interface Post {

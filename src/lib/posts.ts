@@ -1,5 +1,6 @@
 import { ListObjectsV2Command, S3Client } from '@aws-sdk/client-s3';
 import type { Agent, MarketFile, Post } from '../types';
+import { mapWithConcurrency } from './concurrency';
 
 /** Production feed location written by WritePostsJson. */
 export const POSTS_ORIGIN =
@@ -32,6 +33,23 @@ if (!accessKeyId || !secretAccessKey) {
  * public HTTPS origin used by embed.js, so a bad public-read policy fails the
  * build instead of producing pages that the embed cannot load.
  */
+async function fetchFeed(url: string): Promise<Response> {
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const response = await fetch(url, { signal: AbortSignal.timeout(30_000) });
+      if ((response.status === 429 || response.status >= 500) && attempt < 2) {
+        await response.body?.cancel();
+      } else {
+        return response;
+      }
+    } catch (error) {
+      if (attempt === 2) throw error;
+    }
+    await new Promise(resolve => setTimeout(resolve, 500 * 2 ** attempt));
+  }
+  throw new Error(`Feed retries exhausted: ${url}`);
+}
+
 async function loadMarkets(): Promise<MarketFile[]> {
   const s3 = new S3Client({
     region: POSTS_REGION,
@@ -62,10 +80,10 @@ async function loadMarkets(): Promise<MarketFile[]> {
       : undefined;
   } while (continuationToken);
 
-  const feeds = await Promise.all(
-    [...zips].sort().map(async (zip): Promise<MarketFile> => {
+  const feeds = await mapWithConcurrency(
+    [...zips].sort(), 12, async (zip): Promise<MarketFile> => {
       const url = `${POSTS_ORIGIN}/${encodeURIComponent(zip)}/posts.json`;
-      const response = await fetch(url);
+      const response = await fetchFeed(url);
 
       if (!response.ok) {
         throw new Error(
@@ -79,7 +97,7 @@ async function loadMarkets(): Promise<MarketFile[]> {
       }
 
       return market;
-    }),
+    },
   );
 
   return feeds.sort((a, b) => a.zip.localeCompare(b.zip));
