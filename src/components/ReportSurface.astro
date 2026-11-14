@@ -1,0 +1,28 @@
+---
+import {renderReport,renderCollection} from '../../public/embed/report-kit/render.js';
+import '../../public/embed/report-kit/design.css';
+import offeredZips from '../../public/embed/offered-zips.json';
+const {data}=Astro.props;
+data.offeredZips=offeredZips;
+data.externalSignup=true;
+const state={view:'collection',zips:[],search:'',open:null};
+const market=data.markets.find(m=>m.zip===data.defaultZip);
+const post=market?.posts.find(p=>p.slug===data.defaultPost)||market?.posts[0];
+const markup=data.page==='report'?renderReport({market,post,agent:data.agent,links:data.links,externalSignup:true}):renderCollection(data,state);
+---
+<div class="aa-design" data-aa-surface set:html={markup}></div>
+<script type="application/json" id="aa-data" set:html={JSON.stringify(data).replace(/</g,'\\u003c')}></script>
+<script>
+  import {initSurface} from '../../public/embed/report-kit/controller.js';
+  const root=document.querySelector('[data-aa-surface]');
+  const data=JSON.parse(document.querySelector('#aa-data')?.textContent||'{}');
+  if(root){
+    const surface=initSurface(root,data);
+    fetch('https://aa-blog.netlify.app/.netlify/functions/seat-agents',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Unavailable');return r.json();}).then(directory=>{
+      if(data.page==='markets')data.agentsByZip=Object.fromEntries(Object.entries(directory.zips).flatMap(([zip,slug])=>{const agent=directory.agents.find(a=>a.slug===slug);return agent?[[zip,agent]]:[];}));
+      const slug=data.defaultZip?directory.zips[data.defaultZip]:data.agent?.slug;
+      data.agent=directory.agents.find(a=>a.slug===slug)||null;
+      surface.render();
+    }).catch(()=>{});
+  }
+</script>

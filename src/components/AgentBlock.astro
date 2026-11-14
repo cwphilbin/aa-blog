@@ -35,7 +35,7 @@ const hasPhoto = hasText(agent.photoUrl);
 ---
 
 {variant === 'hero' && (
-  <section class="agent-hero" aria-label={`Presented by ${agent.name}`}>
+  <section data-seat-legacy class="agent-hero" aria-label={`Presented by ${agent.name}`}>
     {hasPhoto && (
       <img src={agent.photoUrl} alt={`Portrait of ${agent.name}`} width="160" height="160" loading="eager" />
     )}
@@ -58,7 +58,7 @@ const hasPhoto = hasText(agent.photoUrl);
 )}
 
 {variant === 'sidebar' && (
-  <aside class="agent-sidebar" aria-label={`Presented by ${agent.name}`}>
+  <aside data-seat-legacy class="agent-sidebar" aria-label={`Presented by ${agent.name}`}>
     {hasPhoto && (
       <img src={agent.photoUrl} alt={`Portrait of ${agent.name}`} width="88" height="88" loading="lazy" />
     )}
@@ -70,7 +70,7 @@ const hasPhoto = hasText(agent.photoUrl);
 )}
 
 {variant === 'footer' && (
-  <section class="agent-presented" aria-label={`Presented by ${agent.name}`}>
+  <section data-seat-legacy class="agent-presented" aria-label={`Presented by ${agent.name}`}>
     {hasPhoto && (
       <img src={agent.photoUrl} alt={`Portrait of ${agent.name}`} width="48" height="48" loading="lazy" />
     )}

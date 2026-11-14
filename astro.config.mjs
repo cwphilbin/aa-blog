@@ -15,7 +15,7 @@ export default defineConfig({
   site: SITE_URL,
   output: 'static',
   trailingSlash: 'never',
-  integrations: [sitemap()],
+  integrations: [sitemap({ filter: page => !page.endsWith('.json') && !page.includes('/embed/') })],
   build: {
     // Emit /market/95816/index.html style files (clean URLs on Netlify).
     format: 'directory',

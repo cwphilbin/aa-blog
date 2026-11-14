@@ -1,4 +1,5 @@
 ---
+import SignupBar from '../components/SignupBar.astro';
 import SeoHead from '../components/SeoHead.astro';
 import '../styles/global.css';
 
@@ -45,14 +46,15 @@ const pageTitle = `${props.title} | Agents Automated`;
       <div class="wrap">
         <a class="brand" href="/">Agents Automated</a>
         <nav class="primary-nav" aria-label="Primary">
-          <a href="/">For Agents</a>
-          <a href="/buyers-sellers">For Buyers &amp; Sellers</a>
-          <a href="/market">Market Updates</a>
+          <a href="/market">For Home Buyers &amp; Sellers</a>
+          <a href="/for-agents">For Agents</a>
+          <a href="/login">Agent Login</a>
         </nav>
       </div>
     </header>
+    <SignupBar />
 
-    <main class="wrap">
+    <main class="wrap page-main">
       <slot />
     </main>
 
@@ -64,5 +66,46 @@ const pageTitle = `${props.title} | Agents Automated`;
         </p>
       </div>
     </footer>
+    <script is:inline data-aa-market-analytics="1">
+// Add once to aa-blog's market article layout AFTER the collector is deployed.
+// No cookies, local storage, visitor IDs, query strings, referrers, or raw IPs stored.
+(() => {
+ if(navigator.globalPrivacyControl||navigator.doNotTrack==='1')return;
+ const path=location.pathname.replace(/\/$/,'');
+ if(!/^\/market\/\d{5}\/[a-z0-9-]{1,140}$/.test(path))return;
+ const id=crypto.randomUUID();let sent=false;
+ function record(){
+  if(sent||document.visibilityState!=='visible')return;sent=true;
+  void fetch('https://anfpknolgwrecwkgvjos.supabase.co/functions/v1/track-market-view',{
+   method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id,path}),keepalive:true,credentials:'omit',
+  }).catch(()=>{});
+ }
+ record();document.addEventListener('visibilitychange',record);
+})();
+
+    </script>
   </body>
 </html>
+
+<script>
+const header=document.querySelector('.site-header');
+if(header){
+  const updateHeader=()=>{
+    const height=Math.ceil(header.getBoundingClientRect().height);
+    document.documentElement.style.setProperty('--aa-header-height',height+'px');
+    document.documentElement.style.setProperty('--aa-header-visible',Math.max(0,height-window.scrollY)+'px');
+  };
+  new ResizeObserver(updateHeader).observe(header);
+  window.addEventListener('scroll',updateHeader,{passive:true});
+  updateHeader();
+}
+</script>
+<style is:global>
+body:has([data-aa-surface]){background:#fff;color:#1d1d1f}body:has([data-aa-surface]) .page-main{max-width:none;padding:0}body:has([data-aa-surface]) .crumbs{max-width:872px;margin:20px auto 0;font-size:11px;color:#86868b;padding:0 20px}
+body .site-header{position:absolute;top:0;left:0;right:0;z-index:1100;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid #f0f0f2}
+body .site-header .wrap{max-width:1280px;padding:16px 24px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px}
+body .site-header .brand{font-size:24px;font-weight:300;letter-spacing:-.025em;line-height:32px;color:#001f3f;white-space:nowrap}
+body .site-header .primary-nav{display:flex;align-items:center;gap:32px;font-size:14px;font-weight:300;color:#001f3f}
+body .site-header .primary-nav a{color:inherit;line-height:20px;white-space:nowrap}
+@media(max-width:767px){body .site-header .wrap{flex-direction:column;align-items:stretch;gap:12px;padding:16px}body .site-header .primary-nav{justify-content:space-between;gap:12px}body .site-header .primary-nav a:first-child{white-space:normal;max-width:160px;line-height:1.25}}
+</style>

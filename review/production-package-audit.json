@@ -1,0 +1,188 @@
+[
+  {
+    "key": "reports/2026-04/90011/narration.json",
+    "label": "March 2026",
+    "status": "ready",
+    "style": null,
+    "private": false,
+    "posts": [
+      {
+        "id": "2026-09-market-update",
+        "date": "2026-09-15",
+        "hasVideo": false,
+        "pdfMarkup": false
+      }
+    ]
+  },
+  {
+    "key": "reports/2026-10/90066/narration.json",
+    "label": "2026-10",
+    "status": "ready",
+    "style": null,
+    "private": true,
+    "posts": [
+      {
+        "id": "2026-09-market-update",
+        "date": "2026-09-15",
+        "hasVideo": false,
+        "pdfMarkup": false
+      }
+    ]
+  },
+  {
+    "key": "reports/2026-10/90068/narration.json",
+    "label": "2026-10",
+    "status": "ready",
+    "style": null,
+    "private": true,
+    "posts": [
+      {
+        "id": "2026-09-market-update",
+        "date": "2026-09-15",
+        "hasVideo": false,
+        "pdfMarkup": false
+      }
+    ]
+  },
+  {
+    "key": "reports/2026-10/90210/narration.json",
+    "label": "October 2026",
+    "status": "ready",
+    "style": "coherent-deck-v1",
+    "private": true,
+    "posts": [
+      {
+        "id": "2026-09-market-update",
+        "date": "2026-09-15",
+        "hasVideo": false,
+        "pdfMarkup": false
+      },
+      {
+        "id": "2026-03-market-update",
+        "date": "2026-03-15",
+        "hasVideo": true,
+        "pdfMarkup": false
+      }
+    ]
+  },
+  {
+    "key": "reports/2026-10/90265/narration.json",
+    "label": "2026-10",
+    "status": "ready",
+    "style": null,
+    "private": true,
+    "posts": [
+      {
+        "id": "2026-09-market-update",
+        "date": "2026-09-15",
+        "hasVideo": false,
+        "pdfMarkup": false
+      }
+    ]
+  },
+  {
+    "key": "reports/2026-10/90272/narration.json",
+    "label": "2026-10",
+    "status": "ready",
+    "style": null,
+    "private": true,
+    "posts": [
+      {
+        "id": "2026-09-market-update",
+        "date": "2026-09-15",
+        "hasVideo": false,
+        "pdfMarkup": false
+      }
+    ]
+  },
+  {
+    "key": "reports/2026-10/90274/narration.json",
+    "label": "2026-10",
+    "status": "ready",
+    "style": null,
+    "private": true,
+    "posts": [
+      {
+        "id": "2026-09-market-update",
+        "date": "2026-09-15",
+        "hasVideo": false,
+        "pdfMarkup": false
+      }
+    ]
+  },
+  {
+    "key": "reports/2026-10/90275/narration.json",
+    "label": "2026-10",
+    "status": "ready",
+    "style": null,
+    "private": true,
+    "posts": [
+      {
+        "id": "2026-09-market-update",
+        "date": "2026-09-15",
+        "hasVideo": false,
+        "pdfMarkup": false
+      }
+    ]
+  },
+  {
+    "key": "reports/2026-10/90277/narration.json",
+    "label": "2026-10",
+    "status": "ready",
+    "style": null,
+    "private": true,
+    "posts": [
+      {
+        "id": "2026-09-market-update",
+        "date": "2026-09-15",
+        "hasVideo": false,
+        "pdfMarkup": false
+      }
+    ]
+  },
+  {
+    "key": "reports/2026-10/90291/narration.json",
+    "label": "2026-10",
+    "status": "ready",
+    "style": null,
+    "private": true,
+    "posts": [
+      {
+        "id": "2026-09-market-update",
+        "date": "2026-09-15",
+        "hasVideo": false,
+        "pdfMarkup": false
+      }
+    ]
+  },
+  {
+    "key": "reports/2026-10/90402/narration.json",
+    "label": "2026-10",
+    "status": "ready",
+    "style": null,
+    "private": true,
+    "posts": [
+      {
+        "id": "2026-09-market-update",
+        "date": "2026-09-15",
+        "hasVideo": false,
+        "pdfMarkup": false
+      }
+    ]
+  },
+  {
+    "key": "reports/2026-10/91604/narration.json",
+    "label": "2026-10",
+    "status": "ready",
+    "style": null,
+    "private": true,
+    "posts": [
+      {
+        "id": "2026-09-market-update",
+        "date": "2026-09-15",
+        "hasVideo": false,
+        "pdfMarkup": false
+      }
+    ]
+  }
+]

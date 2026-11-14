@@ -1,0 +1,13 @@
+---
+import {signup} from '../../public/embed/report-kit/render.js';
+import '../../public/embed/report-kit/design.css';
+import offeredZips from '../../public/embed/offered-zips.json';
+const zip=Astro.params.zip||'';
+---
+<div class="aa-design" data-aa-signup-bar set:html={signup(zip)}></div>
+<script type="application/json" id="aa-signup-data" set:html={JSON.stringify({page:'signup',markets:[],defaultZip:zip,offeredZips,mockSignup:false}).replace(/</g,'\\u003c')}></script>
+<script>
+import {initSurface} from '../../public/embed/report-kit/controller.js';
+const root=document.querySelector('[data-aa-signup-bar]');
+if(root)initSurface(root,JSON.parse(document.querySelector('#aa-signup-data')!.textContent!));
+</script>

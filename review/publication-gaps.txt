@@ -1,0 +1,39 @@
+SOURCE CORRECTION — verified read-only in AWS account 324874112178, us-east-2, 2026-11-07
+
+The previous embed read old posts.json plus stories/{month}/{zip}.json. That was the wrong content path. It is no longer a rendering source. Existing feeds are used only to retain ZIP geography and historical route names.
+
+Exact requested review source:
+  s3://aa-zip-metrics-prod/private/reviews/enhance-review-20261105/93536/narration.json
+  s3://aa-zip-metrics-prod/private/reviews/enhance-review-20261105/93536/blog.html
+  PDF label: October 2026
+  Headline: Prices fell 4.0% as listings increased 90.5%.
+  Blog HTML SHA-256: 4b8b0fd3f5afb43c5de72a3240778cecf021317c3ab6df71e59c74ce7ed01e15
+  S3 blog bytes exactly equal ~/Desktop/AA-review/93536-blog.html.
+  Local video: ~/Desktop/AA-review/93536-long-form.mp4 (copied unchanged).
+
+85032 has the same private review layout and October 2026 label:
+  s3://aa-zip-metrics-prod/private/reviews/enhance-review-20261105/85032/narration.json
+  s3://aa-zip-metrics-prod/private/reviews/enhance-review-20261105/85032/blog.html
+  Blog HTML SHA-256: a34c5460442f1bfd980a69b87c288784ddf9f5a513ea1ef50e4bd71350624b7b
+  S3 blog bytes exactly equal ~/Desktop/AA-review/85032-blog.html.
+  Local video: ~/Desktop/AA-review/85032-long-form.mp4 (copied unchanged).
+
+Exactly what is missing in production for BOTH 93536 and 85032:
+1. reports/2026-10/{zip}/narration.json in aa-zip-metrics-prod does not exist. The reviewed ready package exists only in the private review namespace.
+2. market/{zip}/posts.json in agentsautomated-content contains only the September 2026 story-based post. There is no October PDF-narration article entry. Last modified October 31; both videoUrl fields are empty.
+3. There is no matching published long-form video reference in those feeds. The MP4s used here are local review files, not production URLs. This audit does not claim a render exists nowhere else in AWS; the publishable per-ZIP association is missing.
+4. The current production seat directory has no active LA holder. The agent byline/branding in 93536 remains an explicit local fixture.
+
+Wider package audit:
+12 narration.json objects exist under reports/: one April-folder package whose PDF label is March 2026, and 11 October packages for 90066, 90068, 90210, 90265, 90272, 90274, 90275, 90277, 90291, 90402, 91604. All 11 October packages have privateArtifacts=true; all 11 feeds lack an October article. They must not be promoted implicitly by a website build. The older 90011 package is also rejected by this renderer's complete/safe package checks. No production package passed the current publication checks.
+
+Rendering behavior now:
+- The production loader reads ready PDF-narration packages, rejects private/review packages, and never substitutes story feeds or older posts for a missing current month.
+- The default month is the latest completed calendar month. The report's displayed label and archive identity come from the PDF contentLabel, not upload time.
+- Unpublished ZIPs and old monthly routes remain reachable with a clear unavailable message. No old bodyHtml, story summary, old metrics or old video leaks through.
+- Two explicitly gated local fixtures show the requested October content and local videos. They are labeled UNPUBLISHED. MONTHLY_REVIEW_FILE is rejected on Netlify.
+- Charts, headings and narration follow the shared PDF consumer order. No new copy is generated. Intro/closing recruitment and historical presentation-agent blocks are excluded. Current seat attribution and contact CTA are applied independently.
+- Money formatting changes display only: $-179,000 becomes -$179K; existing -$24.0K is preserved.
+
+Required upstream publication, not performed:
+Publish approved, non-private PDF narration packages at reports/{month}/{zip}/narration.json; publish the matching monthly article/feed and durable long-form video reference for each ZIP. Retain package provenance in the feed so the video can be tied to the same report. Configure build read access to ListBucket(reports/) and GetObject(reports/*/*/narration.json). No S3 writes, pipeline runs, IAM changes or deployments were performed.

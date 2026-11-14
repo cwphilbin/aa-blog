@@ -1,0 +1,1892 @@
+[
+  {
+    "report": {
+      "schemaVersion": 1,
+      "sourceType": "craftmypdf",
+      "status": "ready",
+      "zip": "93536",
+      "month": "2026-10",
+      "contentLabel": "October 2026",
+      "title": "ZIP 93536 \u2014 October 2026 market report",
+      "pdfSource": {
+        "bucket": "aa-zip-metrics-prod",
+        "key": "private/reviews/enhance-review-20261105/93536/source.pdf",
+        "etag": "\"808e50d95d80a3ba58e93d7b200694bc\"",
+        "lastModified": "2026-11-05T21:35:31+00:00",
+        "dataMonth": "2026-10"
+      },
+      "pages": [
+        {
+          "pdfPage": true,
+          "pageIndex": 0,
+          "pageNumber": 1,
+          "imageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/93536/page-01-enhance-review-20261105.png",
+          "role": "intro",
+          "title": "Home Values",
+          "normalizedTitle": "HOME VALUES",
+          "normalizedText": "BUYERS IN CONTROL SUPPLY IS UP YEAR OVER YEAR -40% 93536 HOME VALUES ARE DOWN PRESENTED BY COLBY TEST TEST \u00b7 TEST REALTOR GROUP \u00b7 (916) 212-8640",
+          "pageText": "Buyers in control. Supply is up.\nYEAR OVER YEAR\n-4.0%\n93536 HOME VALUES ARE DOWN\nPresented by colby test test \u00b7 Test Realtor Group \u00b7 (916) 212-8640",
+          "narrationDataQualityIssues": [],
+          "roleMatchedBy": "HOME VALUES",
+          "sha256": "8f580610b47f29e76ee3c3a3a467f57a1e473d4a6ebf03bb8393cdf6af77a9c1"
+        },
+        {
+          "pdfPage": true,
+          "pageIndex": 1,
+          "pageNumber": 2,
+          "imageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/93536/page-02-enhance-review-20261105.png",
+          "role": "agent_intro",
+          "title": "colby test test",
+          "normalizedTitle": "COLBY TEST TEST",
+          "normalizedText": "COLBY TEST TEST TEST REALTOR GROUP | SAMPLE HEADSHOT PRESENTED BY COLBY TEST TEST \u00b7 TEST REALTOR GROUP \u00b7 (916) 212-8640",
+          "pageText": "colby test test\nTest Realtor Group | Sample headshot\nPresented by colby test test \u00b7 Test Realtor Group \u00b7 (916) 212-8640",
+          "narrationDataQualityIssues": [],
+          "roleMatchedBy": "second-page-fallback",
+          "sha256": "c6f5e20688420f73ae00de3555f6440ddd47fed39672083c88f8db460caac983"
+        },
+        {
+          "pdfPage": true,
+          "pageIndex": 2,
+          "pageNumber": 3,
+          "imageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/93536/page-03-enhance-review-20261105.png",
+          "role": "median_sales_price",
+          "title": "Median Sales Price",
+          "normalizedTitle": "MEDIAN SALES PRICE",
+          "normalizedText": "MEDIAN SALES PRICE $1M $900K $800K $700K $600K $500K $400K NOV DEC JAN FEB MAR APR MAY JUN JUL AUG SEP OCT 93536 LOS ANGELES COUNTY OCT 2026 $499K VS LAST YEAR -40% 93536 \u00b7 LOS ANGELES COUNTY \u00b7 OCTOBER 2026 PRESENTED BY COLBY TEST TEST \u00b7 TEST REALTOR GROUP \u00b7 (916) 212-8640",
+          "pageText": "MEDIAN SALES PRICE\n$1M\n$900K\n$800K\n$700K\n$600K\n$500K\n$400K\nNov\nDec\nJan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug\nSep\nOct\n93536\nLos Angeles County\nOct 2026\n$499K\nvs last year\n-4.0%\n93536 \u00b7 Los Angeles County \u00b7 October 2026\nPresented by colby test test \u00b7 Test Realtor Group \u00b7 (916) 212-8640",
+          "narrationDataQualityIssues": [],
+          "roleMatchedBy": "MEDIAN SALES PRICE",
+          "sha256": "51e51f2a9b78cfd10907db5492fae481017e7386bd9d89f0cee7803fe2921e06",
+          "deckDisplay": {
+            "fontFamily": "Roboto",
+            "valueColor": "#FF0000",
+            "changeColor": "#FF0000"
+          },
+          "chartImageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/93536/page-03-enhance-review-20261105-chart.png",
+          "chartCrop": [
+            209,
+            345,
+            3791,
+            1948
+          ],
+          "chartSha256": "2654162f724febc85d0d7756b5bb9518788687a363e72246431ef5f1fc09c37a"
+        },
+        {
+          "pdfPage": true,
+          "pageIndex": 3,
+          "pageNumber": 4,
+          "imageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/93536/page-04-enhance-review-20261105.png",
+          "role": "median_price_per_sqft",
+          "title": "Median Sales Price/Square Foot",
+          "normalizedTitle": "MEDIAN SALES PRICE/SQUARE FOOT",
+          "normalizedText": "MEDIAN SALES PRICE/SQUARE FOOT $700 $600 $500 $400 $300 $200 NOV DEC JAN FEB MAR APR MAY JUN JUL AUG SEP OCT 93536 LOS ANGELES COUNTY OCT 2026 $250 VS LAST YEAR -74% 93536 \u00b7 LOS ANGELES COUNTY \u00b7 OCTOBER 2026 PRESENTED BY COLBY TEST TEST \u00b7 TEST REALTOR GROUP \u00b7 (916) 212-8640",
+          "pageText": "MEDIAN SALES PRICE / SQUARE FOOT\n$700\n$600\n$500\n$400\n$300\n$200\nNov\nDec\nJan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug\nSep\nOct\n93536\nLos Angeles County\nOct 2026\n$250\nvs last year\n-7.4%\n93536 \u00b7 Los Angeles County \u00b7 October 2026\nPresented by colby test test \u00b7 Test Realtor Group \u00b7 (916) 212-8640",
+          "narrationDataQualityIssues": [],
+          "roleMatchedBy": "MEDIAN SALES PRICE/SQUARE FOOT",
+          "sha256": "de19aaab1f8889429f765b3689f98e2a0f3074b06c05e12de0365c24c1ca7f21",
+          "deckDisplay": {
+            "fontFamily": "Roboto",
+            "valueColor": "#FF0000",
+            "changeColor": "#FF0000"
+          },
+          "chartImageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/93536/page-04-enhance-review-20261105-chart.png",
+          "chartCrop": [
+            209,
+            345,
+            3791,
+            1948
+          ],
+          "chartSha256": "06ed63d1f505a6e0e1397f25e2d91538cd06e874d494f4fb32e2c0b1f48029a1"
+        },
+        {
+          "pdfPage": true,
+          "pageIndex": 4,
+          "pageNumber": 5,
+          "imageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/93536/page-05-enhance-review-20261105.png",
+          "role": "active_listings",
+          "title": "Active Listings",
+          "normalizedTitle": "ACTIVE LISTINGS",
+          "normalizedText": "ACTIVE LISTINGS (SUPPLY) 190 180 170 160 150 140 130 120 110 100 90 80 70 60 50 40 30 20 10 0 ZIP LISTINGS NOV DEC JAN FEB MAR APR MAY JUN JUL AUG SEP OCT 9,500 9,000 8,500 8,000 7,500 7,000 6,500 6,000 5,500 5,000 4,500 4,000 3,500 3,000 2,500 2,000 1,500 1,000 500 0 COUNTY LISTINGS 93536 LOS ANGELES COUNTY OCT 2026 181 VS LAST YEAR +905% 93536 \u00b7 LOS ANGELES COUNTY \u00b7 OCTOBER 2026 PRESENTED BY COLBY TEST TEST \u00b7 TEST REALTOR GROUP \u00b7 (916) 212-8640",
+          "pageText": "ACTIVE LISTINGS (SUPPLY)\n190\n180\n170\n160\n150\n140\n130\n120\n110\n100\n90\n80\n70\n60\n50\n40\n30\n20\n10\n0\nZIP listings\nNov\nDec\nJan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug\nSep\nOct\n9,500\n9,000\n8,500\n8,000\n7,500\n7,000\n6,500\n6,000\n5,500\n5,000\n4,500\n4,000\n3,500\n3,000\n2,500\n2,000\n1,500\n1,000\n500\n0\nCounty listings\n93536\nLos Angeles County\nOct 2026\n181\nvs last year\n+90.5%\n93536 \u00b7 Los Angeles County \u00b7 October 2026\nPresented by colby test test \u00b7 Test Realtor Group \u00b7 (916) 212-8640",
+          "narrationDataQualityIssues": [],
+          "roleMatchedBy": "ACTIVE LISTINGS",
+          "sha256": "a012bbec40c0f2a0049860faf59364ce21d138234baee3671ac844cdd6609398",
+          "deckDisplay": {
+            "fontFamily": "Roboto",
+            "valueColor": "#16A34A",
+            "changeColor": "#16A34A"
+          },
+          "chartImageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/93536/page-05-enhance-review-20261105-chart.png",
+          "chartCrop": [
+            209,
+            345,
+            3791,
+            1948
+          ],
+          "chartSha256": "e57114fd6c72bd175ab8dfc1fc22074b3ae4d483fca2c22396c9841f8295b13b"
+        },
+        {
+          "pdfPage": true,
+          "pageIndex": 5,
+          "pageNumber": 6,
+          "imageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/93536/page-06-enhance-review-20261105.png",
+          "role": "price_reductions",
+          "title": "Price Reductions",
+          "normalizedTitle": "PRICE REDUCTIONS",
+          "normalizedText": "PRICE REDUCTIONS 100% 80% 60% 40% 20% 0% NOV DEC JAN FEB MAR APR MAY JUN JUL AUG SEP OCT 93536 LOS ANGELES COUNTY OCT 2026 319% VS LAST YEAR -66 PP 93536 \u00b7 LOS ANGELES COUNTY \u00b7 OCTOBER 2026 PRESENTED BY COLBY TEST TEST \u00b7 TEST REALTOR GROUP \u00b7 (916) 212-8640",
+          "pageText": "PRICE REDUCTIONS\n100%\n80%\n60%\n40%\n20%\n0%\nNov\nDec\nJan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug\nSep\nOct\n93536\nLos Angeles County\nOct 2026\n31.9%\nvs last year\n-6.6 pp\n93536 \u00b7 Los Angeles County \u00b7 October 2026\nPresented by colby test test \u00b7 Test Realtor Group \u00b7 (916) 212-8640",
+          "narrationDataQualityIssues": [],
+          "roleMatchedBy": "PRICE REDUCTIONS",
+          "sha256": "806f797926f2482cde071d5d808165f4351c136a7508ce9869653f76d0859c0f",
+          "deckDisplay": {
+            "fontFamily": "Roboto",
+            "valueColor": "#16A34A",
+            "changeColor": "#16A34A"
+          },
+          "chartImageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/93536/page-06-enhance-review-20261105-chart.png",
+          "chartCrop": [
+            209,
+            345,
+            3791,
+            1948
+          ],
+          "chartSha256": "4c304b00805ca843a3dcb135daf0f516b14d733de5c47abe9d90f4a4446c4931"
+        },
+        {
+          "pdfPage": true,
+          "pageIndex": 6,
+          "pageNumber": 7,
+          "imageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/93536/page-07-enhance-review-20261105.png",
+          "role": "days_on_market",
+          "title": "Average Days on Market",
+          "normalizedTitle": "AVERAGE DAYS ON MARKET",
+          "normalizedText": "AVERAGE DAYS ON MARKET (TO PENDING) 70 65 60 55 50 45 40 NOV DEC JAN FEB MAR APR MAY JUN JUL AUG SEP OCT 93536 LOS ANGELES COUNTY OCT 2026 51 VS LAST YEAR +62% 93536 \u00b7 LOS ANGELES COUNTY \u00b7 OCTOBER 2026 PRESENTED BY COLBY TEST TEST \u00b7 TEST REALTOR GROUP \u00b7 (916) 212-8640",
+          "pageText": "AVERAGE DAYS ON MARKET (TO PENDING)\n70\n65\n60\n55\n50\n45\n40\nNov\nDec\nJan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug\nSep\nOct\n93536\nLos Angeles County\nOct 2026\n51\nvs last year\n+6.2%\n93536 \u00b7 Los Angeles County \u00b7 October 2026\nPresented by colby test test \u00b7 Test Realtor Group \u00b7 (916) 212-8640",
+          "narrationDataQualityIssues": [],
+          "roleMatchedBy": "AVERAGE DAYS ON MARKET",
+          "sha256": "424787de0fa7d2f6cf02935c7249be9d9e3bfdfb7241705287fdcee4731f96b1",
+          "deckDisplay": {
+            "fontFamily": "Roboto",
+            "valueColor": "#16A34A",
+            "changeColor": "#16A34A"
+          },
+          "chartImageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/93536/page-07-enhance-review-20261105-chart.png",
+          "chartCrop": [
+            209,
+            345,
+            3791,
+            1948
+          ],
+          "chartSha256": "5c17a81fce44ce68fe633ed69d92a0e78801a9b722ec03ac3c075c698c995cad"
+        },
+        {
+          "pdfPage": true,
+          "pageIndex": 7,
+          "pageNumber": 8,
+          "imageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/93536/page-08-enhance-review-20261105.png",
+          "role": "homes_sold",
+          "title": "Homes Sold",
+          "normalizedTitle": "HOMES SOLD",
+          "normalizedText": "HOMES SOLD 85 80 75 70 65 60 55 50 45 40 35 30 25 20 15 10 5 0 ZIP HOMES SOLD NOV DEC JAN FEB MAR APR MAY JUN JUL AUG SEP OCT 8,500 8,000 7,500 7,000 6,500 6,000 5,500 5,000 4,500 4,000 3,500 3,000 2,500 2,000 1,500 1,000 500 0 COUNTY HOMES SOLD 93536 LOS ANGELES COUNTY OCT 2026 53 VS LAST YEAR -159% 93536 \u00b7 LOS ANGELES COUNTY \u00b7 OCTOBER 2026 PRESENTED BY COLBY TEST TEST \u00b7 TEST REALTOR GROUP \u00b7 (916) 212-8640",
+          "pageText": "HOMES SOLD\n85\n80\n75\n70\n65\n60\n55\n50\n45\n40\n35\n30\n25\n20\n15\n10\n5\n0\nZIP homes sold\nNov\nDec\nJan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug\nSep\nOct\n8,500\n8,000\n7,500\n7,000\n6,500\n6,000\n5,500\n5,000\n4,500\n4,000\n3,500\n3,000\n2,500\n2,000\n1,500\n1,000\n500\n0\nCounty homes sold\n93536\nLos Angeles County\nOct 2026\n53\nvs last year\n-15.9%\n93536 \u00b7 Los Angeles County \u00b7 October 2026\nPresented by colby test test \u00b7 Test Realtor Group \u00b7 (916) 212-8640",
+          "narrationDataQualityIssues": [],
+          "roleMatchedBy": "HOMES SOLD",
+          "sha256": "91598b317f2d90122e824eede0a3ccaeeb9106776d4392a02d80736f62df615f",
+          "deckDisplay": {
+            "fontFamily": "Roboto",
+            "valueColor": "#FF0000",
+            "changeColor": "#FF0000"
+          },
+          "chartImageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/93536/page-08-enhance-review-20261105-chart.png",
+          "chartCrop": [
+            209,
+            345,
+            3791,
+            1948
+          ],
+          "chartSha256": "75b28ae4cb1d0d90a4e8d583f5eeb202bed8ad0fef74fa37f739b8a0080d7688"
+        },
+        {
+          "pdfPage": true,
+          "pageIndex": 8,
+          "pageNumber": 9,
+          "imageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/93536/page-09-enhance-review-20261105.png",
+          "role": "at_or_above_asking",
+          "title": "Sales Above, At and Below Asking",
+          "normalizedTitle": "SALES ABOVE, AT AND BELOW ASKING",
+          "normalizedText": "IN OCTOBER: 17 SOLD ABOVE ASKING, 15 SOLD AT ASKING, 13 SOLD BELOW ASKING 45 36 27 18 9 0 -9 -18 -27 -36 -45 NOV DEC JAN FEB MAR APR MAY JUN JUL AUG SEP OCT SOLD ABOVE ASKING SOLD AT ASKING SOLD BELOW ASKING OCT 2026 17 SOLD ABOVE 15 SOLD AT 13 SOLD BELOW 93536 \u00b7 LOS ANGELES COUNTY \u00b7 OCTOBER 2026 PRESENTED BY COLBY TEST TEST \u00b7 TEST REALTOR GROUP \u00b7 (916) 212-8640",
+          "pageText": "In October: 17 sold above asking, 15 sold at asking, 13 sold below asking.\n45\n36\n27\n18\n9\n0\n-9\n-18\n-27\n-36\n-45\nNov\nDec\nJan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug\nSep\nOct\nSold above asking\nSold at asking\nSold below asking\nOct 2026\n17 sold above\n15 sold at\n13 sold below\n93536 \u00b7 Los Angeles County \u00b7 October 2026\nPresented by colby test test \u00b7 Test Realtor Group \u00b7 (916) 212-8640",
+          "narrationDataQualityIssues": [],
+          "roleMatchedBy": "monthly-counts-legend",
+          "sha256": "9a8a589263c9cc3faafd63192c0783a8c14291e281af20a8bcdd0f2e4f0d3b6c",
+          "deckDisplay": {
+            "fontFamily": "Roboto"
+          },
+          "chartImageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/93536/page-09-enhance-review-20261105-chart.png",
+          "chartCrop": [
+            209,
+            345,
+            3791,
+            1948
+          ],
+          "chartSha256": "55b4c2ef6eee9a2dc41d581c7f4476dd7dc3cf28a39624a8c5e6b07de8d56d51"
+        },
+        {
+          "pdfPage": true,
+          "pageIndex": 9,
+          "pageNumber": 10,
+          "imageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/93536/page-10-enhance-review-20261105.png",
+          "role": "what_sold",
+          "title": "What Sold Recently",
+          "normalizedTitle": "WHAT SOLD RECENTLY",
+          "normalizedText": "WHAT SOLD RECENTLY ADDRESS LISTED SOLD SOLD DATE 4806 W AVENUE M14 LANCASTER, CA 93536 $560,000 $570,000 +18% OCT 30, 2026 4644 JUNIPER CT LANCASTER, CA 93536 $649,990 $637,990 -18% OCT 30, 2026 41659 W 45TH ST LANCASTER, CA 93536 $399,000 $412,500 +34% OCT 30, 2026 93536 \u00b7 LOS ANGELES COUNTY \u00b7 OCTOBER 2026 PRESENTED BY COLBY TEST TEST \u00b7 TEST REALTOR GROUP \u00b7 (916) 212-8640",
+          "pageText": "WHAT SOLD RECENTLY\nADDRESS\nLISTED\nSOLD\nSOLD DATE\n4806 W Avenue M14\nLancaster, CA 93536\n$560,000\n$570,000\n+1.8%\nOct 30, 2026\n4644 Juniper Ct\nLancaster, CA 93536\n$649,990\n$637,990\n-1.8%\nOct 30, 2026\n41659 W 45th St\nLancaster, CA 93536\n$399,000\n$412,500\n+3.4%\nOct 30, 2026\n93536 \u00b7 Los Angeles County \u00b7 October 2026\nPresented by colby test test \u00b7 Test Realtor Group \u00b7 (916) 212-8640",
+          "narrationDataQualityIssues": [],
+          "roleMatchedBy": "WHAT SOLD RECENTLY",
+          "sha256": "8df5505a8b4fd744fe588a322a90646405490bcd5c447e2e182c9fb634f699b3",
+          "deckDisplay": {
+            "fontFamily": "Roboto"
+          },
+          "chartImageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/93536/page-10-enhance-review-20261105-chart.png",
+          "chartCrop": [
+            209,
+            770,
+            3791,
+            1522
+          ],
+          "chartSha256": "2dfbe910efbdbcaa5ad0d8b229af6b3784fa8c2de3717d4333b7e9c36dac827b"
+        },
+        {
+          "pdfPage": true,
+          "pageIndex": 10,
+          "pageNumber": 11,
+          "imageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/93536/page-11-enhance-review-20261105.png",
+          "role": "local_happenings",
+          "title": "Local Happenings",
+          "normalizedTitle": "LOCAL HAPPENINGS",
+          "normalizedText": "LOCAL HAPPENINGS CHARLES WHITE PARK REIMAGINED IN ALTADENA LOS ANGELES COUNTY BROKE GROUND OCTOBER 3 ON A REIMAGINED CHARLES WHITE PARK IN ALTADENA PLANS BRING TOGETHER AN INCLUSIVE PLAYGROUND DESIGNED BY DISNEY IMAGINEERS, A SPLASH PAD, LIGHTED PICKLEBALL COURTS, AND A NEW RECREATION CENTER NATIVE SHADE TREES, ACCESSIBLE WALKWAYS, A DEMONSTRATION GARDEN, AND PUBLIC ART WILL GIVE VISITORS MORE WAYS TO PLAY, GATHER, AND EXPLORE THE FIVE-ACRE PARK IF YOU LIVE IN 93536, THIS GIVES YOU A FUTURE COUNTY OUTING TO LOOK FORWARD TO, WITH PLAY AREAS, GARDENS, AND RECREATION IN ALTADENA 93536 \u00b7 LOS ANGELES COUNTY \u00b7 OCTOBER 2026 PRESENTED BY COLBY TEST TEST \u00b7 TEST REALTOR GROUP \u00b7 (916) 212-8640",
+          "pageText": "LOCAL HAPPENINGS\nCharles White Park Reimagined in Altadena\nLos Angeles County broke ground October 3 on a reimagined Charles White Park in Altadena. Plans bring together\nan inclusive playground designed by Disney Imagineers, a splash pad, lighted pickleball courts, and a new\nrecreation center. Native shade trees, accessible walkways, a demonstration garden, and public art will give visitors\nmore ways to play, gather, and explore the five-acre park. If you live in 93536, this gives you a future county outing to\nlook forward to, with play areas, gardens, and recreation in Altadena.\n93536 \u00b7 Los Angeles County \u00b7 October 2026\nPresented by colby test test \u00b7 Test Realtor Group \u00b7 (916) 212-8640",
+          "narrationDataQualityIssues": [],
+          "roleMatchedBy": "LOCAL HAPPENINGS",
+          "sha256": "ed4fe2d8c876254f662dd39ae5a952e39c3ec1f5f1b0b1b9b6bc36bf711c6915",
+          "chartImageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/93536/page-11-enhance-review-20261105.png"
+        },
+        {
+          "pdfPage": true,
+          "pageIndex": 11,
+          "pageNumber": 12,
+          "imageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/93536/page-12-enhance-review-20261105.png",
+          "role": "list_vs_sold",
+          "title": "List Price vs Sold Price",
+          "normalizedTitle": "LIST PRICE VS SOLD PRICE",
+          "normalizedText": "LIST PRICE VS SOLD PRICE $0 -$10K -$20K -$30K -$40K -$50K -$60K -$70K NOV DEC JAN FEB MAR APR MAY JUN JUL AUG SEP OCT 93536 LOS ANGELES COUNTY OCT 2026 -$240K $40K FURTHER BELOW ASKING THAN LAST YEAR 93536 \u00b7 LOS ANGELES COUNTY \u00b7 OCTOBER 2026 PRESENTED BY COLBY TEST TEST \u00b7 TEST REALTOR GROUP \u00b7 (916) 212-8640",
+          "pageText": "LIST PRICE VS SOLD PRICE\n$0\n-$10K\n-$20K\n-$30K\n-$40K\n-$50K\n-$60K\n-$70K\nNov\nDec\nJan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug\nSep\nOct\n93536\nLos Angeles County\nOct 2026\n-$24.0K\n$4.0K further below\nasking than last year\n93536 \u00b7 Los Angeles County \u00b7 October 2026\nPresented by colby test test \u00b7 Test Realtor Group \u00b7 (916) 212-8640",
+          "narrationDataQualityIssues": [],
+          "roleMatchedBy": "LIST PRICE VS SOLD PRICE",
+          "sha256": "b17e86fdd01417af27404b1d5d2e292cc242ad8c19aa15a4db97fd192ce8c171",
+          "deckDisplay": {
+            "fontFamily": "Roboto",
+            "valueColor": "#DC2626"
+          },
+          "chartImageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/93536/page-12-enhance-review-20261105-chart.png",
+          "chartCrop": [
+            209,
+            412,
+            3791,
+            1613
+          ],
+          "chartSha256": "aac645802d2a68296ba7d0cd641e988140808531654aca7a5a7af6ac02225d46"
+        },
+        {
+          "pdfPage": true,
+          "pageIndex": 12,
+          "pageNumber": 13,
+          "imageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/93536/page-13-enhance-review-20261105.png",
+          "role": "cta",
+          "title": "Your Neighborhood Market Update",
+          "normalizedTitle": "YOUR NEIGHBORHOOD MARKET UPDATE",
+          "normalizedText": "YOUR NEIGHBORHOOD MARKET UPDATE THINKING OF BUYING OR SELLING? TALK TO COLBY TEST TEST CONTACT COLBY TEST TEST COLBY TEST TEST TEST REALTOR GROUP | (916) 212-8640 CWPHILBIN@GMAILCOM PRESENTED BY COLBY TEST TEST \u00b7 TEST REALTOR GROUP \u00b7 (916) 212-8640",
+          "pageText": "Your Neighborhood Market Update\nThinking of buying or selling? Talk to colby test test.\nContact colby test test\ncolby test test\nTest Realtor Group | (916) 212-8640\ncwphilbin@gmail.com\nPresented by colby test test \u00b7 Test Realtor Group \u00b7 (916) 212-8640",
+          "narrationDataQualityIssues": [],
+          "roleMatchedBy": "last-page-fallback",
+          "sha256": "bcf46e8c51ab51a231548da406fc2b8924626ef7ceeaf790208c28c770b25429"
+        }
+      ],
+      "narration": [
+        {
+          "pageIndex": 0,
+          "pageNumber": 1,
+          "role": "intro",
+          "title": "Home Values",
+          "text": "Prices fell 4.0% as listings increased 90.5% \u2014 and what it means for you as a buyer or seller.",
+          "dataUnavailable": false
+        },
+        {
+          "pageIndex": 1,
+          "pageNumber": 2,
+          "role": "agent_intro",
+          "title": "colby test test",
+          "text": "colby test test of Test Realtor Group serves 93536 and brings you this October market update with the latest pricing, inventory, and sales data for your neighborhood.",
+          "dataUnavailable": false
+        },
+        {
+          "pageIndex": 2,
+          "pageNumber": 3,
+          "role": "median_sales_price",
+          "title": "Median Sales Price",
+          "text": "Median sales prices fell 4.0% year over year to $499K in October 2026. Los Angeles County's median was $873,600, reflecting the county's higher-priced housing stock compared to this ZIP.",
+          "dataUnavailable": false,
+          "takeaway": "Median sale prices"
+        },
+        {
+          "pageIndex": 3,
+          "pageNumber": 4,
+          "role": "median_price_per_sqft",
+          "title": "Median Sales Price/Square Foot",
+          "text": "Median price per square foot decreased 7.4% year over year to $250 in October 2026. Los Angeles County's median price per square foot was $583.82, more than double the ZIP's figure.",
+          "dataUnavailable": false,
+          "takeaway": "Price per square foot"
+        },
+        {
+          "pageIndex": 4,
+          "pageNumber": 5,
+          "role": "active_listings",
+          "title": "Active Listings",
+          "text": "Active listings increased 90.5% year over year to 181 homes in October 2026. More inventory gives buyers additional properties to compare when evaluating homes in the area.",
+          "dataUnavailable": false,
+          "takeaway": "Available homes"
+        },
+        {
+          "pageIndex": 5,
+          "pageNumber": 6,
+          "role": "price_reductions",
+          "title": "Price Reductions",
+          "text": "Price reductions decreased 6.6 percentage points year over year to 31.9% in October 2026. Los Angeles County's reduction rate was 33.6%, slightly higher than the ZIP's rate.",
+          "dataUnavailable": false,
+          "takeaway": "Price reductions"
+        },
+        {
+          "pageIndex": 6,
+          "pageNumber": 7,
+          "role": "days_on_market",
+          "title": "Average Days on Market",
+          "text": "Average days on market increased 6.2% year over year to 51 days in October 2026. Both the ZIP and Los Angeles County recorded 51 days on market in this period.",
+          "dataUnavailable": false,
+          "takeaway": "Time to pending"
+        },
+        {
+          "pageIndex": 7,
+          "pageNumber": 8,
+          "role": "homes_sold",
+          "title": "Homes Sold",
+          "text": "Homes sold decreased 15.9% year over year to 53 sales in October 2026. Los Angeles County recorded 2,706 sales, reflecting the broader county's larger housing market.",
+          "dataUnavailable": false,
+          "takeaway": "Homes sold"
+        },
+        {
+          "pageIndex": 8,
+          "pageNumber": 9,
+          "role": "at_or_above_asking",
+          "title": "Sales Above, At and Below Asking",
+          "text": "In October, 17 homes sold above asking, 15 at asking and 13 below. Buyers and sellers can reference these outcomes when comparing similar properties in the area.",
+          "dataUnavailable": false,
+          "takeaway": "Sales above, at and below asking"
+        },
+        {
+          "pageIndex": 9,
+          "pageNumber": 10,
+          "role": "what_sold",
+          "title": "What Sold Recently",
+          "text": "Recent sales closed with outcomes of +1.8%, -1.8% and +3.4% relative to asking prices. These transactions show varied results across different properties in the ZIP.",
+          "dataUnavailable": false,
+          "takeaway": "What sold recently"
+        },
+        {
+          "pageIndex": 10,
+          "pageNumber": 11,
+          "role": "local_happenings",
+          "title": "Local Happenings",
+          "text": "Los Angeles County broke ground on a reimagined Charles White Park in Altadena on October 3. The five-acre park will feature an inclusive playground, splash pad, pickleball courts, recreation center, native shade trees and public art.",
+          "dataUnavailable": false,
+          "takeaway": "Local happenings"
+        },
+        {
+          "pageIndex": 11,
+          "pageNumber": 12,
+          "role": "list_vs_sold",
+          "title": "List Price vs Sold Price",
+          "text": "List price versus sold price was -$24.0K in October 2026, $4.0K further below asking than last year. Los Angeles County's gap was -$58,000, a wider difference between asking and sold prices.",
+          "dataUnavailable": false,
+          "takeaway": "Sold prices versus asking"
+        },
+        {
+          "pageIndex": 12,
+          "pageNumber": 13,
+          "role": "cta",
+          "title": "Your Neighborhood Market Update",
+          "text": "Buyers can compare more listings and plan for longer timelines, while sellers should price competitively and expect homes to take more time to sell. Call colby test test 9162128640",
+          "dataUnavailable": false
+        }
+      ],
+      "reviewSetId": "final-so-what-20261107",
+      "privateArtifacts": true,
+      "publicPageImages": true,
+      "narrationVerification": {
+        "version": "deck-values-v1",
+        "deckSha256": "cd04d06503e01cafa2efb6a07b785c26f4d733659f3c4ddc4ff7e656b4e397d3",
+        "pages": [
+          {
+            "pageNumber": 1,
+            "role": "intro",
+            "pageValues": {
+              "headlineChange": "-4.0%"
+            },
+            "numbers": [
+              4.0,
+              90.5
+            ],
+            "issues": [],
+            "repairs": []
+          },
+          {
+            "pageNumber": 2,
+            "role": "agent_intro",
+            "pageValues": {},
+            "numbers": [
+              93536.0
+            ],
+            "issues": [],
+            "repairs": []
+          },
+          {
+            "pageNumber": 3,
+            "role": "median_sales_price",
+            "pageValues": {
+              "value": "$499K",
+              "change": "-4.0%",
+              "direction": "down",
+              "period": "Oct 2026",
+              "series": [
+                535000.0,
+                545000.0,
+                485000.0,
+                550000.0,
+                510000.0,
+                525000.0,
+                540000.0,
+                549000.0,
+                533000.0,
+                531000.0,
+                534000.0,
+                499000.0
+              ],
+              "countyValue": 873600.0,
+              "countyValueDisplay": "$873,600",
+              "countySeries": [
+                877000.0,
+                865000.0,
+                855000.0,
+                870000.0,
+                895000.0,
+                900000.0,
+                910000.0,
+                910000.0,
+                900000.0,
+                888000.0,
+                875000.0,
+                873600.0
+              ]
+            },
+            "numbers": [
+              4.0,
+              499000.0,
+              2026.0,
+              873600.0
+            ],
+            "issues": [],
+            "repairs": []
+          },
+          {
+            "pageNumber": 4,
+            "role": "median_price_per_sqft",
+            "pageValues": {
+              "value": "$250",
+              "change": "-7.4%",
+              "direction": "down",
+              "period": "Oct 2026",
+              "series": [
+                250.0,
+                270.0,
+                260.0,
+                270.0,
+                270.0,
+                260.0,
+                250.0,
+                270.0,
+                260.0,
+                250.0,
+                250.0,
+                250.0
+              ],
+              "countyValue": 583.8198498748958,
+              "countyValueDisplay": "$583.82",
+              "countySeries": [
+                594.5026557587228,
+                584.280386489587,
+                569.1056910569106,
+                595.0992156078484,
+                596.3302752293578,
+                602.2635408245756,
+                605.815831987076,
+                604.075691411936,
+                599.0606394440949,
+                585.8695652173913,
+                584.4071104422865,
+                583.8198498748958
+              ]
+            },
+            "numbers": [
+              7.4,
+              250.0,
+              2026.0,
+              583.82
+            ],
+            "issues": [],
+            "repairs": []
+          },
+          {
+            "pageNumber": 5,
+            "role": "active_listings",
+            "pageValues": {
+              "value": "181",
+              "change": "+90.5%",
+              "direction": "up",
+              "period": "Oct 2026",
+              "series": [
+                80.0,
+                57.0,
+                66.0,
+                82.0,
+                76.0,
+                101.0,
+                66.0,
+                85.0,
+                118.0,
+                66.0,
+                104.0,
+                181.0
+              ],
+              "countyValue": 8913.0,
+              "countyValueDisplay": "8,913",
+              "countySeries": [
+                4032.0,
+                2727.0,
+                3474.0,
+                4606.0,
+                4539.0,
+                4531.0,
+                3397.0,
+                5122.0,
+                6550.0,
+                4764.0,
+                5321.0,
+                8913.0
+              ]
+            },
+            "numbers": [
+              90.5,
+              181.0,
+              2026.0
+            ],
+            "issues": [],
+            "repairs": []
+          },
+          {
+            "pageNumber": 6,
+            "role": "price_reductions",
+            "pageValues": {
+              "value": "31.9%",
+              "change": "-6.6 pp",
+              "direction": "down",
+              "period": "Oct 2026",
+              "series": [
+                41.42394822006472,
+                38.59060402684564,
+                32.851985559566785,
+                33.204633204633204,
+                30.291970802919707,
+                31.365313653136532,
+                30.416666666666668,
+                31.800766283524904,
+                28.14814814814815,
+                31.274131274131275,
+                32.31939163498099,
+                31.899641577060933
+              ],
+              "countyValue": 33.5606654071241,
+              "countyValueDisplay": "33.6%",
+              "countySeries": [
+                34.98226789124307,
+                34.07374500222124,
+                29.950710350826327,
+                28.852423386220387,
+                29.38923501174548,
+                29.818365287588296,
+                27.541178216352574,
+                28.371848236926464,
+                28.36481381543443,
+                29.92275949634959,
+                30.461902457385598,
+                33.5606654071241
+              ]
+            },
+            "numbers": [
+              6.6,
+              31.9,
+              2026.0,
+              33.6
+            ],
+            "issues": [],
+            "repairs": []
+          },
+          {
+            "pageNumber": 7,
+            "role": "days_on_market",
+            "pageValues": {
+              "value": "51",
+              "change": "+6.2%",
+              "direction": "up",
+              "period": "Oct 2026",
+              "series": [
+                54.0,
+                66.0,
+                59.0,
+                58.0,
+                61.0,
+                43.0,
+                47.0,
+                43.0,
+                50.0,
+                48.0,
+                62.0,
+                51.0
+              ],
+              "countyValue": 51.0,
+              "countyValueDisplay": "51",
+              "countySeries": [
+                51.0,
+                59.0,
+                63.0,
+                55.0,
+                47.0,
+                44.0,
+                42.0,
+                45.0,
+                57.0,
+                44.0,
+                52.0,
+                51.0
+              ]
+            },
+            "numbers": [
+              6.2,
+              51.0,
+              2026.0,
+              51.0
+            ],
+            "issues": [],
+            "repairs": []
+          },
+          {
+            "pageNumber": 8,
+            "role": "homes_sold",
+            "pageValues": {
+              "value": "53",
+              "change": "-15.9%",
+              "direction": "down",
+              "period": "Oct 2026",
+              "series": [
+                57,
+                59,
+                44,
+                39,
+                71,
+                71,
+                69,
+                78,
+                81,
+                72,
+                48,
+                53
+              ],
+              "countyValue": 2706,
+              "countyValueDisplay": "2,706",
+              "countySeries": [
+                3156,
+                3662,
+                2422,
+                2490,
+                3488,
+                3851,
+                3759,
+                4043,
+                4135,
+                3479,
+                3256,
+                2706
+              ]
+            },
+            "numbers": [
+              15.9,
+              53.0,
+              2026.0,
+              2706.0
+            ],
+            "issues": [],
+            "repairs": []
+          },
+          {
+            "pageNumber": 9,
+            "role": "at_or_above_asking",
+            "pageValues": {
+              "counts": {
+                "above": 17,
+                "at": 15,
+                "below": 13
+              },
+              "period": "Oct 2026",
+              "basis": "matched asking-price transactions"
+            },
+            "numbers": [
+              17.0,
+              15.0,
+              13.0
+            ],
+            "issues": [],
+            "repairs": []
+          },
+          {
+            "pageNumber": 10,
+            "role": "what_sold",
+            "pageValues": {
+              "sold_listings": [
+                {
+                  "address": "4806 W Avenue M14",
+                  "city_state_zip": "Lancaster, CA 93536",
+                  "listed_price": "$560,000",
+                  "sold_price": "$570,000",
+                  "sold_change_pct": "+1.8%",
+                  "sold_change_color": "#16a34a",
+                  "sold_date": "Oct 30, 2026",
+                  "source_url": "https://www.realtor.com/realestateandhomes-detail/4806-W-Avenue-M14_Lancaster_CA_93536_M13682-76693",
+                  "raw_asking_price": 560000.0,
+                  "raw_sold_price": 570000.0,
+                  "raw_sale_date": "2026-10-30"
+                },
+                {
+                  "address": "4644 Juniper Ct",
+                  "city_state_zip": "Lancaster, CA 93536",
+                  "listed_price": "$649,990",
+                  "sold_price": "$637,990",
+                  "sold_change_pct": "-1.8%",
+                  "sold_change_color": "#dc2626",
+                  "sold_date": "Oct 30, 2026",
+                  "source_url": "https://www.realtor.com/realestateandhomes-detail/4644-Juniper-Ct_Lancaster_CA_93536_M16532-99368",
+                  "raw_asking_price": 649990.0,
+                  "raw_sold_price": 637990.0,
+                  "raw_sale_date": "2026-10-30"
+                },
+                {
+                  "address": "41659 W 45th St",
+                  "city_state_zip": "Lancaster, CA 93536",
+                  "listed_price": "$399,000",
+                  "sold_price": "$412,500",
+                  "sold_change_pct": "+3.4%",
+                  "sold_change_color": "#16a34a",
+                  "sold_date": "Oct 30, 2026",
+                  "source_url": "https://www.realtor.com/realestateandhomes-detail/41659-45th-St-W_Lancaster_CA_93536_M13601-15452",
+                  "raw_asking_price": 399000.0,
+                  "raw_sold_price": 412500.0,
+                  "raw_sale_date": "2026-10-30"
+                }
+              ]
+            },
+            "numbers": [
+              1.8,
+              1.8,
+              3.4
+            ],
+            "issues": [],
+            "repairs": []
+          },
+          {
+            "pageNumber": 11,
+            "role": "local_happenings",
+            "pageValues": {
+              "local_headline": "Charles White Park Reimagined in Altadena",
+              "local_body": "Los Angeles County broke ground October 3 on a reimagined Charles White Park in Altadena. Plans bring together an inclusive playground designed by Disney Imagineers, a splash pad, lighted pickleball courts, and a new recreation center. Native shade trees, accessible walkways, a demonstration garden, and public art will give visitors more ways to play, gather, and explore the five-acre park. If you live in 93536, this gives you a future county outing to look forward to, with play areas, gardens, and recreation in Altadena."
+            },
+            "numbers": [
+              3.0,
+              5.0
+            ],
+            "issues": [],
+            "repairs": []
+          },
+          {
+            "pageNumber": 12,
+            "role": "list_vs_sold",
+            "pageValues": {
+              "value": "-$24.0K",
+              "change": "$4.0K further below asking than last year",
+              "direction": "up",
+              "period": "Oct 2026",
+              "series": [
+                -11000.0,
+                -16000.0,
+                -10000.0,
+                -15000.0,
+                -9000.0,
+                -12000.0,
+                -16000.0,
+                -17000.0,
+                -2000.0,
+                -21000.0,
+                -10000.0,
+                -24000.0
+              ],
+              "countyValue": -58000.0,
+              "countyValueDisplay": "-$58,000",
+              "countySeries": [
+                -54000.0,
+                -63000.0,
+                -64000.0,
+                -38000.0,
+                -40000.0,
+                -30000.0,
+                -33000.0,
+                -46000.0,
+                -53000.0,
+                -51000.0,
+                -70000.0,
+                -58000.0
+              ],
+              "gapMagnitudeDirection": "widened"
+            },
+            "numbers": [
+              24000.0,
+              2026.0,
+              4000.0,
+              58000.0
+            ],
+            "issues": [],
+            "repairs": []
+          },
+          {
+            "pageNumber": 13,
+            "role": "cta",
+            "pageValues": {},
+            "numbers": [
+              9162128640.0
+            ],
+            "issues": [],
+            "repairs": []
+          }
+        ]
+      },
+      "tldr": "Buyers can compare more listings and plan for longer timelines, while sellers should price competitively and expect homes to take more time to sell. Home values in 93536 declined 4.0% year over year to a median of $499K in October 2026, while active listings increased 90.5% to 181 homes. Days on market rose 6.2% to 51 days, and 53 homes sold, down 15.9% from last year.",
+      "narrationStyle": "aws-editorial-v2",
+      "hook": "Prices fell 4.0% as listings increased 90.5%.",
+      "chartTakeaways": {
+        "3": "Median sale prices",
+        "4": "Price per square foot",
+        "5": "Available homes",
+        "6": "Price reductions",
+        "7": "Time to pending",
+        "8": "Homes sold",
+        "9": "Sales above, at and below asking",
+        "10": "What sold recently",
+        "11": "Local happenings",
+        "12": "Sold prices versus asking"
+      },
+      "narrationPolicy": "aws-editorial-v2:restored-intro-so-what-v3",
+      "headingsVersion": "complete-phrase-v1",
+      "shortsLayout": "native-chart-v1",
+      "localHappenings": {
+        "headline": "Charles White Park Reimagined in Altadena",
+        "body": "Los Angeles County broke ground October 3 on a reimagined Charles White Park in Altadena. Plans bring together an inclusive playground designed by Disney Imagineers, a splash pad, lighted pickleball courts, and a new recreation center. Native shade trees, accessible walkways, a demonstration garden, and public art will give visitors more ways to play, gather, and explore the five-acre park. If you live in 93536, this gives you a future county outing to look forward to, with play areas, gardens, and recreation in Altadena.",
+        "sourceUrl": "https://parks.lacounty.gov/charles-white-park/"
+      },
+      "introLine": "colby test test of Test Realtor Group serves 93536 and brings you this October market update with the latest pricing, inventory, and sales data for your neighborhood.",
+      "closingLine": "Call colby test test 9162128640",
+      "presentation": {
+        "agent": {
+          "name": "colby test test",
+          "brokerage": "Test Realtor Group",
+          "photoUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/93536/page-agent-small-fixes-20261104.png",
+          "phone": "(916) 212-8640",
+          "email": "cwphilbin@gmail.com",
+          "cta_type": "Call",
+          "cta_label": "Call colby test test",
+          "cta_value": "9162128640"
+        },
+        "county": "Los Angeles County",
+        "zip": "93536",
+        "closing": "Call colby test test 9162128640",
+        "recruiting": "Are you a real estate agent in Los Angeles County? Claim this county's market reports at agentsautomated.com.",
+        "signupUrl": "https://agentsautomated.com/buyers-sellers?zip=93536"
+      },
+      "chartCropsVersion": "pdf-card-v1",
+      "packageVersion": "16fa6fbeebc2ec97063c56d26fdce0eaf06b299448a951943fb0d969534904bf",
+      "so_what": "Buyers can compare more listings and plan for longer timelines, while sellers should price competitively and expect homes to take more time to sell."
+    },
+    "sourceKey": "local:review/monthly-reports.json#93536",
+    "videoUrl": "/review-assets/93536-long-form.mp4"
+  },
+  {
+    "report": {
+      "schemaVersion": 1,
+      "sourceType": "craftmypdf",
+      "status": "ready",
+      "zip": "85032",
+      "month": "2026-10",
+      "contentLabel": "October 2026",
+      "title": "ZIP 85032 \u2014 October 2026 market report",
+      "pdfSource": {
+        "bucket": "aa-zip-metrics-prod",
+        "key": "private/reviews/enhance-review-20261105/85032/source.pdf",
+        "etag": "\"bbb38162f4d268e3e831e4f973ac8be2\"",
+        "lastModified": "2026-11-05T21:35:31+00:00",
+        "dataMonth": "2026-10"
+      },
+      "pages": [
+        {
+          "pdfPage": true,
+          "pageIndex": 0,
+          "pageNumber": 1,
+          "imageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/85032/page-01-enhance-review-20261105.png",
+          "role": "intro",
+          "title": "Home Values",
+          "normalizedTitle": "HOME VALUES",
+          "normalizedText": "PRICES COOLING BUYERS GAINING LEVERAGE YEAR OVER YEAR -181% 85032 HOME VALUES ARE DOWN REAL ESTATE AGENT IN MARICOPA COUNTY? CLAIM THIS COUNTY'S REPORTS \u2192 AGENTSAUTOMATEDCOM",
+          "pageText": "Prices cooling. Buyers gaining leverage.\nYEAR OVER YEAR\n-18.1%\n85032 HOME VALUES ARE DOWN\nReal estate agent in Maricopa County? Claim this county's reports \u2192 agentsautomated.com",
+          "narrationDataQualityIssues": [],
+          "roleMatchedBy": "HOME VALUES",
+          "sha256": "65e5620554e5d765f42c00497a66054a88be217243501274a70178732ce3f899"
+        },
+        {
+          "pdfPage": true,
+          "pageIndex": 1,
+          "pageNumber": 2,
+          "imageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/85032/page-02-enhance-review-20261105.png",
+          "role": "agent_intro",
+          "title": "Agents Automated",
+          "normalizedTitle": "AGENTS AUTOMATED",
+          "normalizedText": "AGENTS AUTOMATED NEIGHBORHOOD MARKET INSIGHTS | AGENTSAUTOMATEDCOM REAL ESTATE AGENT IN MARICOPA COUNTY? CLAIM THIS COUNTY'S REPORTS \u2192 AGENTSAUTOMATEDCOM",
+          "pageText": "Agents Automated\nNeighborhood market insights | agentsautomated.com\nReal estate agent in Maricopa County? Claim this county's reports \u2192 agentsautomated.com",
+          "narrationDataQualityIssues": [],
+          "roleMatchedBy": "second-page-fallback",
+          "sha256": "459ebe45f20f1737df228a6a666ea9da59c4840ee2e76caaa79f21662f116971"
+        },
+        {
+          "pdfPage": true,
+          "pageIndex": 2,
+          "pageNumber": 3,
+          "imageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/85032/page-03-enhance-review-20261105.png",
+          "role": "median_sales_price",
+          "title": "Median Sales Price",
+          "normalizedTitle": "MEDIAN SALES PRICE",
+          "normalizedText": "MEDIAN SALES PRICE $500K $480K $460K $440K $420K NOV DEC JAN FEB MAR APR MAY JUN JUL AUG SEP OCT 85032 MARICOPA COUNTY OCT 2026 $422K VS LAST YEAR -181% 85032 \u00b7 MARICOPA COUNTY \u00b7 OCTOBER 2026 REAL ESTATE AGENT IN MARICOPA COUNTY? CLAIM THIS COUNTY'S REPORTS \u2192 AGENTSAUTOMATEDCOM",
+          "pageText": "MEDIAN SALES PRICE\n$500K\n$480K\n$460K\n$440K\n$420K\nNov\nDec\nJan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug\nSep\nOct\n85032\nMaricopa County\nOct 2026\n$422K\nvs last year\n-18.1%\n85032 \u00b7 Maricopa County \u00b7 October 2026\nReal estate agent in Maricopa County? Claim this county's reports \u2192 agentsautomated.com",
+          "narrationDataQualityIssues": [],
+          "roleMatchedBy": "MEDIAN SALES PRICE",
+          "sha256": "f0bd76dbd58ed2d5919adeacb7e079a6edbe6608f0db45aaade0e279f05a089b",
+          "deckDisplay": {
+            "fontFamily": "Roboto",
+            "valueColor": "#FF0000",
+            "changeColor": "#FF0000"
+          },
+          "chartImageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/85032/page-03-enhance-review-20261105-chart.png",
+          "chartCrop": [
+            209,
+            345,
+            3791,
+            1948
+          ],
+          "chartSha256": "bc9042e2204d1f95f106ad94ac9058d20b9fbe8b8709a94ebce98aa9f8385c73"
+        },
+        {
+          "pdfPage": true,
+          "pageIndex": 3,
+          "pageNumber": 4,
+          "imageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/85032/page-04-enhance-review-20261105.png",
+          "role": "median_price_per_sqft",
+          "title": "Median Sales Price/Square Foot",
+          "normalizedTitle": "MEDIAN SALES PRICE/SQUARE FOOT",
+          "normalizedText": "MEDIAN SALES PRICE/SQUARE FOOT $320 $300 $280 $260 $240 NOV DEC JAN FEB MAR APR MAY JUN JUL AUG SEP OCT 85032 MARICOPA COUNTY OCT 2026 $290 VS LAST YEAR -65% 85032 \u00b7 MARICOPA COUNTY \u00b7 OCTOBER 2026 REAL ESTATE AGENT IN MARICOPA COUNTY? CLAIM THIS COUNTY'S REPORTS \u2192 AGENTSAUTOMATEDCOM",
+          "pageText": "MEDIAN SALES PRICE / SQUARE FOOT\n$320\n$300\n$280\n$260\n$240\nNov\nDec\nJan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug\nSep\nOct\n85032\nMaricopa County\nOct 2026\n$290\nvs last year\n-6.5%\n85032 \u00b7 Maricopa County \u00b7 October 2026\nReal estate agent in Maricopa County? Claim this county's reports \u2192 agentsautomated.com",
+          "narrationDataQualityIssues": [],
+          "roleMatchedBy": "MEDIAN SALES PRICE/SQUARE FOOT",
+          "sha256": "29f5ecf05ddc5ed91649065ce6308e10bab6ae115c36ebc909516a25d7480e96",
+          "deckDisplay": {
+            "fontFamily": "Roboto",
+            "valueColor": "#FF0000",
+            "changeColor": "#FF0000"
+          },
+          "chartImageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/85032/page-04-enhance-review-20261105-chart.png",
+          "chartCrop": [
+            209,
+            345,
+            3791,
+            1948
+          ],
+          "chartSha256": "4d975bca703be778d145d33c9a1025481690c61713fdc1640b17e4dc7f455bf6"
+        },
+        {
+          "pdfPage": true,
+          "pageIndex": 4,
+          "pageNumber": 5,
+          "imageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/85032/page-05-enhance-review-20261105.png",
+          "role": "active_listings",
+          "title": "Active Listings",
+          "normalizedTitle": "ACTIVE LISTINGS",
+          "normalizedText": "ACTIVE LISTINGS (SUPPLY) 170 160 150 140 130 120 110 100 90 80 70 60 50 40 30 20 10 0 ZIP LISTINGS NOV DEC JAN FEB MAR APR MAY JUN JUL AUG SEP OCT 17,000 16,000 15,000 14,000 13,000 12,000 11,000 10,000 9,000 8,000 7,000 6,000 5,000 4,000 3,000 2,000 1,000 0 COUNTY LISTINGS 85032 MARICOPA COUNTY OCT 2026 170 VS LAST YEAR +1237% 85032 \u00b7 MARICOPA COUNTY \u00b7 OCTOBER 2026 REAL ESTATE AGENT IN MARICOPA COUNTY? CLAIM THIS COUNTY'S REPORTS \u2192 AGENTSAUTOMATEDCOM",
+          "pageText": "ACTIVE LISTINGS (SUPPLY)\n170\n160\n150\n140\n130\n120\n110\n100\n90\n80\n70\n60\n50\n40\n30\n20\n10\n0\nZIP listings\nNov\nDec\nJan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug\nSep\nOct\n17,000\n16,000\n15,000\n14,000\n13,000\n12,000\n11,000\n10,000\n9,000\n8,000\n7,000\n6,000\n5,000\n4,000\n3,000\n2,000\n1,000\n0\nCounty listings\n85032\nMaricopa County\nOct 2026\n170\nvs last year\n+123.7%\n85032 \u00b7 Maricopa County \u00b7 October 2026\nReal estate agent in Maricopa County? Claim this county's reports \u2192 agentsautomated.com",
+          "narrationDataQualityIssues": [],
+          "roleMatchedBy": "ACTIVE LISTINGS",
+          "sha256": "74c439e88297b514e32be215be3c30ac21d763f3dfd7e21f813aa04a871ada18",
+          "deckDisplay": {
+            "fontFamily": "Roboto",
+            "valueColor": "#1F6FEB",
+            "changeColor": "#16A34A"
+          },
+          "chartImageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/85032/page-05-enhance-review-20261105-chart.png",
+          "chartCrop": [
+            209,
+            345,
+            3791,
+            1948
+          ],
+          "chartSha256": "1b691a77849a325cf888fee6e781b71ab5df6f3cd4c37a8eb2f1d7778cbf7b48"
+        },
+        {
+          "pdfPage": true,
+          "pageIndex": 5,
+          "pageNumber": 6,
+          "imageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/85032/page-06-enhance-review-20261105.png",
+          "role": "price_reductions",
+          "title": "Price Reductions",
+          "normalizedTitle": "PRICE REDUCTIONS",
+          "normalizedText": "PRICE REDUCTIONS 100% 80% 60% 40% 20% 0% NOV DEC JAN FEB MAR APR MAY JUN JUL AUG SEP OCT 85032 MARICOPA COUNTY OCT 2026 418% VS LAST YEAR -118 PP 85032 \u00b7 MARICOPA COUNTY \u00b7 OCTOBER 2026 REAL ESTATE AGENT IN MARICOPA COUNTY? CLAIM THIS COUNTY'S REPORTS \u2192 AGENTSAUTOMATEDCOM",
+          "pageText": "PRICE REDUCTIONS\n100%\n80%\n60%\n40%\n20%\n0%\nNov\nDec\nJan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug\nSep\nOct\n85032\nMaricopa County\nOct 2026\n41.8%\nvs last year\n-11.8 pp\n85032 \u00b7 Maricopa County \u00b7 October 2026\nReal estate agent in Maricopa County? Claim this county's reports \u2192 agentsautomated.com",
+          "narrationDataQualityIssues": [],
+          "roleMatchedBy": "PRICE REDUCTIONS",
+          "sha256": "8e5f732519b34de821b12c65fa679d661b51b96a481d5b0df9a7dcc8eb3c403e",
+          "deckDisplay": {
+            "fontFamily": "Roboto",
+            "valueColor": "#16A34A",
+            "changeColor": "#16A34A"
+          },
+          "chartImageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/85032/page-06-enhance-review-20261105-chart.png",
+          "chartCrop": [
+            209,
+            345,
+            3791,
+            1948
+          ],
+          "chartSha256": "635a933a99cddae3a9490e93e218f162aea682d46391201b41207c90dea23b56"
+        },
+        {
+          "pdfPage": true,
+          "pageIndex": 6,
+          "pageNumber": 7,
+          "imageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/85032/page-07-enhance-review-20261105.png",
+          "role": "days_on_market",
+          "title": "Average Days on Market",
+          "normalizedTitle": "AVERAGE DAYS ON MARKET",
+          "normalizedText": "AVERAGE DAYS ON MARKET (TO PENDING) 90 80 70 60 50 40 30 NOV DEC JAN FEB MAR APR MAY JUN JUL AUG SEP OCT 85032 MARICOPA COUNTY OCT 2026 44 VS LAST YEAR -312% 85032 \u00b7 MARICOPA COUNTY \u00b7 OCTOBER 2026 REAL ESTATE AGENT IN MARICOPA COUNTY? CLAIM THIS COUNTY'S REPORTS \u2192 AGENTSAUTOMATEDCOM",
+          "pageText": "AVERAGE DAYS ON MARKET (TO PENDING)\n90\n80\n70\n60\n50\n40\n30\nNov\nDec\nJan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug\nSep\nOct\n85032\nMaricopa County\nOct 2026\n44\nvs last year\n-31.2%\n85032 \u00b7 Maricopa County \u00b7 October 2026\nReal estate agent in Maricopa County? Claim this county's reports \u2192 agentsautomated.com",
+          "narrationDataQualityIssues": [],
+          "roleMatchedBy": "AVERAGE DAYS ON MARKET",
+          "sha256": "2cc9052cd40c211ec9c17735c6d386f06efd183dad8f88864ca3be04d570fa24",
+          "deckDisplay": {
+            "fontFamily": "Roboto",
+            "valueColor": "#FF0000",
+            "changeColor": "#FF0000"
+          },
+          "chartImageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/85032/page-07-enhance-review-20261105-chart.png",
+          "chartCrop": [
+            209,
+            345,
+            3791,
+            1948
+          ],
+          "chartSha256": "8f9e8f334ffd488408d4429ed9b6c49676bae0ca1cab1a54462bb2debd5797b5"
+        },
+        {
+          "pdfPage": true,
+          "pageIndex": 7,
+          "pageNumber": 8,
+          "imageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/85032/page-08-enhance-review-20261105.png",
+          "role": "homes_sold",
+          "title": "Homes Sold",
+          "normalizedTitle": "HOMES SOLD",
+          "normalizedText": "HOMES SOLD 65 60 55 50 45 40 35 30 25 20 15 10 5 0 ZIP HOMES SOLD NOV DEC JAN FEB MAR APR MAY JUN JUL AUG SEP OCT 6,500 6,000 5,500 5,000 4,500 4,000 3,500 3,000 2,500 2,000 1,500 1,000 500 0 COUNTY HOMES SOLD 85032 MARICOPA COUNTY OCT 2026 44 VS LAST YEAR -102% 85032 \u00b7 MARICOPA COUNTY \u00b7 OCTOBER 2026 REAL ESTATE AGENT IN MARICOPA COUNTY? CLAIM THIS COUNTY'S REPORTS \u2192 AGENTSAUTOMATEDCOM",
+          "pageText": "HOMES SOLD\n65\n60\n55\n50\n45\n40\n35\n30\n25\n20\n15\n10\n5\n0\nZIP homes sold\nNov\nDec\nJan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug\nSep\nOct\n6,500\n6,000\n5,500\n5,000\n4,500\n4,000\n3,500\n3,000\n2,500\n2,000\n1,500\n1,000\n500\n0\nCounty homes sold\n85032\nMaricopa County\nOct 2026\n44\nvs last year\n-10.2%\n85032 \u00b7 Maricopa County \u00b7 October 2026\nReal estate agent in Maricopa County? Claim this county's reports \u2192 agentsautomated.com",
+          "narrationDataQualityIssues": [],
+          "roleMatchedBy": "HOMES SOLD",
+          "sha256": "b4df16beb8bffecaa75607c5536df289606e94fb0ab8c7eb4467b223f56c8616",
+          "deckDisplay": {
+            "fontFamily": "Roboto",
+            "valueColor": "#FF0000",
+            "changeColor": "#FF0000"
+          },
+          "chartImageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/85032/page-08-enhance-review-20261105-chart.png",
+          "chartCrop": [
+            209,
+            345,
+            3791,
+            1948
+          ],
+          "chartSha256": "ae18b7660cbd22f672f6fa069b1139fc83c682103b5c1a8380b78d0660ce611e"
+        },
+        {
+          "pdfPage": true,
+          "pageIndex": 8,
+          "pageNumber": 9,
+          "imageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/85032/page-09-enhance-review-20261105.png",
+          "role": "at_or_above_asking",
+          "title": "Sales Above, At and Below Asking",
+          "normalizedTitle": "SALES ABOVE, AT AND BELOW ASKING",
+          "normalizedText": "IN OCTOBER: 1 SOLD ABOVE ASKING, 13 SOLD AT ASKING, 19 SOLD BELOW ASKING 50 40 30 20 10 0 -10 -20 -30 -40 -50 NOV DEC JAN FEB MAR APR MAY JUN JUL AUG SEP OCT SOLD ABOVE ASKING SOLD AT ASKING SOLD BELOW ASKING OCT 2026 1 SOLD ABOVE 13 SOLD AT 19 SOLD BELOW 85032 \u00b7 MARICOPA COUNTY \u00b7 OCTOBER 2026 REAL ESTATE AGENT IN MARICOPA COUNTY? CLAIM THIS COUNTY'S REPORTS \u2192 AGENTSAUTOMATEDCOM",
+          "pageText": "In October: 1 sold above asking, 13 sold at asking, 19 sold below asking.\n50\n40\n30\n20\n10\n0\n-10\n-20\n-30\n-40\n-50\nNov\nDec\nJan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug\nSep\nOct\nSold above asking\nSold at asking\nSold below asking\nOct 2026\n1 sold above\n13 sold at\n19 sold below\n85032 \u00b7 Maricopa County \u00b7 October 2026\nReal estate agent in Maricopa County? Claim this county's reports \u2192 agentsautomated.com",
+          "narrationDataQualityIssues": [],
+          "roleMatchedBy": "monthly-counts-legend",
+          "sha256": "fb5b66fb5ec7ff36565cb70ff7118ef25d0a41dd207daffecb60e62321191ac2",
+          "deckDisplay": {
+            "fontFamily": "Roboto"
+          },
+          "chartImageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/85032/page-09-enhance-review-20261105-chart.png",
+          "chartCrop": [
+            209,
+            345,
+            3791,
+            1948
+          ],
+          "chartSha256": "1f9cfff5549bf4b8036e32c9da9d51e2a6dd3628618d78d3d157a082a31c88b7"
+        },
+        {
+          "pdfPage": true,
+          "pageIndex": 9,
+          "pageNumber": 10,
+          "imageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/85032/page-10-enhance-review-20261105.png",
+          "role": "what_sold",
+          "title": "What Sold Recently",
+          "normalizedTitle": "WHAT SOLD RECENTLY",
+          "normalizedText": "WHAT SOLD RECENTLY ADDRESS LISTED SOLD SOLD DATE 4303 E CACTUS RD APT 126 PHOENIX, AZ 85032 $230,000 $215,000 -65% OCT 30, 2026 16021 N 30TH ST UNIT 115 PHOENIX, AZ 85032 $275,000 $235,000 -145% OCT 30, 2026 3427 E HELENA DR PHOENIX, AZ 85032 $350,000 $350,000 +00% OCT 29, 2026 85032 \u00b7 MARICOPA COUNTY \u00b7 OCTOBER 2026 REAL ESTATE AGENT IN MARICOPA COUNTY? CLAIM THIS COUNTY'S REPORTS \u2192 AGENTSAUTOMATEDCOM",
+          "pageText": "WHAT SOLD RECENTLY\nADDRESS\nLISTED\nSOLD\nSOLD DATE\n4303 E Cactus Rd Apt 126\nPhoenix, AZ 85032\n$230,000\n$215,000\n-6.5%\nOct 30, 2026\n16021 N 30th St Unit 115\nPhoenix, AZ 85032\n$275,000\n$235,000\n-14.5%\nOct 30, 2026\n3427 E Helena Dr\nPhoenix, AZ 85032\n$350,000\n$350,000\n+0.0%\nOct 29, 2026\n85032 \u00b7 Maricopa County \u00b7 October 2026\nReal estate agent in Maricopa County? Claim this county's reports \u2192 agentsautomated.com",
+          "narrationDataQualityIssues": [],
+          "roleMatchedBy": "WHAT SOLD RECENTLY",
+          "sha256": "160690e56be5eaf7f346e7a21b39e22ffad357b2489d4ca1ef7bc737be114beb",
+          "deckDisplay": {
+            "fontFamily": "Roboto"
+          },
+          "chartImageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/85032/page-10-enhance-review-20261105-chart.png",
+          "chartCrop": [
+            209,
+            770,
+            3791,
+            1522
+          ],
+          "chartSha256": "f40d1e41da83f2010685910d37201776913e2c428bae99d0714fe0df09c3b504"
+        },
+        {
+          "pdfPage": true,
+          "pageIndex": 10,
+          "pageNumber": 11,
+          "imageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/85032/page-11-enhance-review-20261105.png",
+          "role": "local_happenings",
+          "title": "Local Happenings",
+          "normalizedTitle": "LOCAL HAPPENINGS",
+          "normalizedText": "LOCAL HAPPENINGS DEN\u016a HOTEL OPENS IN DOWNTOWN PHOENIX DEN\u016a HOTEL & SPA OPENED OCTOBER 9 IN DOWNTOWN PHOENIX, BRINGING NEW PLACES TO UNWIND NEAR THE CONVENTION CENTER AND ARTS AND ENTERTAINMENT VENUES THE 236-ROOM PROPERTY FEATURES SOLSTONE HOLISTIC SPA, WITH HAMMAM- INSPIRED THERMAL TREATMENTS, PLUS A ROOFTOP PLUNGE POOL AND EVENT SPACES SART\u00c9N KITCHEN & BAR AND NIDOS ROOFTOP BAR ADD TWO DINING AND DRINKS DESTINATIONS TO EXPLORE IF YOU LIVE IN 85032, DEN\u016a GIVES YOU A NEW DOWNTOWN PHOENIX OPTION FOR A SPA VISIT, DINNER, OR A ROOFTOP EVENING 85032 \u00b7 MARICOPA COUNTY \u00b7 OCTOBER 2026 REAL ESTATE AGENT IN MARICOPA COUNTY? CLAIM THIS COUNTY'S REPORTS \u2192 AGENTSAUTOMATEDCOM",
+          "pageText": "LOCAL HAPPENINGS\nDen\u016b Hotel Opens in Downtown Phoenix\nDen\u016b Hotel & Spa opened October 9 in downtown Phoenix, bringing new places to unwind near the convention\ncenter and arts and entertainment venues. The 236-room property features Solstone Holistic Spa, with hammam-\ninspired thermal treatments, plus a rooftop plunge pool and event spaces. Sart\u00e9n Kitchen & Bar and Nidos Rooftop\nBar add two dining and drinks destinations to explore. If you live in 85032, Den\u016b gives you a new downtown Phoenix\noption for a spa visit, dinner, or a rooftop evening.\n85032 \u00b7 Maricopa County \u00b7 October 2026\nReal estate agent in Maricopa County? Claim this county's reports \u2192 agentsautomated.com",
+          "narrationDataQualityIssues": [],
+          "roleMatchedBy": "LOCAL HAPPENINGS",
+          "sha256": "f029e79e00ee65d8057717eb85e18a6ff1396de50267c9055e4cdb9bfd82454f",
+          "chartImageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/85032/page-11-enhance-review-20261105.png"
+        },
+        {
+          "pdfPage": true,
+          "pageIndex": 11,
+          "pageNumber": 12,
+          "imageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/85032/page-12-enhance-review-20261105.png",
+          "role": "list_vs_sold",
+          "title": "List Price vs Sold Price",
+          "normalizedTitle": "LIST PRICE VS SOLD PRICE",
+          "normalizedText": "LIST PRICE VS SOLD PRICE -$15K -$20K -$25K -$30K -$35K -$40K -$45K -$50K NOV DEC JAN FEB MAR APR MAY JUN JUL AUG SEP OCT 85032 MARICOPA COUNTY OCT 2026 -$290K $30K FURTHER BELOW ASKING THAN LAST YEAR 85032 \u00b7 MARICOPA COUNTY \u00b7 OCTOBER 2026 REAL ESTATE AGENT IN MARICOPA COUNTY? CLAIM THIS COUNTY'S REPORTS \u2192 AGENTSAUTOMATEDCOM",
+          "pageText": "LIST PRICE VS SOLD PRICE\n-$15K\n-$20K\n-$25K\n-$30K\n-$35K\n-$40K\n-$45K\n-$50K\nNov\nDec\nJan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug\nSep\nOct\n85032\nMaricopa County\nOct 2026\n-$29.0K\n$3.0K further below\nasking than last year\n85032 \u00b7 Maricopa County \u00b7 October 2026\nReal estate agent in Maricopa County? Claim this county's reports \u2192 agentsautomated.com",
+          "narrationDataQualityIssues": [],
+          "roleMatchedBy": "LIST PRICE VS SOLD PRICE",
+          "sha256": "9e69283cdef7b662a25e2ce227112dc4332c12253436edbe071b9547644bddf5",
+          "deckDisplay": {
+            "fontFamily": "Roboto",
+            "valueColor": "#DC2626"
+          },
+          "chartImageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/85032/page-12-enhance-review-20261105-chart.png",
+          "chartCrop": [
+            209,
+            412,
+            3791,
+            1613
+          ],
+          "chartSha256": "abb3ecfcf23074031739d78fbaa251b015b15e9b2856b17c7d2359964f607d4e"
+        },
+        {
+          "pdfPage": true,
+          "pageIndex": 12,
+          "pageNumber": 13,
+          "imageUrl": "https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/2026-10/85032/page-13-enhance-review-20261105.png",
+          "role": "cta",
+          "title": "Your Neighborhood Market Update",
+          "normalizedTitle": "YOUR NEIGHBORHOOD MARKET UPDATE",
+          "normalizedText": "YOUR NEIGHBORHOOD MARKET UPDATE ARE YOU A REAL ESTATE AGENT IN MARICOPA COUNTY? CLAIM THIS COUNTY'S MARKET REPORTS VIEW COUNTY AVAILABILITY/BOOK A CALL AGENTS AUTOMATED COUNTY MARKET REPORTS FOR REAL ESTATE AGENTS AGENTSAUTOMATEDCOM REAL ESTATE AGENT IN MARICOPA COUNTY? CLAIM THIS COUNTY'S REPORTS \u2192 AGENTSAUTOMATEDCOM",
+          "pageText": "Your Neighborhood Market Update\nAre you a real estate agent in Maricopa County? Claim this\ncounty's market reports.\nView county availability / Book a call\nAgents Automated\nCounty market reports for real estate agents\nagentsautomated.com\nReal estate agent in Maricopa County? Claim this county's reports \u2192 agentsautomated.com",
+          "narrationDataQualityIssues": [],
+          "roleMatchedBy": "last-page-fallback",
+          "sha256": "bfc7035ead1d10cf34912872ffff37660cf32d9881604b7f6896481e24bb346e"
+        }
+      ],
+      "narration": [
+        {
+          "pageIndex": 0,
+          "pageNumber": 1,
+          "role": "intro",
+          "title": "Home Values",
+          "text": "Home values fell 18.1% year over year while active listings increased 123.7%, shifting the balance in the 85032 market \u2014 and what it means for you as a buyer or seller.",
+          "dataUnavailable": false
+        },
+        {
+          "pageIndex": 1,
+          "pageNumber": 2,
+          "role": "agent_intro",
+          "title": "Agents Automated",
+          "text": "Quick note for agents: Maricopa County is open for sponsorship. Learn more at agentsautomated.com.",
+          "dataUnavailable": false
+        },
+        {
+          "pageIndex": 2,
+          "pageNumber": 3,
+          "role": "median_sales_price",
+          "title": "Median Sales Price",
+          "text": "Median home values fell 18.1% year over year to $422,000 in October 2026. The ZIP median of $422,000 was below the Maricopa County median of $449,999, reflecting local pricing differences within the broader market.",
+          "dataUnavailable": false,
+          "takeaway": "Median sale prices"
+        },
+        {
+          "pageIndex": 3,
+          "pageNumber": 4,
+          "role": "median_price_per_sqft",
+          "title": "Median Sales Price/Square Foot",
+          "text": "Median price per square foot decreased 6.5% year over year to $290 in October 2026. The ZIP figure of $290 per square foot exceeded the county median of $259.07, showing variation in property characteristics across the area.",
+          "dataUnavailable": false,
+          "takeaway": "Price per square foot"
+        },
+        {
+          "pageIndex": 4,
+          "pageNumber": 5,
+          "role": "active_listings",
+          "title": "Active Listings",
+          "text": "Active listings increased 123.7% year over year to 170 homes in October 2026. More inventory gives buyers additional properties to compare when evaluating options in the ZIP.",
+          "dataUnavailable": false,
+          "takeaway": "Available homes"
+        },
+        {
+          "pageIndex": 5,
+          "pageNumber": 6,
+          "role": "price_reductions",
+          "title": "Price Reductions",
+          "text": "Price reductions decreased 11.8 percentage points year over year to 41.8% of listings in October 2026. The ZIP rate of 41.8% matched the county figure of 41.5%, showing similar pricing adjustment patterns across Maricopa County.",
+          "dataUnavailable": false,
+          "takeaway": "Price reductions"
+        },
+        {
+          "pageIndex": 6,
+          "pageNumber": 7,
+          "role": "days_on_market",
+          "title": "Average Days on Market",
+          "text": "Average days on market to pending decreased 31.2% year over year to 44 days in October 2026. The ZIP figure of 44 days was faster than the county figure of 61 days, reflecting different listing timelines within the broader market.",
+          "dataUnavailable": false,
+          "takeaway": "Time to pending"
+        },
+        {
+          "pageIndex": 7,
+          "pageNumber": 8,
+          "role": "homes_sold",
+          "title": "Homes Sold",
+          "text": "Homes sold decreased 10.2% year over year to 44 closings in October 2026. The ZIP total of 44 sales represented a portion of the 3,061 homes sold countywide during the same period.",
+          "dataUnavailable": false,
+          "takeaway": "Homes sold"
+        },
+        {
+          "pageIndex": 8,
+          "pageNumber": 9,
+          "role": "at_or_above_asking",
+          "title": "Sales Above, At and Below Asking",
+          "text": "In October, 1 home sold above asking, 13 at asking and 19 below. Buyers and sellers can reference these outcomes when comparing similar properties in the ZIP.",
+          "dataUnavailable": false,
+          "takeaway": "Sales above, at and below asking"
+        },
+        {
+          "pageIndex": 9,
+          "pageNumber": 10,
+          "role": "what_sold",
+          "title": "What Sold Recently",
+          "text": "Three recent sales closed between October 29 and October 30, 2026. Two properties sold below asking at -6.5% and -14.5%, while one closed at asking with a 0.0% change.",
+          "dataUnavailable": false,
+          "takeaway": "What sold recently"
+        },
+        {
+          "pageIndex": 10,
+          "pageNumber": 11,
+          "role": "local_happenings",
+          "title": "Local Happenings",
+          "text": "Den\u016b Hotel & Spa opened October 9 in downtown Phoenix, adding a 236-room property with thermal spa treatments, rooftop plunge pool and two dining venues. Residents of 85032 now have a new downtown destination for spa visits, dining and rooftop evenings near the convention center and arts district.",
+          "dataUnavailable": false,
+          "takeaway": "Local happenings"
+        },
+        {
+          "pageIndex": 11,
+          "pageNumber": 12,
+          "role": "list_vs_sold",
+          "title": "List Price vs Sold Price",
+          "text": "The gap between list price and sold price widened by $3,000 year over year to -$29,000 in October 2026. The ZIP gap of -$29,000 was narrower than the county gap of -$39,000, showing different pricing outcomes across Maricopa County.",
+          "dataUnavailable": false,
+          "takeaway": "Sold prices versus asking"
+        },
+        {
+          "pageIndex": 12,
+          "pageNumber": 13,
+          "role": "cta",
+          "title": "Your Neighborhood Market Update",
+          "text": "Buyers can compare more homes and reference recent pricing outcomes, while sellers should price carefully given the year-over-year decline in median values and increased inventory. Are you a real estate agent in Maricopa County? Claim this county's market reports at agentsautomated.com.",
+          "dataUnavailable": false
+        }
+      ],
+      "reviewSetId": "final-so-what-20261107",
+      "privateArtifacts": true,
+      "publicPageImages": true,
+      "narrationVerification": {
+        "version": "deck-values-v1",
+        "deckSha256": "78c4354755bf91ef48c6a05ec81d82ccd11f49dc48ef1d365930e54c2d279138",
+        "pages": [
+          {
+            "pageNumber": 1,
+            "role": "intro",
+            "pageValues": {
+              "headlineChange": "-18.1%"
+            },
+            "numbers": [
+              18.1,
+              123.7,
+              85032.0
+            ],
+            "issues": [],
+            "repairs": []
+          },
+          {
+            "pageNumber": 2,
+            "role": "agent_intro",
+            "pageValues": {},
+            "numbers": [],
+            "issues": [],
+            "repairs": []
+          },
+          {
+            "pageNumber": 3,
+            "role": "median_sales_price",
+            "pageValues": {
+              "value": "$422K",
+              "change": "-18.1%",
+              "direction": "down",
+              "period": "Oct 2026",
+              "series": [
+                481000.0,
+                450000.0,
+                455000.0,
+                460000.0,
+                465000.0,
+                465000.0,
+                474000.0,
+                491000.0,
+                457000.0,
+                449000.0,
+                473000.0,
+                422000.0
+              ],
+              "countyValue": 449999.0,
+              "countyValueDisplay": "$449,999",
+              "countySeries": [
+                477600.0,
+                499000.0,
+                459999.0,
+                475000.0,
+                485000.0,
+                475000.0,
+                480000.0,
+                480000.0,
+                465000.0,
+                465000.0,
+                465000.0,
+                449999.0
+              ]
+            },
+            "numbers": [
+              18.1,
+              422000.0,
+              2026.0,
+              422000.0,
+              449999.0
+            ],
+            "issues": [],
+            "repairs": []
+          },
+          {
+            "pageNumber": 4,
+            "role": "median_price_per_sqft",
+            "pageValues": {
+              "value": "$290",
+              "change": "-6.5%",
+              "direction": "down",
+              "period": "Oct 2026",
+              "series": [
+                320.0,
+                310.0,
+                300.0,
+                300.0,
+                290.0,
+                310.0,
+                300.0,
+                310.0,
+                300.0,
+                310.0,
+                310.0,
+                290.0
+              ],
+              "countyValue": 259.07082468614976,
+              "countyValueDisplay": "$259.07",
+              "countySeries": [
+                269.0963554667998,
+                268.644747393745,
+                266.28748707342294,
+                269.53361599030893,
+                269.5829094608342,
+                270.48749827799975,
+                269.9315124715825,
+                267.02702702702703,
+                262.4830962880577,
+                262.59483584488464,
+                263.305405684215,
+                259.07082468614976
+              ]
+            },
+            "numbers": [
+              6.5,
+              290.0,
+              2026.0,
+              290.0,
+              259.07
+            ],
+            "issues": [],
+            "repairs": []
+          },
+          {
+            "pageNumber": 5,
+            "role": "active_listings",
+            "pageValues": {
+              "value": "170",
+              "change": "+123.7%",
+              "direction": "up",
+              "period": "Oct 2026",
+              "series": [
+                65.0,
+                50.0,
+                54.0,
+                69.0,
+                78.0,
+                64.0,
+                46.0,
+                88.0,
+                80.0,
+                61.0,
+                60.0,
+                170.0
+              ],
+              "countyValue": 9305.0,
+              "countyValueDisplay": "9,305",
+              "countySeries": [
+                4338.0,
+                2988.0,
+                4524.0,
+                6107.0,
+                5637.0,
+                5281.0,
+                3642.0,
+                5724.0,
+                5643.0,
+                4200.0,
+                5184.0,
+                9305.0
+              ]
+            },
+            "numbers": [
+              123.7,
+              170.0,
+              2026.0
+            ],
+            "issues": [],
+            "repairs": []
+          },
+          {
+            "pageNumber": 6,
+            "role": "price_reductions",
+            "pageValues": {
+              "value": "41.8%",
+              "change": "-11.8 pp",
+              "direction": "down",
+              "period": "Oct 2026",
+              "series": [
+                53.84615384615385,
+                53.74449339207048,
+                47.659574468085104,
+                47.430830039525695,
+                49.224806201550386,
+                53.47985347985348,
+                52.09125475285171,
+                51.12781954887218,
+                52.55813953488372,
+                54.02843601895734,
+                50.282485875706215,
+                41.76245210727969
+              ],
+              "countyValue": 41.52314584370333,
+              "countyValueDisplay": "41.5%",
+              "countySeries": [
+                48.543016668704404,
+                47.77374020401909,
+                44.79162250392165,
+                46.96924231057764,
+                48.428328699413036,
+                49.32027424094026,
+                49.42675159235669,
+                46.71040641516311,
+                43.635660200077375,
+                43.63740022805017,
+                42.26041429547006,
+                41.52314584370333
+              ]
+            },
+            "numbers": [
+              11.8,
+              41.8,
+              2026.0,
+              41.8,
+              41.5
+            ],
+            "issues": [],
+            "repairs": []
+          },
+          {
+            "pageNumber": 7,
+            "role": "days_on_market",
+            "pageValues": {
+              "value": "44",
+              "change": "-31.2%",
+              "direction": "down",
+              "period": "Oct 2026",
+              "series": [
+                48.0,
+                64.0,
+                88.0,
+                54.0,
+                39.0,
+                53.0,
+                43.0,
+                57.0,
+                66.0,
+                70.0,
+                69.0,
+                44.0
+              ],
+              "countyValue": 61.0,
+              "countyValueDisplay": "61",
+              "countySeries": [
+                66.0,
+                65.0,
+                76.0,
+                66.0,
+                62.0,
+                60.0,
+                62.0,
+                58.0,
+                68.0,
+                64.0,
+                66.0,
+                61.0
+              ]
+            },
+            "numbers": [
+              31.2,
+              44.0,
+              2026.0,
+              44.0,
+              61.0
+            ],
+            "issues": [],
+            "repairs": []
+          },
+          {
+            "pageNumber": 8,
+            "role": "homes_sold",
+            "pageValues": {
+              "value": "44",
+              "change": "-10.2%",
+              "direction": "down",
+              "period": "Oct 2026",
+              "series": [
+                50,
+                31,
+                46,
+                41,
+                63,
+                57,
+                61,
+                50,
+                61,
+                47,
+                52,
+                44
+              ],
+              "countyValue": 3061,
+              "countyValueDisplay": "3,061",
+              "countySeries": [
+                3246,
+                2879,
+                2120,
+                3301,
+                4725,
+                4832,
+                4635,
+                4449,
+                3944,
+                3183,
+                3319,
+                3061
+              ]
+            },
+            "numbers": [
+              10.2,
+              44.0,
+              2026.0,
+              44.0,
+              3061.0
+            ],
+            "issues": [],
+            "repairs": []
+          },
+          {
+            "pageNumber": 9,
+            "role": "at_or_above_asking",
+            "pageValues": {
+              "counts": {
+                "above": 1,
+                "at": 13,
+                "below": 19
+              },
+              "period": "Oct 2026",
+              "basis": "matched asking-price transactions"
+            },
+            "numbers": [
+              1.0,
+              13.0,
+              19.0
+            ],
+            "issues": [],
+            "repairs": []
+          },
+          {
+            "pageNumber": 10,
+            "role": "what_sold",
+            "pageValues": {
+              "sold_listings": [
+                {
+                  "address": "4303 E Cactus Rd Apt 126",
+                  "city_state_zip": "Phoenix, AZ 85032",
+                  "listed_price": "$230,000",
+                  "sold_price": "$215,000",
+                  "sold_change_pct": "-6.5%",
+                  "sold_change_color": "#dc2626",
+                  "sold_date": "Oct 30, 2026",
+                  "source_url": "https://www.realtor.com/realestateandhomes-detail/4303-E-Cactus-Rd-Apt-126_Phoenix_AZ_85032_M21878-44220",
+                  "raw_asking_price": 230000.0,
+                  "raw_sold_price": 215000.0,
+                  "raw_sale_date": "2026-10-30"
+                },
+                {
+                  "address": "16021 N 30th St Unit 115",
+                  "city_state_zip": "Phoenix, AZ 85032",
+                  "listed_price": "$275,000",
+                  "sold_price": "$235,000",
+                  "sold_change_pct": "-14.5%",
+                  "sold_change_color": "#dc2626",
+                  "sold_date": "Oct 30, 2026",
+                  "source_url": "https://www.realtor.com/realestateandhomes-detail/16021-N-30th-St-Unit-115_Phoenix_AZ_85032_M15555-32705",
+                  "raw_asking_price": 275000.0,
+                  "raw_sold_price": 235000.0,
+                  "raw_sale_date": "2026-10-30"
+                },
+                {
+                  "address": "3427 E Helena Dr",
+                  "city_state_zip": "Phoenix, AZ 85032",
+                  "listed_price": "$350,000",
+                  "sold_price": "$350,000",
+                  "sold_change_pct": "+0.0%",
+                  "sold_change_color": "#374151",
+                  "sold_date": "Oct 29, 2026",
+                  "source_url": "https://www.realtor.com/realestateandhomes-detail/3427-E-Helena-Dr_Phoenix_AZ_85032_M22484-58941",
+                  "raw_asking_price": 350000.0,
+                  "raw_sold_price": 350000.0,
+                  "raw_sale_date": "2026-10-29"
+                }
+              ]
+            },
+            "numbers": [
+              29.0,
+              30.0,
+              2026.0,
+              6.5,
+              14.5,
+              0.0,
+              3.0,
+              2.0,
+              1.0
+            ],
+            "issues": [],
+            "repairs": []
+          },
+          {
+            "pageNumber": 11,
+            "role": "local_happenings",
+            "pageValues": {
+              "local_headline": "Den\u016b Hotel Opens in Downtown Phoenix",
+              "local_body": "Den\u016b Hotel & Spa opened October 9 in downtown Phoenix, bringing new places to unwind near the convention center and arts and entertainment venues. The 236-room property features Solstone Holistic Spa, with hammam-inspired thermal treatments, plus a rooftop plunge pool and event spaces. Sart\u00e9n Kitchen & Bar and Nidos Rooftop Bar add two dining and drinks destinations to explore. If you live in 85032, Den\u016b gives you a new downtown Phoenix option for a spa visit, dinner, or a rooftop evening."
+            },
+            "numbers": [
+              9.0,
+              236.0,
+              85032.0,
+              2.0
+            ],
+            "issues": [],
+            "repairs": []
+          },
+          {
+            "pageNumber": 12,
+            "role": "list_vs_sold",
+            "pageValues": {
+              "value": "-$29.0K",
+              "change": "$3.0K further below asking than last year",
+              "direction": "up",
+              "period": "Oct 2026",
+              "series": [
+                -29000.0,
+                -20000.0,
+                -26000.0,
+                -21000.0,
+                -20000.0,
+                -19000.0,
+                -19000.0,
+                -27000.0,
+                -35000.0,
+                -33000.0,
+                -36000.0,
+                -29000.0
+              ],
+              "countyValue": -39000.0,
+              "countyValueDisplay": "-$39,000",
+              "countySeries": [
+                -43000.0,
+                -48000.0,
+                -45000.0,
+                -40000.0,
+                -44000.0,
+                -40000.0,
+                -46000.0,
+                -49000.0,
+                -48000.0,
+                -45000.0,
+                -40000.0,
+                -39000.0
+              ],
+              "gapMagnitudeDirection": "widened"
+            },
+            "numbers": [
+              3000.0,
+              29000.0,
+              2026.0,
+              29000.0,
+              39000.0
+            ],
+            "issues": [],
+            "repairs": []
+          },
+          {
+            "pageNumber": 13,
+            "role": "cta",
+            "pageValues": {},
+            "numbers": [],
+            "issues": [],
+            "repairs": []
+          }
+        ]
+      },
+      "tldr": "Buyers can compare more homes and reference recent pricing outcomes, while sellers should price carefully given the year-over-year decline in median values and increased inventory. Median home values in 85032 dropped 18.1% to $422,000 in October 2026, while active listings more than doubled. Days on market fell 31.2% and most homes sold below asking, with the gap between list and sold price widening by $3,000 compared to last year.",
+      "narrationStyle": "aws-editorial-v2",
+      "hook": "Home values fell 18.1% year over year while active listings increased 123.7%, shifting the balance in the 85032 market.",
+      "chartTakeaways": {
+        "3": "Median sale prices",
+        "4": "Price per square foot",
+        "5": "Available homes",
+        "6": "Price reductions",
+        "7": "Time to pending",
+        "8": "Homes sold",
+        "9": "Sales above, at and below asking",
+        "10": "What sold recently",
+        "11": "Local happenings",
+        "12": "Sold prices versus asking"
+      },
+      "narrationPolicy": "aws-editorial-v2:restored-intro-so-what-v3",
+      "headingsVersion": "complete-phrase-v1",
+      "shortsLayout": "native-chart-v1",
+      "localHappenings": {
+        "headline": "Den\u016b Hotel Opens in Downtown Phoenix",
+        "body": "Den\u016b Hotel & Spa opened October 9 in downtown Phoenix, bringing new places to unwind near the convention center and arts and entertainment venues. The 236-room property features Solstone Holistic Spa, with hammam-inspired thermal treatments, plus a rooftop plunge pool and event spaces. Sart\u00e9n Kitchen & Bar and Nidos Rooftop Bar add two dining and drinks destinations to explore. If you live in 85032, Den\u016b gives you a new downtown Phoenix option for a spa visit, dinner, or a rooftop evening.",
+        "sourceUrl": "https://www.denuhotel.com/"
+      },
+      "introLine": "Quick note for agents: Maricopa County is open for sponsorship. Learn more at agentsautomated.com.",
+      "closingLine": "Are you a real estate agent in Maricopa County? Claim this county's market reports at agentsautomated.com.",
+      "presentation": {
+        "agent": null,
+        "county": "Maricopa County",
+        "zip": "85032",
+        "closing": "Are you a real estate agent in Maricopa County? Claim this county's market reports at agentsautomated.com.",
+        "recruiting": "Are you a real estate agent in Maricopa County? Claim this county's market reports at agentsautomated.com.",
+        "signupUrl": "https://agentsautomated.com/buyers-sellers?zip=85032"
+      },
+      "chartCropsVersion": "pdf-card-v1",
+      "packageVersion": "6674374d096170d3ff67b3cebb3cd6e5b8c7a3c66549b99eefb17cb7998363a7",
+      "so_what": "Buyers can compare more homes and reference recent pricing outcomes, while sellers should price carefully given the year-over-year decline in median values and increased inventory."
+    },
+    "sourceKey": "local:review/monthly-reports.json#85032",
+    "videoUrl": "/review-assets/85032-long-form.mp4"
+  }
+]

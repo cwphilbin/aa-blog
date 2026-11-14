@@ -1,0 +1,208 @@
+{
+  "aa-zip-metrics-prod/reports/": [
+    {
+      "key": "reports/2026-04/90011/narration.json",
+      "size": 10096,
+      "modified": "2026-11-02T20:59:40+00:00"
+    },
+    {
+      "key": "reports/2026-10/90066/narration.json",
+      "size": 31960,
+      "modified": "2026-11-04T03:46:57+00:00"
+    },
+    {
+      "key": "reports/2026-10/90068/narration.json",
+      "size": 31952,
+      "modified": "2026-11-04T03:51:37+00:00"
+    },
+    {
+      "key": "reports/2026-10/90210/narration.json",
+      "size": 22446,
+      "modified": "2026-11-04T05:48:27+00:00"
+    },
+    {
+      "key": "reports/2026-10/90265/narration.json",
+      "size": 31665,
+      "modified": "2026-11-04T03:45:21+00:00"
+    },
+    {
+      "key": "reports/2026-10/90272/narration.json",
+      "size": 31644,
+      "modified": "2026-11-04T03:48:02+00:00"
+    },
+    {
+      "key": "reports/2026-10/90274/narration.json",
+      "size": 32159,
+      "modified": "2026-11-04T03:46:09+00:00"
+    },
+    {
+      "key": "reports/2026-10/90275/narration.json",
+      "size": 31940,
+      "modified": "2026-11-04T03:50:49+00:00"
+    },
+    {
+      "key": "reports/2026-10/90277/narration.json",
+      "size": 31686,
+      "modified": "2026-11-04T03:53:42+00:00"
+    },
+    {
+      "key": "reports/2026-10/90291/narration.json",
+      "size": 31496,
+      "modified": "2026-11-04T03:48:44+00:00"
+    },
+    {
+      "key": "reports/2026-10/90402/narration.json",
+      "size": 31750,
+      "modified": "2026-11-04T03:50:02+00:00"
+    },
+    {
+      "key": "reports/2026-10/91604/narration.json",
+      "size": 31556,
+      "modified": "2026-11-04T03:52:39+00:00"
+    }
+  ],
+  "aa-zip-metrics-prod/private/reviews/": [
+    {
+      "key": "private/reviews/enhance-review-20261105/85032/blog.html",
+      "size": 8443,
+      "modified": "2026-11-05T21:55:07+00:00"
+    },
+    {
+      "key": "private/reviews/enhance-review-20261105/85032/deck-payload.json",
+      "size": 9125,
+      "modified": "2026-11-05T21:35:34+00:00"
+    },
+    {
+      "key": "private/reviews/enhance-review-20261105/85032/narration.json",
+      "size": 31956,
+      "modified": "2026-11-05T21:47:03+00:00"
+    },
+    {
+      "key": "private/reviews/enhance-review-20261105/93536/blog.html",
+      "size": 7951,
+      "modified": "2026-11-05T21:55:07+00:00"
+    },
+    {
+      "key": "private/reviews/enhance-review-20261105/93536/deck-payload.json",
+      "size": 9119,
+      "modified": "2026-11-05T21:35:34+00:00"
+    },
+    {
+      "key": "private/reviews/enhance-review-20261105/93536/narration.json",
+      "size": 31141,
+      "modified": "2026-11-05T21:46:36+00:00"
+    },
+    {
+      "key": "private/reviews/enhance-review-20261105/93536/script-attempt-1.json",
+      "size": 4970,
+      "modified": "2026-11-05T21:36:00+00:00"
+    },
+    {
+      "key": "private/reviews/final-review-20261104/85032/blog.html",
+      "size": 5527,
+      "modified": "2026-11-05T02:23:24+00:00"
+    },
+    {
+      "key": "private/reviews/final-review-20261104/85032/deck-payload.json",
+      "size": 7773,
+      "modified": "2026-11-04T16:52:51+00:00"
+    },
+    {
+      "key": "private/reviews/final-review-20261104/85032/narration.json",
+      "size": 21682,
+      "modified": "2026-11-04T16:54:00+00:00"
+    },
+    {
+      "key": "private/reviews/final-review-20261104/85032/script-attempt-1.json",
+      "size": 3091,
+      "modified": "2026-11-04T16:53:17+00:00"
+    },
+    {
+      "key": "private/reviews/final-review-20261104/85032/script-attempt-2.json",
+      "size": 3353,
+      "modified": "2026-11-04T16:28:02+00:00"
+    },
+    {
+      "key": "private/reviews/final-review-20261104/85032/script-attempt-3.json",
+      "size": 3056,
+      "modified": "2026-11-04T16:28:16+00:00"
+    },
+    {
+      "key": "private/reviews/final-review-20261104/93536/blog.html",
+      "size": 5851,
+      "modified": "2026-11-05T02:23:24+00:00"
+    },
+    {
+      "key": "private/reviews/final-review-20261104/93536/deck-payload.json",
+      "size": 7661,
+      "modified": "2026-11-04T16:48:22+00:00"
+    },
+    {
+      "key": "private/reviews/final-review-20261104/93536/narration.json",
+      "size": 21664,
+      "modified": "2026-11-04T16:50:07+00:00"
+    },
+    {
+      "key": "private/reviews/full-review-20261104/93536/deck-payload.json",
+      "size": 7333,
+      "modified": "2026-11-04T15:59:43+00:00"
+    },
+    {
+      "key": "private/reviews/full-review-20261104/93536/script-attempt-1.json",
+      "size": 2765,
+      "modified": "2026-11-04T16:16:50+00:00"
+    },
+    {
+      "key": "private/reviews/full-review-20261104/93536/script-attempt-2.json",
+      "size": 3429,
+      "modified": "2026-11-04T16:10:43+00:00"
+    },
+    {
+      "key": "private/reviews/full-review-20261104/93536/script-attempt-3.json",
+      "size": 3243,
+      "modified": "2026-11-04T16:11:00+00:00"
+    },
+    {
+      "key": "private/reviews/small-fixes-20261104/85032/blog.html",
+      "size": 6733,
+      "modified": "2026-11-05T20:42:32+00:00"
+    },
+    {
+      "key": "private/reviews/small-fixes-20261104/85032/deck-payload.json",
+      "size": 9125,
+      "modified": "2026-11-05T20:37:29+00:00"
+    },
+    {
+      "key": "private/reviews/small-fixes-20261104/85032/narration.json",
+      "size": 29456,
+      "modified": "2026-11-05T20:38:33+00:00"
+    },
+    {
+      "key": "private/reviews/small-fixes-20261104/93536/blog.html",
+      "size": 6551,
+      "modified": "2026-11-05T20:42:32+00:00"
+    },
+    {
+      "key": "private/reviews/small-fixes-20261104/93536/deck-payload.json",
+      "size": 9119,
+      "modified": "2026-11-05T20:37:31+00:00"
+    },
+    {
+      "key": "private/reviews/small-fixes-20261104/93536/narration.json",
+      "size": 29357,
+      "modified": "2026-11-05T20:39:42+00:00"
+    }
+  ],
+  "agentsautomated-content/market/": [
+    {
+      "key": "market/85032/posts.json",
+      "size": 2893,
+      "modified": "2026-10-31T21:16:09+00:00"
+    },
+    {
+      "key": "market/93536/posts.json",
+      "size": 2925,
+      "modified": "2026-10-31T21:16:38+00:00"
+    }
+  ]
+}

@@ -76,6 +76,6 @@ const siteName = 'Agents Automated';
 {jsonLd && (
   <script
     type="application/ld+json"
-    set:html={JSON.stringify(jsonLd)}
+    set:html={JSON.stringify(jsonLd).replace(/</g, '\\u003c')}
   />
 )}

@@ -1,0 +1,23 @@
+CORRECTED MONTHLY CONTENT REVIEW — November 7, 2026 — NOT DEPLOYED
+
+This package supersedes the November 6 screenshots that showed September story feeds.
+Read publication-gaps.txt for exact S3 evidence and missing production artifacts.
+
+Preview:
+  node serve-review.mjs site 4321 seat-directory.json
+  http://localhost:4321/review-host.html
+  http://localhost:4321/market/93536/
+  http://localhost:4321/market/93536/october-2026-market-update
+  http://localhost:4321/review-single-zip.html (85032, AA branding)
+
+The October 93536 and 85032 reports are EXPLICIT PRIVATE REVIEW FIXTURES. Content is read from the exact published-private narration that produced the user's reference HTML. The local long-form MP4s are copied unchanged. No new prose or numbers are invented. The current-seat fixture remains labeled; no live seat assignment was changed.
+
+Landing has one 93536 card and one video because only that October review report is available in the fixture agent's county. It does not manufacture nine posts or substitute old feeds to fill the grid. Pagination remains nine per page when there are enough published reports. ZIP search/dropdown still includes the full county. Missing ZIPs show an unavailable state.
+
+The corrected app and market templates render the PDF's October 2026 label, hook, TL;DR, long-form video, chart headings/crops and exact narration, plus local happenings and current-agent contact. Money signs are normalized before dollars. Territory recruiting from the historical report presentation is not used. Current-seat/byline/schema, author pages, isolated iframe, URL hashes and signup consent/honeypot remain in place.
+
+All 1,842 market index URLs and their legacy monthly routes remain generated. Legacy URLs have unavailable placeholders, never the old posts. The source lists and snapshots are saved in publication-audit.json and production-package-audit.json.
+
+Do not deploy this review build. Future production builds must omit both MONTHLY_REVIEW_FILE and SEAT_REVIEW_FILE. Both fixtures are rejected on Netlify. Static SEO/author routes still require rebuilds on seat changes; browser attribution refreshes from the current directory.
+
+No commit, push, deploy, AWS mutation, database write, public publication or real subscription email was performed.

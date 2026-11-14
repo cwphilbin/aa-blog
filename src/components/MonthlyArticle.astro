@@ -1,0 +1,6 @@
+---
+import ReportSurface from './ReportSurface.astro';
+const {post,agent,zip,marketName}=Astro.props;
+const data={page:'report',defaultZip:zip,defaultPost:post.slug,agent:agent?.name?agent:null,markets:[{zip,name:marketName||`ZIP ${zip}`,posts:[post]}],mockSignup:false,links:{back:`/market/${zip}`,agent:agent?.slug?`/agents/${agent.slug}`:'/market',full:`/market/${zip}/${post.slug}`}};
+---
+<ReportSurface data={data}/>

@@ -2,7 +2,8 @@ import { ListObjectsV2Command, S3Client } from '@aws-sdk/client-s3';
 import type { Agent, MarketFile, Post } from '../types';
 import { mapWithConcurrency } from './concurrency';
 import { parseMarketFeed } from './market-feed';
-import { attachCanonicalStories } from './stories';
+import { attachMonthlyReports } from './monthly-reports';
+import { seatForZip, aaAgent } from './seat-directory';
 
 /** Production feed location written by WritePostsJson. */
 export const POSTS_ORIGIN =
@@ -98,7 +99,8 @@ async function loadMarkets(): Promise<MarketFile[]> {
 
   const validFeeds = feeds.filter((feed): feed is MarketFile => feed !== undefined);
   console.info(`[markets] Loaded ${validFeeds.length} valid feeds; skipped ${feeds.length - validFeeds.length} malformed feeds.`);
-  await attachCanonicalStories(validFeeds, s3);
+  await attachMonthlyReports(validFeeds, s3);
+  for (const market of validFeeds) market.agent = seatForZip(market.zip) ?? { ...aaAgent };
   return validFeeds.sort((a, b) => a.zip.localeCompare(b.zip));
 }
 
@@ -133,7 +135,7 @@ export function hasText(value?: string | null): value is string {
 
 /** First slide image, used as the cover / OG image (feed has no coverImage). */
 export function coverImage(post: Post): string | undefined {
-  return post.story?.charts.trend?.url ?? post.slideImages.find(hasText);
+  return post.monthlyReport?.sections.find(s => s.imageUrl)?.imageUrl ?? post.slideImages.find(hasText);
 }
 
 /**
@@ -142,4 +144,10 @@ export function coverImage(post: Post): string | undefined {
  */
 export function postCanonical(market: MarketFile, post: Post): string {
   return `${market.url.replace(/\/$/, '')}/${post.slug}`;
+}
+
+/** Latest completed calendar month; never silently substitute an older report. */
+export function getReportingMonth(): string {
+  const now = new Date();
+  return new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - 1, 1)).toISOString().slice(0, 7);
 }

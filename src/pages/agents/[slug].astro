@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ReportSurface from '../../components/ReportSurface.astro';
+import {seatDirectory} from '../../lib/seat-directory';
+import {agentSchema} from '../../lib/seat-agents';
+import {getAllMarkets,getPosts} from '../../lib/posts';
+export function getStaticPaths(){return seatDirectory.agents.map(agent=>({params:{slug:agent.slug},props:{agent}}));}
+const {agent}=Astro.props;
+const markets=getAllMarkets().filter(m=>agent.counties.some(c=>c.zips.includes(m.zip))).map(m=>({...m,posts:getPosts(m)}));
+const url=`https://agentsautomated.com/agents/${agent.slug}`;
+const data={page:'agent',agent,markets,mockSignup:false,links:{agent:url,home:'/market'}};
+const jsonLd=[{'@context':'https://schema.org',...agentSchema(agent)},{'@context':'https://schema.org','@type':'ProfilePage',url,name:agent.name,mainEntity:agentSchema(agent)}];
+---
+<BaseLayout title={`${agent.name} · Local market reports`} description={`Monthly market reports from ${agent.name}, ${agent.brokerage}.`} canonical={url} jsonLd={jsonLd} image={agent.photoUrl}><ReportSurface data={data}/></BaseLayout>

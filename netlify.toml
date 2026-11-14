@@ -1,11 +1,13 @@
 # Netlify build config for the Astro static site.
-# The SEO pages are 100% prerendered HTML — no functions, no runtime.
+# SEO pages are prerendered; seat-agents provides fresh public attribution.
 #
 # DEPLOYMENT MODEL: path-based on the apex. These pages must be SERVED at
 # agentsautomated.com/market/*, but agentsautomated.com already runs the main
 # app. So this is a standalone Netlify site whose output is mounted at /market/*
 # by the apex's edge (rewrite/proxy). See README "Deployment". Everything this
-# site emits lives under /market/* by design.
+# site also serves /agents/*, /embed/* and the public seat-agents function.
+# Set SUPABASE_URL and AA_SUPABASE_SECRET_KEY in Builds + Functions scopes.
+# Never set SEAT_REVIEW_FILE in a deployed environment.
 
 [build]
   command = "npm run build"
@@ -22,3 +24,8 @@
   for = "/_astro/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# Custom domains are isolated before any static route or function can be served.
+[[edge_functions]]
+  function = "agent-host"
+  path = "/*"

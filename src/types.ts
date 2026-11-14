@@ -24,6 +24,8 @@ export type AgentTier = 'elite' | 'premium' | 'standard';
 
 export interface Agent {
   name: string;
+  city?: string;
+  state?: string;
   tier: AgentTier;
   brokerage: string;
   license: string;
@@ -56,6 +58,8 @@ export interface Metrics {
 }
 
 export interface Post {
+  monthlyReport?: import("./lib/monthly-report").MonthlyReport;
+  month?: string;
   /** Canonical month/ZIP story, attached at build time when published. */
   story?: CanonicalStory;
   /** Stable feed id (e.g. "2026-06-market-update"). */
@@ -78,6 +82,7 @@ export interface Post {
 
 /** Top-level shape of {zip}.json (== posts.json). */
 export interface MarketFile {
+  legacySlugs?: string[];
   zip: string;
   /** Internal territory code, e.g. "T0032". */
   territoryCode: string;

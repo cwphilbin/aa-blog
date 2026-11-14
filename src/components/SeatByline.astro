@@ -1,0 +1,47 @@
+---
+import type { SeatAgent } from '../lib/seat-agents';
+interface Props { agent?: SeatAgent; location?: string; opening?: string; zip?: string; headline?: string }
+const { agent, location, opening, zip, headline } = Astro.props;
+const cityState = agent ? [agent.city, agent.state].filter(Boolean).join(', ') || location : '';
+---
+<div class="seat-attribution" data-seat-root data-zip={zip} data-location={location} data-headline={headline} data-seat-agent={agent?.slug} hidden={!agent}>
+{agent && <>
+  <div class="seat-byline">
+    {agent.photoUrl ? <img src={agent.photoUrl} alt={`${agent.name} headshot`} width="64" height="64" /> : <span class="seat-initials" aria-hidden="true">{agent.name.split(' ').map(s => s[0]).slice(0,2).join('')}</span>}
+    <p>Market report by <a href={`/agents/${agent.slug}`}>{agent.name}</a>{agent.brokerage && `, ${agent.brokerage}`}{cityState && ` · ${cityState}`}</p>
+  </div>
+  {opening && <p class="seat-opening">{opening}</p>}
+</>}
+</div>
+
+<script>
+  import { agentSchema } from '../lib/seat-agents';
+  async function refreshSeat() {
+    const root=document.querySelector<HTMLElement>('[data-seat-root]'); if(!root?.dataset.zip)return;
+    try {
+      const response=await fetch('/.netlify/functions/seat-agents',{cache:'no-store'});if(!response.ok)throw Error('Unavailable');
+      const directory=await response.json();
+      const agent=directory.agents.find((a:any)=>a.slug===directory.zips[root.dataset.zip!]);
+      const text=(tag:string,value:string)=>{const e=document.createElement(tag);e.textContent=value;return e;};
+      root.replaceChildren();root.hidden=!agent;root.dataset.seatAgent=agent?.slug||'';
+      document.querySelectorAll('[data-seat-legacy]').forEach(e=>e.remove());
+      if(agent){
+        const line=document.createElement('div');line.className='seat-byline';
+        if(agent.photoUrl){const image=document.createElement('img');image.src=agent.photoUrl;image.alt=agent.name+' headshot';image.width=64;image.height=64;line.append(image);}
+        const p=text('p','Market report by '),a=text('a',agent.name) as HTMLAnchorElement;a.href='/agents/'+agent.slug;p.append(a);
+        const place=[agent.city,agent.state].filter(Boolean).join(', ')||root.dataset.location;
+        p.append(document.createTextNode((agent.brokerage?', '+agent.brokerage:'')+(place?' · '+place:'')));line.append(p);root.append(line);
+        if(root.dataset.headline){const intro=text('p',`${agent.name} of ${agent.brokerage||'your local real estate team'} reports: ${root.dataset.headline.replace(/[.!?]$/,'')}.`);intro.className='seat-opening';root.append(intro);}
+      }
+      for(const script of document.querySelectorAll<HTMLScriptElement>('script[type="application/ld+json"]')){
+        const json=JSON.parse(script.textContent||'null');const entries=Array.isArray(json)?json:[json];
+        for(const entry of entries)if(entry&&['Article','BlogPosting'].some(t=>[entry['@type']].flat().includes(t)))entry.author=agent?agentSchema(agent):{'@type':'Organization',name:'Agents Automated',url:'https://agentsautomated.com/'};
+        script.textContent=JSON.stringify(json);
+      }
+      document.querySelectorAll('[data-seat-name]').forEach(e=>e.textContent=agent?.name||'Agents Automated');
+      document.querySelectorAll('[data-seat-cta-title]').forEach(e=>e.textContent=agent?'Talk with '+agent.name:'Get this report every month');
+      document.querySelectorAll<HTMLAnchorElement>('[data-seat-cta-link]').forEach(e=>{e.href=agent?.siteUrl||(agent?.phone?'tel:'+agent.phone.replace(/[^+\d]/g,''):'https://agentsautomated.com/buyers-sellers?zip='+root.dataset.zip);e.textContent=agent?'Get in touch':'Sign up for monthly updates';});
+    } catch { /* Server-rendered attribution was resolved from re-data at build time. */ }
+  }
+  refreshSeat();
+</script>

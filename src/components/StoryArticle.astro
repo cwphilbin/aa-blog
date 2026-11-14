@@ -20,7 +20,7 @@ try {
   <header class="story-header" data-story-section="headline">
     <p class="story-eyebrow">{location} <span>·</span> ZIP {story.zip}</p>
     <h1>{story.headline}</h1>
-    <p class="story-meta"><time datetime={story.month}>{month} market report</time><span>·</span>{branded ? agent.name : 'Agents Automated'}</p>
+    <p class="story-meta"><time datetime={story.month}>{month} market report</time><span>·</span><span data-seat-name>{branded ? agent.name : 'Agents Automated'}</span></p>
   </header>
 
   <section class="story-summary" aria-labelledby="story-tldr" data-story-section="tldr">
@@ -67,9 +67,9 @@ try {
   </section>
   <section class="story-cta" aria-labelledby="story-cta" data-story-section="cta">
     <p class="story-eyebrow">Your next step</p>
-    <h2 id="story-cta">{branded ? `Talk with ${agent.name}` : 'Bring local insight to your next move.'}</h2>
+    <h2 id="story-cta" data-seat-cta-title>{branded ? `Talk with ${agent.name}` : 'Bring local insight to your next move.'}</h2>
     <p>{story.cta}</p>
-    <a class="btn" href={branded ? contact : '/'}>{branded ? 'Get in touch' : 'Explore county availability'} <span aria-hidden="true">↗</span></a>
+    <a class="btn" data-seat-cta-link href={branded ? contact : '/'}>{branded ? 'Get in touch' : 'Explore county availability'} <span aria-hidden="true">↗</span></a>
   </section>
   <p class="disclaimer">Market figures describe reported activity, not a valuation of an individual home or a guarantee of future results.</p>
 </article>
