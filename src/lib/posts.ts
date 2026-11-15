@@ -1,3 +1,5 @@
+import offeredZips from '../../public/embed/offered-zips.json';
+const activeZips = new Set(offeredZips.map(row => row.zip));
 import { ListObjectsV2Command, S3Client } from '@aws-sdk/client-s3';
 import type { Agent, MarketFile, Post } from '../types';
 import { mapWithConcurrency } from './concurrency';
@@ -74,7 +76,7 @@ async function loadMarkets(): Promise<MarketFile[]> {
 
     for (const object of page.Contents ?? []) {
       const match = object.Key?.match(POSTS_KEY);
-      if (match) zips.add(match[1]);
+      if (match && activeZips.has(match[1])) zips.add(match[1]);
     }
 
     continuationToken = page.IsTruncated
