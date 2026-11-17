@@ -11,7 +11,9 @@
     "build": "astro build",
     "postbuild": "rm -f dist/embed-test.html",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "prebuild": "python3 content_gate.py",
+    "predeploy": "python3 content_gate.py"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.4.0",
