@@ -3,6 +3,7 @@ import { readFile } from 'node:fs/promises';
 import type { MarketFile } from '../types';
 import { parseMonthlyReport, reportPost, publicUrl } from './monthly-report.ts';
 import { mapWithConcurrency } from './concurrency.ts';
+import { neighborhoodName } from '../../public/embed/neighborhoods.js';
 const Bucket='aa-zip-metrics-prod';
 /** Feed metadata preserves routes only. Article bodies exclusively use PDF narration packages. */
 export async function attachMonthlyReports(markets:MarketFile[],s3:S3Client){
@@ -19,6 +20,7 @@ export async function attachMonthlyReports(markets:MarketFile[],s3:S3Client){
     // Only reuse a published long-form video when its monthly article identifies this PDF package.
     const matching=previous.get(zip)?.find(p=>p.date.startsWith(report.month)&&p.bodyHtml.includes('/reports/')&&report.sections.some(s=>s.imageUrl&&p.bodyHtml.includes(s.imageUrl)));
     market.posts.push(reportPost(report,publicUrl(matching?.videoUrl)));
+    if(report.neighborhoodNames){market.neighborhoodNames=report.neighborhoodNames;market.name=neighborhoodName(report.neighborhoodNames);}
   });
   if(process.env.MONTHLY_REVIEW_FILE){
     if(process.env.NETLIFY)throw Error('Private monthly review content cannot be deployed');
@@ -28,6 +30,7 @@ export async function attachMonthlyReports(markets:MarketFile[],s3:S3Client){
       const report=parseMonthlyReport(fixture.report,market.zip,fixture.sourceKey,true);if(!report)throw Error('Invalid monthly review fixture');
       if(!/^\/review-assets\/\d{5}-long-form\.mp4$/.test(fixture.videoUrl))throw Error('Review video must be local');
       market.posts=market.posts.filter(p=>p.month!==report.month);market.posts.push(reportPost(report,fixture.videoUrl));
+      if(report.neighborhoodNames){market.neighborhoodNames=report.neighborhoodNames;market.name=neighborhoodName(report.neighborhoodNames);}
     }
   }
   console.info(`[monthly] ${markets.reduce((n,m)=>n+m.posts.length,0)} PDF-narration posts; ${markets.filter(m=>!m.posts.length).length} ZIPs awaiting publication. Legacy content disabled.`);

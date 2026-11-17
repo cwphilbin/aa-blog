@@ -1,7 +1,9 @@
 import { moneyText } from '../../public/embed/money.js';
+import { storedNeighborhoodNames } from '../../public/embed/neighborhoods.js';
 export interface MonthlyReport {
   source: 'GenerateZipScript'; sourceKey: string; packageVersion: string;
   month: string; label: string; headline: string; tldr: string; so_what?: string; preview: boolean;
+  neighborhoodNames?: {name_1:string;name_2:string;full:string};
   sections: { title: string; imageUrl?: string; alt?: string; text: string; headline?: string; sourceUrl?: string }[];
 }
 const order=['median_sales_price','median_price_per_sqft','active_listings','price_reductions','days_on_market','homes_sold','at_or_above_asking','list_vs_sold','what_sold','local_happenings'];
@@ -18,7 +20,8 @@ export function parseMonthlyReport(raw: unknown, zip: string, sourceKey: string,
     const match=/^([A-Za-z]+) (\d{4})$/.exec(r.contentLabel||'');if(!match||!months.includes(match[1]))return;
     const month=`${match[2]}-${String(months.indexOf(match[1])+1).padStart(2,'0')}`;
     const cover=r.pages.find((p:any)=>p.pageNumber===1);
-    const headline=r.hook||cover?.pageText?.split('\n').find((s:string)=>s.trim());if(typeof headline!=='string'||!headline.trim())return;
+    const names=storedNeighborhoodNames(r);
+    const headline=(names?r.title:r.hook)||cover?.pageText?.split('\n').find((s:string)=>s.trim());if(typeof headline!=='string'||!headline.trim())return;
     const last=Math.max(...r.pages.map((p:any)=>p.pageNumber));
     const selected=r.narration.filter((b:any)=>b.pageNumber>2&&b.pageNumber<last&&!b.dataUnavailable&&typeof b.text==='string'&&b.text.trim()&&!/unavailable/i.test(b.text));
     if(['aws-editorial-v2','coherent-deck-v1'].includes(r.narrationStyle))selected.sort((a:any,b:any)=>order.indexOf(a.role)-order.indexOf(b.role));
@@ -33,7 +36,7 @@ export function parseMonthlyReport(raw: unknown, zip: string, sourceKey: string,
       sections.push({title:moneyText(r.chartTakeaways?.[String(beat.pageNumber)]||p.title||'Market figures'),imageUrl,alt:p.title||'Market chart',text:moneyText(beat.text)});
     }
     if(!sections.length)return;
-    return {source:'GenerateZipScript',sourceKey,packageVersion:r.packageVersion,month,label:r.contentLabel,headline:moneyText(headline),tldr:moneyText(r.tldr||''),...(typeof r.so_what==='string'&&r.so_what.trim()?{so_what:r.so_what}:{}),sections,preview};
+    return {source:'GenerateZipScript',sourceKey,packageVersion:r.packageVersion,month,label:r.contentLabel,headline:moneyText(headline),tldr:moneyText(r.tldr||''),...(names?{neighborhoodNames:names}:{}),...(typeof r.so_what==='string'&&r.so_what.trim()?{so_what:r.so_what}:{}),sections,preview};
   }catch{return;}
 }
 export function reportPost(report: MonthlyReport, videoUrl='') {

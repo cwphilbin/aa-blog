@@ -82,6 +82,7 @@ export interface Post {
 
 /** Top-level shape of {zip}.json (== posts.json). */
 export interface MarketFile {
+  neighborhoodNames?: {name_1:string;name_2:string;full:string};
   legacySlugs?: string[];
   zip: string;
   /** Internal territory code, e.g. "T0032". */

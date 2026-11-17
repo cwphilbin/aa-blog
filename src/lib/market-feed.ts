@@ -1,4 +1,5 @@
 import type { MarketFile } from '../types';
+import { storedNeighborhoodNames, neighborhoodName } from '../../public/embed/neighborhoods.js';
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>
   value !== null && typeof value === 'object' && !Array.isArray(value);
@@ -57,6 +58,13 @@ export function parseMarketFeed(
   const reason = invalidMarketReason(value, zip);
   if (reason) {
     warn(`[markets] Skipping invalid posts.json for ZIP ${zip}: ${reason}`);
+    return undefined;
+  }
+  try {
+    const names = storedNeighborhoodNames(value);
+    if (names) (value as MarketFile).name = neighborhoodName(names);
+  } catch {
+    warn(`[markets] Skipping invalid posts.json for ZIP ${zip}: invalid stored neighborhood names`);
     return undefined;
   }
   return value as MarketFile;
