@@ -30,5 +30,13 @@ body:has([data-aa-signup-bar]) .aa-signup{top:var(--aa-header-visible,var(--aa-h
 .aa-design .aa-signup{border-bottom-color:#c2e2ff;box-shadow:0 3px 18px rgba(92,173,243,.18)}
 .aa-design .aa-signup-row{border-radius:8px;box-shadow:0 0 0 1px #b9ddfc,0 0 14px rgba(103,183,250,.28)}
 
-/* CONTENT_STANDARD CS10: one report surface; signup scrolls in normal flow. */
+/* CONTENT_STANDARD CS10: one report surface; header scrolls away, signup stays at the viewport top. */
 .aa-design{background:#F5F6F7}.aa-design .aa-main{max-width:1056px;margin:32px auto;padding:40px;background:#fff;border-radius:14px}.aa-design .aa-signup{position:static;background:transparent;backdrop-filter:none;box-shadow:none;padding:0 0 28px;margin:0 0 32px;grid-template-columns:minmax(0,1fr)}.aa-design .aa-report-section,.aa-design .aa-report-end,.aa-design .aa-article-header{background:transparent;box-shadow:none}.aa-design .aa-report-card{background:transparent;box-shadow:none}.aa-design .aa-report-end .aa-source{font-size:12px;margin-bottom:24px}@media(max-width:600px){.aa-design .aa-main{margin:16px 12px;padding:24px 20px}.aa-design .aa-signup{padding:0 0 24px}.aa-design .aa-article-header h1{font-size:34px}}
+
+/* Reserve the existing signup/header heights when the bar leaves normal flow.
+   Retain its current type, single-column form, colors and content width. */
+body:has(.site-header){padding-top:var(--aa-header-height)}
+body:has([data-aa-signup-bar]){padding-top:calc(var(--aa-header-height) + var(--aa-signup-height))}
+#app.aa-design{padding-top:var(--aa-signup-height)}
+.aa-design .aa-signup{position:fixed;top:max(var(--aa-header-visible,0px),var(--aa-embed-top,0px));left:0;right:0;z-index:1000;margin:0;background:#fff;padding-left:max(40px,calc((100vw - 976px)/2));padding-right:max(40px,calc((100vw - 976px)/2))}
+@media(max-width:600px){.aa-design .aa-signup{padding-left:32px;padding-right:32px}}

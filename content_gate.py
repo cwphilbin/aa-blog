@@ -23,6 +23,11 @@ def validate_public_text(text, asset):
     if re.search(r'Redfin|historical',text,re.I):fail('CS04/CS07','prohibited customer-facing wording: '+asset)
 
 
+def validate_reader_cta(text, asset):
+    if re.search(r"Own a home,\s*or thinking of buying or selling|Get this report every month|Get next month[’']s report",text,re.I):
+        fail('CS09','removed bottom reader CTA or button: '+asset)
+
+
 def validate_headline(text, zip_code=None, names=None):
     if not isinstance(text,str) or len(text)>60 or re.search(r'YoY|;',text,re.I):fail('CS08','headline/subject must be <=60, without YoY or semicolon')
     value=text.removeprefix('[TEST] ')
@@ -41,7 +46,9 @@ def validate_contract(contract):
     if set(contract.get('files',{})) != set(FILES):fail('CS14','exact eleven assets required')
     customer=contract.get('customerFacingText',{})
     if set(customer)!=set(FILES):fail('CS13','rendered customer text required for all eleven assets')
-    for asset,text in customer.items():validate_public_text(text,asset)
+    for asset,text in customer.items():
+        validate_public_text(text,asset)
+        if asset.endswith('.html'):validate_reader_cta(text,asset)
     reports=contract.get('reports',{})
     if set(reports) != {'90004','93536'}:fail('CS13','both review ZIPs required')
     for z,r in reports.items():
@@ -80,7 +87,9 @@ def validate_contract(contract):
             validate_public_text(result['embedReport'].get('customerText',''),'actual embed report')
             validate_headline(result['embedReport'].get('heading',''))
         if result.get('whiteCards')!=1 or result.get('boxedSections')!=0 or not result.get('grayBackground'):fail('CS10','one white card on gray required: '+result.get('file','unknown'))
-        if result.get('fixedSignup') or result.get('stickySignup') or result.get('signupScrollsAway') is False:fail('CS10','signup must scroll normally: '+result.get('file','unknown'))
+        if not result.get('file','').startswith(('7-email','8-email')) and (result.get('signupStaysAtTop') is not True or result.get('headerScrollsAway') is not True or result.get('signupStartsBelowHeader') is not True):fail('CS10','header must scroll away and signup stay at the viewport top: '+result.get('file','unknown'))
+        validate_reader_cta(result.get('customerText',''),result.get('file','HTML'))
+        if result.get('embedReport'):validate_reader_cta(result['embedReport'].get('customerText',''),'actual embed report')
         if result.get('overflow') or result.get('brokenImages'):fail('CS10','broken/overflowing layout: '+result.get('file','unknown'))
     if contract.get('actualAgentEmbed') is not True:fail('CS10','actual drop-in agent embed required')
     return contract

@@ -82,17 +82,21 @@ only what the prompt asks; everything else stays exactly the same.
 
 ## CS05 — Native Shorts, hard maximum 30 seconds
 
-- Restore the existing native 1080×1920 vertical composition from the last
-  pre-PDF-slide history. It uses native visual scenes, a strong statistic hook,
-  readable type, and existing motion. Do not place PDF pages, deck chart slides,
-  or cropped deck charts inside a vertical frame. No letterboxed long-form cut.
-- Keep only the later approved Inworld voice, stored neighborhood names, Redfin
-  facts, and the natural wording rules in this standard. Do not carry forward
-  later PDF-chart layouts, 40–50-second targets, or validation bypasses.
+- Restore the approved Nov 7 `CaptionedPdfShorts` look from commit `4b73229`
+  at native 1080×1920: gray frame; ZIP/county and month/year header; title;
+  large statistic with its vs-last-year change; full-width native vertical
+  ZIP-versus-county chart; captions; and the agent bar at the bottom. Retain
+  the approved frame typography, spacing, motion, and territory-aware identity.
+- Draw charts natively from the registered report series. Never use PDF pages,
+  deck slide images, or cropped deck charts. Preserve the current Redfin facts,
+  stored neighborhood names, number formats, narration, normal Inworld voice,
+  and existing Short duration. Do not restore the reference's longer duration.
 - Hook with one striking verified fact in the first second, then develop one
   clear buyer/seller point and an appropriate CTA. No greeting, logo preamble,
   filler, unsupported hype, or disconnected list of metrics. Preserve the
-  existing native scene styling and territory-aware agent/AA identity.
+  approved Nov 7 frame styling and territory-aware agent/AA identity.
+- Preserve the current practical takeaway and saved contact/recruiting CTA.
+  A visual restoration does not authorize changing their wording or statistics.
 - Duration includes every frame, audio padding, transition, and end card: at
   most 30.00 seconds. Measure actual synthesized audio and final encoded video.
   Reject and regenerate shorter text/audio when over; after bounded retries,
@@ -166,10 +170,11 @@ only what the prompt asks; everything else stays exactly the same.
 
 ## CS09 — Reader and agent CTAs
 
-- Bottom reader CTA is exactly `Own a home, or thinking of buying or selling in
-  [names]? Get this report every month.` Replace [names] with the stored display
-  name and ZIP; do not invent geography or omit it.
-- Keep that reader CTA separate from agent contact and county recruiting.
+- Do not include the bottom reader block `Own a home, or thinking of buying or
+  selling in [names]? Get this report every month.` or its associated signup
+  button in blogs, subdomains, embeds, or emails. Reject either the block or
+  its `Get this report every month` / `Get next month’s report` button.
+- Preserve separate agent contact and county recruiting CTAs.
   Agent contact uses the actual current seat, saved contact method, name,
   brokerage, photo, and real formatted phone. Never substitute TEST identity in
   production. Unclaimed territory keeps AA branding and existing recruiting.
@@ -182,8 +187,10 @@ only what the prompt asks; everything else stays exactly the same.
 - All report content is inside ONE white content card on a gray background in
   blog, email, and embed. Images, sections, agent identity, CTAs, and buttons do
   not each get separate white boxes. Preserve responsive spacing and readability.
-- The email signup bar is in normal document flow on blog pages and embed;
-  neither fixed nor sticky. Verify it scrolls away in the browser.
+- On blog, subdomain, and embed pages the global Agents Automated header
+  scrolls away; the email signup bar stays at the top of the screen while
+  scrolling. The embed uses the same header and sticky signup bar as the blog.
+  Verify both behaviors in the browser, including the actual embedded iframe.
 - The embed review is the actual drop-in agent snippet running on a sample
   agent webpage, not the hosted blog page placed in an iframe. Use the existing
   embed implementation and its isolation, URL hashes, and attribution behavior.
@@ -235,7 +242,9 @@ only what the prompt asks; everything else stays exactly the same.
 - Block on any Short over 30 seconds or any deck-chart/page image in its visual
   scene; forbidden spoken words/signs; slide narration that merely reads all its
   numbers; missing factual meaning; title/subject/opening limit failure; more
-  than one white content card; fixed/sticky signup bar; duplicate description
+  than one white content card; a header that stays on screen or a signup bar
+  that scrolls away on blog/subdomain/embed; the prohibited bottom reader block
+  or its button on those surfaces or email; duplicate description
   lines; missing required geography; wrong voice, model, or accelerated audio.
 - Also block if `Redfin` or `historical` appears in any customer-facing text,
   metadata, narration, PDF slide, or native video scene. Inspect actual rendered
@@ -281,6 +290,11 @@ The 2026-11-17 correction explicitly removes provider credit and the word
 It supersedes earlier source-credit and headline-advice wording only; all other
 approved rules remain unchanged. Internal data provenance still identifies the
 original provider and retains its existing calculations and source filters.
+
+The current scoped restoration selects the Nov 7 gray Shorts frame with native
+charts and the scrolling header/sticky signup behavior, and removes the bottom
+reader CTA from blog/subdomain/embed/email. These instructions supersede the
+conflicting Shorts, signup-position, and reader-CTA clauses only.
 
 The 2026-11-16 content-lock prompt explicitly replaces older PDF-chart Shorts,
 40–50-second targets, signed comparison recitation, separate section cards,
