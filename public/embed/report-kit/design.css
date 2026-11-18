@@ -40,3 +40,9 @@ body:has([data-aa-signup-bar]){padding-top:calc(var(--aa-header-height) + var(--
 #app.aa-design{padding-top:var(--aa-signup-height)}
 .aa-design .aa-signup{position:fixed;top:max(var(--aa-header-visible,0px),var(--aa-embed-top,0px));left:0;right:0;z-index:1000;margin:0;background:#fff;padding-left:max(40px,calc((100vw - 976px)/2));padding-right:max(40px,calc((100vw - 976px)/2))}
 @media(max-width:600px){.aa-design .aa-signup{padding-left:32px;padding-right:32px}}
+
+/* CS10: the drop-in embed belongs to its host page. Its signup stays within
+   the existing report card, never across the host website's viewport. */
+#app.aa-design[data-aa-embedded]{padding-top:0}
+.aa-design[data-aa-embedded] .aa-signup{position:sticky;top:var(--aa-embed-top,0px);left:auto;right:auto;width:calc(100% + 80px);margin:-40px -40px 32px;padding:40px 40px 28px;border-radius:14px 14px 0 0}
+@media(max-width:600px){.aa-design[data-aa-embedded] .aa-signup{width:calc(100% + 40px);margin:-24px -20px 32px;padding:24px 20px}}

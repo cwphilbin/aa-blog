@@ -87,7 +87,10 @@ def validate_contract(contract):
             validate_public_text(result['embedReport'].get('customerText',''),'actual embed report')
             validate_headline(result['embedReport'].get('heading',''))
         if result.get('whiteCards')!=1 or result.get('boxedSections')!=0 or not result.get('grayBackground'):fail('CS10','one white card on gray required: '+result.get('file','unknown'))
-        if not result.get('file','').startswith(('7-email','8-email')) and (result.get('signupStaysAtTop') is not True or result.get('headerScrollsAway') is not True or result.get('signupStartsBelowHeader') is not True):fail('CS10','header must scroll away and signup stay at the viewport top: '+result.get('file','unknown'))
+        if result.get('file')=='9-blog-embed.html':
+            for view in [result]+([result['embedReport']] if result.get('embedReport') else []):
+                if any(view.get(key) is not True for key in ('embedHeaderAbsent','signupInsideCard','signupMatchesCardWidth','signupStaysAtCardTop')):fail('CS10','embed signup must stay inside its card, at card width, without a global header')
+        elif not result.get('file','').startswith(('7-email','8-email')) and (result.get('signupStaysAtTop') is not True or result.get('headerScrollsAway') is not True or result.get('signupStartsBelowHeader') is not True):fail('CS10','header must scroll away and signup stay at the viewport top: '+result.get('file','unknown'))
         validate_reader_cta(result.get('customerText',''),result.get('file','HTML'))
         if result.get('embedReport'):validate_reader_cta(result['embedReport'].get('customerText',''),'actual embed report')
         if result.get('overflow') or result.get('brokenImages'):fail('CS10','broken/overflowing layout: '+result.get('file','unknown'))

@@ -83,20 +83,28 @@ only what the prompt asks; everything else stays exactly the same.
 ## CS05 — Native Shorts, hard maximum 30 seconds
 
 - Restore the approved Nov 7 `CaptionedPdfShorts` look from commit `4b73229`
-  at native 1080×1920: gray frame; ZIP/county and month/year header; title;
+  at native 1080×1920: gray frame; `ZIP / <county> County` and month/year
+  header; title;
   large statistic with its vs-last-year change; full-width native vertical
   ZIP-versus-county chart; captions; and the agent bar at the bottom. Retain
   the approved frame typography, spacing, motion, and territory-aware identity.
 - Draw charts natively from the registered report series. Never use PDF pages,
   deck slide images, or cropped deck charts. Preserve the current Redfin facts,
-  stored neighborhood names, number formats, narration, normal Inworld voice,
-  and existing Short duration. Do not restore the reference's longer duration.
+  stored neighborhood names, number formats, normal Inworld voice, and the
+  current look. Do not restore the reference's longer duration.
 - Hook with one striking verified fact in the first second, then develop one
   clear buyer/seller point and an appropriate CTA. No greeting, logo preamble,
   filler, unsupported hype, or disconnected list of metrics. Preserve the
   approved Nov 7 frame styling and territory-aware agent/AA identity.
-- Preserve the current practical takeaway and saved contact/recruiting CTA.
-  A visual restoration does not authorize changing their wording or statistics.
+- Use the actual Nov 7 scene order: active-listings annual-change hook, median
+  sale price, active-listings count, median days on market, then the saved CTA.
+  Skip the retired Price Reductions scene. Each stat has its own big stat,
+  year-over-year change where relevant, and matching native ZIP/county chart;
+  do not reuse one statistic/chart for unrelated beats. The CTA may loop the hook.
+- Narration covers all those statistics in that order under CS07, with natural
+  buyer/seller meaning and code-supplied figures. Establish that comparisons are
+  with last year. Preserve the saved contact/recruiting CTA and existing identity.
+  The restored multi-stat narration still has to fit the hard 30-second limit.
 - Duration includes every frame, audio padding, transition, and end card: at
   most 30.00 seconds. Measure actual synthesized audio and final encoded video.
   Reject and regenerate shorter text/audio when over; after bounded retries,
@@ -187,10 +195,14 @@ only what the prompt asks; everything else stays exactly the same.
 - All report content is inside ONE white content card on a gray background in
   blog, email, and embed. Images, sections, agent identity, CTAs, and buttons do
   not each get separate white boxes. Preserve responsive spacing and readability.
-- On blog, subdomain, and embed pages the global Agents Automated header
-  scrolls away; the email signup bar stays at the top of the screen while
-  scrolling. The embed uses the same header and sticky signup bar as the blog.
-  Verify both behaviors in the browser, including the actual embedded iframe.
+- On blog and subdomain pages the global Agents Automated header scrolls away;
+  the email signup bar stays at the top of the screen while scrolling. Preserve
+  those pages exactly when changing the embed.
+- The drop-in embed has no global Agents Automated header: it lives inside the
+  host website. Its signup bar is inside the existing white content card, the
+  same width as that card, and stays at the top of the card area while scrolling.
+  Constrain it to the card, including when the host page scrolls an auto-height
+  iframe. Verify collection and report views in the actual embed browser.
 - The embed review is the actual drop-in agent snippet running on a sample
   agent webpage, not the hosted blog page placed in an iframe. Use the existing
   embed implementation and its isolation, URL hashes, and attribution behavior.
