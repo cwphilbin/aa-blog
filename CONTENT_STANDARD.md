@@ -71,8 +71,10 @@ only what the prompt asks; everything else stays exactly the same.
   not a day or a three-month date range. The YouTube title suffix may use the
   explicitly approved compact form `Oct 2026`. Never use the render date as the
   report date. Charts retain suitable monthly/year axis ticks.
-- Chart footnote is exactly `*3-month rolling average`. Keep Redfin source credit
-  visible in the assets. Credit need not be spoken as narration.
+- Chart footnote is exactly `*3-month rolling average`. Never show or say
+  `Source: Redfin` or `Redfin` in customer-facing output:
+  blog, email, subdomain, embed, YouTube descriptions, decks, or video speech and
+  slides. Keep the underlying provider and internal source identifiers unchanged.
 - Keep AA branding: navy #001F3F, chart/body ink #373D3F, gray background #F5F6F7,
   white content surfaces; retain existing metric up/down/neutral colors and
   series colors. Preserve the approved fonts for each existing surface and the
@@ -119,6 +121,9 @@ only what the prompt asks; everything else stays exactly the same.
 - Sound like a local agent explaining the market. On each ordinary chart state
   the meaningful number, relevant year-over-year change, and one grounded buyer
   or seller implication. Do not simply recite all values printed on a slide.
+- Never use `historical` in customer-facing output. Say `The median days on
+  market is 54…`, retaining the actual number and the existing comparison and
+  practical meaning. This wording change does not change the metric or data.
 - Never say `minus`, `plus`, `ZIP code`, or a signed numeric expression. Say
   `down 2.1% from this time last year` or `up 4.6% from a year ago`; speak zero
   change as unchanged. Avoid the rigid `X versus Y a year ago (±%)` template in
@@ -141,13 +146,15 @@ only what the prompt asks; everything else stays exactly the same.
 
 ## CS08 — Headline, subject, and opening
 
-- Email subject and shared blog/email headline contain one striking verified
-  statistic, its comparison, and the buyer/seller meaning. Maximum 60 characters
-  including spaces and punctuation. Select by a documented code salience rule
-  over available verified market facts, never blindly take the first statistic.
-- Front-load the stored location, always retaining ZIP. Use the approved primary
-  name fallback when needed. Do not add a second numeric statistic, misleading
-  curiosity, or a claim that the supplied facts do not support.
+- Email subject and shared blog/email headline use exactly
+  `<full neighborhood name> (<ZIP>) <stat> <direction> <X>% vs last year`, e.g.
+  `Hancock Park (90004) home values fell 26.3% vs last year`. Select the striking
+  verified statistic using the existing code salience rule; do not change data.
+- Use the full stored `name_1 & name_2` when name_2 exists, else name_1. Maximum
+  60 characters including spaces and punctuation; only when the full name makes
+  it exceed 60 use name_1 alone. Never drop ZIP or abbreviate a stored name.
+  No `YoY`, semicolon, advice clause, second statistic, or invented comparison.
+  The practical meaning remains in the opening; do not append it to the headline.
 - The opening is one sentence, at most 25 words, grounded in that selected fact
   and implication, with the place and ZIP. Do not repeat a boilerplate welcome,
   list unrelated metrics, or use the old multi-sentence TL;DR template.
@@ -213,7 +220,8 @@ only what the prompt asks; everything else stays exactly the same.
   rigid versus templates, signed numbers, `percentage points`, or `relative`.
 - Then put the existing market-page link and the separate actual agent CTA.
   Format phones as `(916) 212-8640`. For an unclaimed ZIP use the existing county
-  recruiting CTA instead of inventing an agent or phone. Retain source credit.
+  recruiting CTA instead of inventing an agent or phone. Keep the rolling-average
+  footnote; never include the prohibited provider credit or `historical` wording.
 - Keep the first lines useful before Show more. Do not bury the summary under
   links, hashtags, boilerplate, or a verbatim duplicate of the title.
 
@@ -229,6 +237,10 @@ only what the prompt asks; everything else stays exactly the same.
   numbers; missing factual meaning; title/subject/opening limit failure; more
   than one white content card; fixed/sticky signup bar; duplicate description
   lines; missing required geography; wrong voice, model, or accelerated audio.
+- Also block if `Redfin` or `historical` appears in any customer-facing text,
+  metadata, narration, PDF slide, or native video scene. Inspect actual rendered
+  browser/scene text and PDF text. Block a headline/subject containing `YoY`, a
+  semicolon, more than 60 characters, or a different CS08 pattern/name fallback.
 - Inspect measured encoded duration, native composition identity/visual inputs,
   structured numerical validation, actual browser layout/scrolling, metadata,
   and full media decode. Source-string assertions alone do not prove a render.
@@ -263,6 +275,12 @@ only what the prompt asks; everything else stays exactly the same.
   user approves new review files. No automatic baseline update on deploy.
 
 ## Evidence and precedence
+
+The 2026-11-17 correction explicitly removes provider credit and the word
+`historical` from customer-facing output and restores the CS08 headline format.
+It supersedes earlier source-credit and headline-advice wording only; all other
+approved rules remain unchanged. Internal data provenance still identifies the
+original provider and retains its existing calculations and source filters.
 
 The 2026-11-16 content-lock prompt explicitly replaces older PDF-chart Shorts,
 40–50-second targets, signed comparison recitation, separate section cards,

@@ -18,9 +18,30 @@ def fail(rule, detail):
     raise ValueError(rule+': '+detail)
 
 
+def validate_public_text(text, asset):
+    if not isinstance(text,str) or not text.strip():fail('CS13','missing rendered customer text: '+asset)
+    if re.search(r'Redfin|historical',text,re.I):fail('CS04/CS07','prohibited customer-facing wording: '+asset)
+
+
+def validate_headline(text, zip_code=None, names=None):
+    if not isinstance(text,str) or len(text)>60 or re.search(r'YoY|;',text,re.I):fail('CS08','headline/subject must be <=60, without YoY or semicolon')
+    value=text.removeprefix('[TEST] ')
+    match=re.fullmatch(r'(.+) \((\d{5})\) (.+ (?:fell|rose|unchanged) \d+(?:\.\d+)?% vs last year)',value)
+    if not match or (zip_code and match[2]!=zip_code):fail('CS08','headline/subject pattern or ZIP changed')
+    if names:
+        full=names['name_1']+(' & '+names['name_2'] if names.get('name_2') else '')
+        full_title=full+' ('+match[2]+') '+match[3]
+        expected=full if len(full_title)<=60 else names['name_1']
+        if match[1]!=expected:fail('CS08','use the exact stored full name, falling back to name_1 only above 60 characters')
+    validate_public_text(value,'headline/subject')
+
+
 def validate_contract(contract):
     """Validate measured render/browser evidence; missing checks fail closed."""
     if set(contract.get('files',{})) != set(FILES):fail('CS14','exact eleven assets required')
+    customer=contract.get('customerFacingText',{})
+    if set(customer)!=set(FILES):fail('CS13','rendered customer text required for all eleven assets')
+    for asset,text in customer.items():validate_public_text(text,asset)
     reports=contract.get('reports',{})
     if set(reports) != {'90004','93536'}:fail('CS13','both review ZIPs required')
     for z,r in reports.items():
@@ -42,6 +63,8 @@ def validate_contract(contract):
         audits=r.get('slideAudit',[])
         if len(audits)<5 or any(a.get('readsAllNumbers') is not False or a.get('validNumbers') is not True for a in audits):fail('CS07','slide recitation or factual validation failed '+z)
         if len(r.get('subject',''))>60 or len(r.get('headline',''))>60:fail('CS08','literal headline/subject limit '+z)
+        for value in (r.get('headline',''),r.get('subject','')):validate_headline(value,z,r.get('neighborhoodNames'))
+        for value in texts+r.get('youtubeDescriptions',[])+r.get('youtubeTitles',[]):validate_public_text(value,z)
         if len(r.get('youtubeTitles',[]))!=2 or any(len(t)>100 for t in r['youtubeTitles']):fail('CS11','literal YouTube title limit '+z)
         if len(r.get('youtubeDescriptions',[]))!=2:fail('CS11','both descriptions required '+z)
         for description in r['youtubeDescriptions']:
@@ -51,6 +74,11 @@ def validate_contract(contract):
     layouts=contract.get('browser',[])
     if len(layouts)<12:fail('CS13','six HTML assets at desktop and mobile widths required')
     for result in layouts:
+        validate_public_text(result.get('customerText',''),result.get('file','HTML'))
+        for value in result.get('headlines',[]):validate_headline(value)
+        if result.get('embedReport'):
+            validate_public_text(result['embedReport'].get('customerText',''),'actual embed report')
+            validate_headline(result['embedReport'].get('heading',''))
         if result.get('whiteCards')!=1 or result.get('boxedSections')!=0 or not result.get('grayBackground'):fail('CS10','one white card on gray required: '+result.get('file','unknown'))
         if result.get('fixedSignup') or result.get('stickySignup') or result.get('signupScrollsAway') is False:fail('CS10','signup must scroll normally: '+result.get('file','unknown'))
         if result.get('overflow') or result.get('brokenImages'):fail('CS10','broken/overflowing layout: '+result.get('file','unknown'))
