@@ -1,0 +1,35 @@
+{
+  "text": "The median sale price is now $520K, down 6% from a year ago and up 3.9% from five years ago. For buyers, that makes budgets easier to test against recently completed sales.",
+  "kind": "long_form",
+  "voice": "Ashley",
+  "config": {
+    "model": "inworld-tts-2-flash",
+    "gender_source": "agent.voicePreference",
+    "default_gender": "female",
+    "selected_voices": {
+      "female": "Ashley",
+      "male": "Alex"
+    },
+    "candidate_voices": {
+      "female": [
+        "Ashley"
+      ],
+      "male": [
+        "Alex"
+      ]
+    },
+    "styles": {
+      "shorts": "Normal conversational speed; native Inworld delivery, speakingRate 1.0.",
+      "long_form": "Normal conversational speed; native Inworld delivery, speakingRate 1.0."
+    },
+    "sample": {
+      "zip": "93536",
+      "month": "2026-10",
+      "duration_seconds": 10,
+      "transcript_file": "../../scripts/voice_sample_93536.txt"
+    },
+    "speaking_rate": 1.0
+  },
+  "durationSeconds": 14.38,
+  "sha256": "5e05d6978cc36472e7d3c116b774d45a73a86dcb46838e5b39a794dcedc32648"
+}

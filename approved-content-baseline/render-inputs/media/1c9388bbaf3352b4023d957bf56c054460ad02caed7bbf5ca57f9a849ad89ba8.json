@@ -1,0 +1,35 @@
+{
+  "text": "Buyers can use recent completed sales to set realistic budgets, while sellers should price against final sale evidence rather than optimistic asking prices. Are you a real estate agent in Los Angeles County? Claim this county's market reports at agentsautomated.com.",
+  "kind": "long_form",
+  "voice": "Ashley",
+  "config": {
+    "model": "inworld-tts-2-flash",
+    "gender_source": "agent.voicePreference",
+    "default_gender": "female",
+    "selected_voices": {
+      "female": "Ashley",
+      "male": "Alex"
+    },
+    "candidate_voices": {
+      "female": [
+        "Ashley"
+      ],
+      "male": [
+        "Alex"
+      ]
+    },
+    "styles": {
+      "shorts": "Normal conversational speed; native Inworld delivery, speakingRate 1.0.",
+      "long_form": "Normal conversational speed; native Inworld delivery, speakingRate 1.0."
+    },
+    "sample": {
+      "zip": "93536",
+      "month": "2026-10",
+      "duration_seconds": 10,
+      "transcript_file": "../../scripts/voice_sample_93536.txt"
+    },
+    "speaking_rate": 1.0
+  },
+  "durationSeconds": 16.6,
+  "sha256": "25176058c26a1cbfb0fb143f645d47225aae79dda02284f47daadabf4d3a90c4"
+}

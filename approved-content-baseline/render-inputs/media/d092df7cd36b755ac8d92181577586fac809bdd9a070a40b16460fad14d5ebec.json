@@ -1,0 +1,35 @@
+{
+  "text": "Los Angeles County broke ground October 3 on a reimagined Charles White Park in Altadena, with an inclusive playground designed by Disney Imagineers, a splash pad, lighted pickleball courts, a new recreation center, native shade trees, accessible walkways, a demonstration garden, and public art across the five-acre park.",
+  "kind": "long_form",
+  "voice": "Ashley",
+  "config": {
+    "model": "inworld-tts-2-flash",
+    "gender_source": "agent.voicePreference",
+    "default_gender": "female",
+    "selected_voices": {
+      "female": "Ashley",
+      "male": "Alex"
+    },
+    "candidate_voices": {
+      "female": [
+        "Ashley"
+      ],
+      "male": [
+        "Alex"
+      ]
+    },
+    "styles": {
+      "shorts": "Normal conversational speed; native Inworld delivery, speakingRate 1.0.",
+      "long_form": "Normal conversational speed; native Inworld delivery, speakingRate 1.0."
+    },
+    "sample": {
+      "zip": "93536",
+      "month": "2026-10",
+      "duration_seconds": 10,
+      "transcript_file": "../../scripts/voice_sample_93536.txt"
+    },
+    "speaking_rate": 1.0
+  },
+  "durationSeconds": 19.85,
+  "sha256": "3ee82c1b25469d771029e5bc7e5d4fa80d80a9f0b6b1cb423d3e3cba5d6508a5"
+}

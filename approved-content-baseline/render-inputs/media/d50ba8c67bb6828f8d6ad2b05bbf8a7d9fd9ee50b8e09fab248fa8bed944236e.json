@@ -1,0 +1,35 @@
+{
+  "text": "There are 492 homes available now, down 9.9% from a year ago and down 25.1% from five years ago. Buyers have a smaller selection to choose from, so comparing options quickly matters.",
+  "kind": "long_form",
+  "voice": "Ashley",
+  "config": {
+    "model": "inworld-tts-2-flash",
+    "gender_source": "agent.voicePreference",
+    "default_gender": "female",
+    "selected_voices": {
+      "female": "Ashley",
+      "male": "Alex"
+    },
+    "candidate_voices": {
+      "female": [
+        "Ashley"
+      ],
+      "male": [
+        "Alex"
+      ]
+    },
+    "styles": {
+      "shorts": "Normal conversational speed; native Inworld delivery, speakingRate 1.0.",
+      "long_form": "Normal conversational speed; native Inworld delivery, speakingRate 1.0."
+    },
+    "sample": {
+      "zip": "93536",
+      "month": "2026-10",
+      "duration_seconds": 10,
+      "transcript_file": "../../scripts/voice_sample_93536.txt"
+    },
+    "speaking_rate": 1.0
+  },
+  "durationSeconds": 14.11,
+  "sha256": "027b416962d4c7b061a33cd18c0aa01bfd5275ba7fb3f6974cbacaf54010a869"
+}

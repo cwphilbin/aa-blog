@@ -1,0 +1,35 @@
+{
+  "text": "Call colby test test at (916) 212-8640.",
+  "kind": "shorts",
+  "voice": "Ashley",
+  "config": {
+    "model": "inworld-tts-2-flash",
+    "gender_source": "agent.voicePreference",
+    "default_gender": "female",
+    "selected_voices": {
+      "female": "Ashley",
+      "male": "Alex"
+    },
+    "candidate_voices": {
+      "female": [
+        "Ashley"
+      ],
+      "male": [
+        "Alex"
+      ]
+    },
+    "styles": {
+      "shorts": "Normal conversational speed; native Inworld delivery, speakingRate 1.0.",
+      "long_form": "Normal conversational speed; native Inworld delivery, speakingRate 1.0."
+    },
+    "sample": {
+      "zip": "93536",
+      "month": "2026-10",
+      "duration_seconds": 10,
+      "transcript_file": "../../scripts/voice_sample_93536.txt"
+    },
+    "speaking_rate": 1.0
+  },
+  "durationSeconds": 5.25,
+  "sha256": "b28bb08e8c87ffa1f9ccb64385a25b36e85d8760a10539fdd47d4e4b739e520a"
+}

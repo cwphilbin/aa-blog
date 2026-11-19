@@ -1,0 +1,15 @@
+{
+  "templateId": "c1677b231ff72a9c",
+  "version": "0",
+  "bodySha256": "6e1887fee5f2be10a77981b3acdb98621feae6686d86bd5b8c86dcee2eb5776d",
+  "createdByThisTask": true,
+  "privateScopeVerified": true,
+  "latestRestored": false,
+  "sourceCommits": {
+    "aa-video-pipeline": "29cfe202d67de5e4e1c3c34644c253d3556ee808",
+    "re-data": "a293b05a6f0566d0de3060aebe01bb65d84ea4d6",
+    "aa-blog": "8fd1fa6b1dabaaaa721680fe66a6155556c4d5e2",
+    "customer_housing_analysis": "6e70d38ea1d74e105fa82160cbe132746f833679"
+  },
+  "beforeBodySha256": "40d51d50c061c97fd665c557ffd9a980b5b7d987df61dfab4cff921a06349ef9"
+}
