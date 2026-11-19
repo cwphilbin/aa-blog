@@ -80,7 +80,7 @@ def decoded_media(path, ffmpeg=None):
 def normalized_embed(text):
     """Ignore only esbuild module-path comments and their derived app hash."""
     modules=r'(?:report-kit/(?:site-header|render|controller)|neighborhoods|money|app)\.js'
-    text=re.sub(r'  // [^\\\r\n]*aa-blog/public/embed/'+modules+r'(?=\\n|\n)',
+    text=re.sub(r'  // (?:[^\\\r\n]*aa-blog/)?public/embed/'+modules+r'(?=\\n|\n)',
                 '  // <generated bundle path>',text)
     text=re.sub(r'(?<=data-embed-app-sha=")[a-f0-9]{64}(?=")','<derived app hash>',text)
     return s3_references(text.encode('utf-8')).decode('utf-8')
