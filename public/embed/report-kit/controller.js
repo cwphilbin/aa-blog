@@ -1,9 +1,10 @@
+import {mountSiteHeader} from './site-header.js';
 import {renderReport,renderCollection,signup,esc,monthOf} from './render.js';
 export function stateFromHash(hash=''){const p=new URLSearchParams(hash.replace(/^#/,''));return {...(p.get('county')?{county:p.get('county').slice(0,120)}:{}),view:p.get('view')==='report'?'report':'collection',zip:/^\d{5}$/.test(p.get('zip')||'')?p.get('zip'):'',post:p.get('post')||'',zips:[...new Set((p.get('zips')||'').split(',').filter(v=>/^\d{5}$/.test(v)))],search:(p.get('q')||'').slice(0,80),open:p.has('open')?p.get('open').split(',').filter(v=>/^\d{4}-\d{2}$/.test(v)):null};}
 export function hashFor(s){const p=new URLSearchParams();if(s.county)p.set('county',s.county);if(s.view==='report'){p.set('view','report');p.set('zip',s.zip);p.set('post',s.post);}if(s.zips.length)p.set('zips',s.zips.join(','));if(s.search)p.set('q',s.search);if(s.open!==null)p.set('open',s.open.join(','));return p.toString();}
 export function searchMarkets(markets,query){const tokens=query.toLowerCase().trim().split(/[\s,]+/).filter(Boolean);return markets.filter(m=>tokens.every(t=>`${m.zip} ${m.name} ${(m.places||[]).join(' ')}`.toLowerCase().includes(t))).slice(0,60);}
 async function mockPost(request){if(request.method!=='POST')return new Response('{}',{status:405});const body=await request.json();window.dispatchEvent(new CustomEvent('aa:mock-subscribe',{detail:{method:request.method,body}}));return new Response(JSON.stringify({ok:true}),{headers:{'Content-Type':'application/json'}});}
-export function initSurface(root,data){let state=stateFromHash(location.hash),active=-1,optionsOpen=false,loading=false;let initial=true;
+export function initSurface(root,data){if(data.embedded)root.setAttribute('data-aa-embedded','');else if(data.page!=='signup')mountSiteHeader();let state=stateFromHash(location.hash),active=-1,optionsOpen=false,loading=false;let initial=true;
   function baseState(){return {...state,view:'collection',zip:'',post:''};}
   function route(next,replace=false){state=next;const hash=hashFor(state);if(replace){history.replaceState(null,'',location.pathname+location.search+(hash?'#'+hash:''));render();notify();}else if(location.hash.slice(1)!==hash){location.hash=hash;}else render();}
   function notify(){if(parent!==window)parent.postMessage({type:'aa-state',hash:location.hash.slice(1)},data.parentOrigin==='null'?'*':data.parentOrigin||'*');}
@@ -15,7 +16,7 @@ export function initSurface(root,data){let state=stateFromHash(location.hash),ac
     }else root.innerHTML=renderCollection(data,state);
     wire();measureSignup();if(focus){root.querySelector('#aa-search')?.focus();openOptions();}resize();}
   let signupObserver;function measureSignup(){const bar=root.querySelector('.aa-signup');if(!bar)return;signupObserver?.disconnect();signupObserver=new ResizeObserver(()=>document.documentElement.style.setProperty('--aa-signup-height',Math.ceil(bar.getBoundingClientRect().height)+'px'));signupObserver.observe(bar);}
-  function resize(){if(parent!==window)parent.postMessage({type:'aa-height',height:Math.ceil(root.getBoundingClientRect().height)},data.parentOrigin==='null'?'*':data.parentOrigin||'*');}
+  function resize(){if(parent!==window)parent.postMessage({type:'aa-height',height:Math.ceil(document.documentElement.scrollHeight)},data.parentOrigin==='null'?'*':data.parentOrigin||'*');}
   new ResizeObserver(resize).observe(root);
   window.addEventListener('hashchange',()=>{if(data.page==='signup')return;state=stateFromHash(location.hash);render();notify();});
   window.addEventListener('message',e=>{if(e.source===parent&&e.data?.type==='aa-viewport-offset'&&data.parentOrigin&&e.origin===data.parentOrigin&&Number.isFinite(e.data.top)){document.documentElement.style.setProperty('--aa-embed-top',Math.max(0,e.data.top)+'px');return;}if(e.source!==parent||e.data?.type!=='aa-navigate'||typeof e.data.hash!=='string'||e.data.hash.length>4000)return;if(data.parentOrigin&&e.origin!==data.parentOrigin)return;if(location.hash.slice(1)!==e.data.hash)location.hash=e.data.hash;});

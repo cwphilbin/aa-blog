@@ -1,0 +1,178 @@
+{
+  "zipCode": "93536",
+  "cityName": "",
+  "countyName": "Los Angeles",
+  "month": "2026-10",
+  "area": "Lancaster & Quartz Hill (93536)",
+  "territoryStatus": "taken",
+  "nativeCharts": [
+    {
+      "role": "active_listings",
+      "months": [
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct"
+      ],
+      "zipValues": [
+        529,
+        561,
+        536,
+        538,
+        513,
+        492
+      ],
+      "countyValues": [
+        23550.666666666668,
+        24308,
+        24767,
+        24947.666666666668,
+        24789.333333333332,
+        24520.333333333332
+      ],
+      "zipLabel": "Lancaster & Quartz Hill (93536)",
+      "countyLabel": "Los Angeles"
+    },
+    {
+      "role": "median_sales_price",
+      "months": [
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct"
+      ],
+      "zipValues": [
+        535500,
+        545000,
+        547250,
+        540000,
+        533000,
+        519734
+      ],
+      "countyValues": [
+        927666.6666666666,
+        940000,
+        936666.6666666666,
+        931666.6666666666,
+        920000,
+        920383.6666666666
+      ],
+      "zipLabel": "Lancaster & Quartz Hill (93536)",
+      "countyLabel": "Los Angeles"
+    },
+    {
+      "role": "days_on_market",
+      "months": [
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct"
+      ],
+      "zipValues": [
+        45,
+        35,
+        35,
+        37,
+        47,
+        54
+      ],
+      "countyValues": [
+        42,
+        42,
+        44,
+        46.666666666666664,
+        49.333333333333336,
+        51.666666666666664
+      ],
+      "zipLabel": "Lancaster & Quartz Hill (93536)",
+      "countyLabel": "Los Angeles"
+    }
+  ],
+  "stats": {
+    "medianPrice": 519734.0,
+    "medianPriceChange": -6.015551537070524,
+    "activeListings": 492.0,
+    "activeListingsChange": -9.89010989010989,
+    "daysOnMarket": 54.0,
+    "daysOnMarketChange": -5.2631578947368425,
+    "soldHomes": 186.0,
+    "soldHomesChange": -14.285714285714286
+  },
+  "shortsHookMetric": {
+    "value": "9.9%",
+    "label": "Listings down",
+    "context": "Compared with this time last year"
+  },
+  "shortsSegments": [
+    {
+      "id": "hook",
+      "text": "Lancaster and Quartz Hill, 93536. Listings fell 9.9% from last year.",
+      "durationSeconds": 7.62,
+      "ttsModel": "inworld-tts-2-flash",
+      "ttsVoice": "Ashley",
+      "ttsStyle": "shorts",
+      "playbackRate": 1,
+      "audioUrl": "media://17d1e11020d8fec0a973e3bfa1653d2bcc1bd350f4d6c9bfce1d006415259653.wav"
+    },
+    {
+      "id": "context",
+      "text": "Budget around the $520K median, down 6%.",
+      "durationSeconds": 4.43,
+      "ttsModel": "inworld-tts-2-flash",
+      "ttsVoice": "Ashley",
+      "ttsStyle": "shorts",
+      "playbackRate": 1,
+      "audioUrl": "media://9534ef49b0c3d73dd91cef6d813e85fc973bdfd88ff6325680ede399f6ee8a9e.wav"
+    },
+    {
+      "id": "shift",
+      "text": "Compare 492 available homes.",
+      "durationSeconds": 3.18,
+      "ttsModel": "inworld-tts-2-flash",
+      "ttsVoice": "Ashley",
+      "ttsStyle": "shorts",
+      "playbackRate": 1,
+      "audioUrl": "media://f65d87e8622ca95d3f85bdc682910e8af366d489cd1f7579f616db1315bdea53.wav"
+    },
+    {
+      "id": "proof",
+      "text": "Plan around a median 54 days, down 5.3%.",
+      "durationSeconds": 4.63,
+      "ttsModel": "inworld-tts-2-flash",
+      "ttsVoice": "Ashley",
+      "ttsStyle": "shorts",
+      "playbackRate": 1,
+      "audioUrl": "media://3bc4b26f96410b9f55a96e803a942a29af3795d047dba72b36dfd8517ee03863.wav"
+    },
+    {
+      "id": "cta",
+      "text": "Call colby test test at (916) 212-8640.",
+      "durationSeconds": 5.25,
+      "ttsModel": "inworld-tts-2-flash",
+      "ttsVoice": "Ashley",
+      "ttsStyle": "shorts",
+      "playbackRate": 1,
+      "audioUrl": "media://a16836436a74f5a0a2bb4c60d5693aef3e41a94f9311bd027a124c73104ef43e.wav"
+    }
+  ],
+  "agent": {
+    "name": "colby test test",
+    "brokerage": "Test Realtor Group",
+    "photoUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=512&h=512&fit=crop&crop=faces",
+    "phone": "(916) 212-8640",
+    "email": "cwphilbin@gmail.com",
+    "cta_type": "Call",
+    "cta_label": "Call colby test test",
+    "cta_value": "9162128640",
+    "headshotUrl": "media://agent-93536.jpg",
+    "logoUrl": "",
+    "primaryColor": "#001f3f",
+    "accentColor": "#2E5395"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "layout": "native-scenes-v1",
+  "segments": [
+    {
+      "id": "hook",
+      "text": "Lancaster and Quartz Hill, 93536. Listings fell 9.9% from last year."
+    },
+    {
+      "id": "context",
+      "text": "Budget around the $520K median, down 6%."
+    },
+    {
+      "id": "shift",
+      "text": "Compare 492 available homes."
+    },
+    {
+      "id": "proof",
+      "text": "Plan around a median 54 days, down 5.3%."
+    },
+    {
+      "id": "cta",
+      "text": "Call colby test test at (916) 212-8640."
+    }
+  ],
+  "stats": {
+    "medianPrice": 519734.0,
+    "medianPriceChange": -6.015551537070524,
+    "activeListings": 492.0,
+    "activeListingsChange": -9.89010989010989,
+    "daysOnMarket": 54.0,
+    "daysOnMarketChange": -5.2631578947368425,
+    "soldHomes": 186.0,
+    "soldHomesChange": -14.285714285714286
+  },
+  "hookMetric": {
+    "value": "9.9%",
+    "label": "Listings down",
+    "context": "Compared with this time last year"
+  },
+  "area": "Lancaster & Quartz Hill (93536)",
+  "maxDurationSeconds": 30,
+  "targetDurationSeconds": 24,
+  "regenerationAttempt": 0
+}

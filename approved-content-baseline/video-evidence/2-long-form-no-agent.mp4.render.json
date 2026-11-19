@@ -1,0 +1,10 @@
+{
+  "identity": "24466f7ba05fbacfa8800713cd9162bb54b6304eedb9d19dd616c4251d2c9d0b",
+  "sha256": "5ebc062ad352b8b214aa9cba231ae7e72f00faa021e4f922dd6600a23e7a9d91",
+  "composition": "ZipMarketReport",
+  "width": 1920,
+  "height": 1080,
+  "durationInFrames": 3914,
+  "fps": 30,
+  "nativeSceneText": []
+}

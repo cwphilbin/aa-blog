@@ -1,0 +1,165 @@
+{
+  "zipCode": "90004",
+  "cityName": "",
+  "countyName": "Los Angeles",
+  "month": "2026-10",
+  "area": "Hancock Park & Larchmont (90004)",
+  "territoryStatus": "open",
+  "nativeCharts": [
+    {
+      "role": "active_listings",
+      "months": [
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct"
+      ],
+      "zipValues": [
+        138,
+        149,
+        171,
+        166,
+        159,
+        165
+      ],
+      "countyValues": [
+        23550.666666666668,
+        24308,
+        24767,
+        24947.666666666668,
+        24789.333333333332,
+        24520.333333333332
+      ],
+      "zipLabel": "Hancock Park & Larchmont (90004)",
+      "countyLabel": "Los Angeles"
+    },
+    {
+      "role": "median_sales_price",
+      "months": [
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct"
+      ],
+      "zipValues": [
+        1404000,
+        1750000,
+        1746000,
+        1655000,
+        1280000,
+        1279344
+      ],
+      "countyValues": [
+        927666.6666666666,
+        940000,
+        936666.6666666666,
+        931666.6666666666,
+        920000,
+        920383.6666666666
+      ],
+      "zipLabel": "Hancock Park & Larchmont (90004)",
+      "countyLabel": "Los Angeles"
+    },
+    {
+      "role": "days_on_market",
+      "months": [
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct"
+      ],
+      "zipValues": [
+        66,
+        55,
+        68,
+        57,
+        64,
+        60
+      ],
+      "countyValues": [
+        42,
+        42,
+        44,
+        46.666666666666664,
+        49.333333333333336,
+        51.666666666666664
+      ],
+      "zipLabel": "Hancock Park & Larchmont (90004)",
+      "countyLabel": "Los Angeles"
+    }
+  ],
+  "stats": {
+    "medianPrice": 1279344.0,
+    "medianPriceChange": -26.262593659942365,
+    "activeListings": 165.0,
+    "activeListingsChange": 1.8518518518518519,
+    "daysOnMarket": 60.0,
+    "daysOnMarketChange": -11.764705882352942,
+    "soldHomes": 36.0,
+    "soldHomesChange": -26.53061224489796
+  },
+  "shortsHookMetric": {
+    "value": "1.9%",
+    "label": "Listings up",
+    "context": "Compared with this time last year"
+  },
+  "shortsSegments": [
+    {
+      "id": "hook",
+      "text": "Hancock Park and Larchmont, 90004. Listings rose 1.9% from last year.",
+      "durationSeconds": 7.86,
+      "ttsModel": "inworld-tts-2-flash",
+      "ttsVoice": "Ashley",
+      "ttsStyle": "shorts",
+      "playbackRate": 1,
+      "audioUrl": "media://8d47ab0834ed280d320a0b414279aa4a4154b336f5ae348453f23137277c8ba6.wav"
+    },
+    {
+      "id": "context",
+      "text": "Budget around the $1.28M median, down 26.3%.",
+      "durationSeconds": 6.36,
+      "ttsModel": "inworld-tts-2-flash",
+      "ttsVoice": "Ashley",
+      "ttsStyle": "shorts",
+      "playbackRate": 1,
+      "audioUrl": "media://e9e3588221f68da194290befda740823f0756ffaa1c5723cd37aa41d4968eaf0.wav"
+    },
+    {
+      "id": "shift",
+      "text": "Compare 165 available homes.",
+      "durationSeconds": 3.17,
+      "ttsModel": "inworld-tts-2-flash",
+      "ttsVoice": "Ashley",
+      "ttsStyle": "shorts",
+      "playbackRate": 1,
+      "audioUrl": "media://5bd24ad3a915b3f225d290c9577f210f5e2446a80cc880bd764ffb71e4d71b9b.wav"
+    },
+    {
+      "id": "proof",
+      "text": "Plan around a median 60 days, down 11.8%.",
+      "durationSeconds": 4.71,
+      "ttsModel": "inworld-tts-2-flash",
+      "ttsVoice": "Ashley",
+      "ttsStyle": "shorts",
+      "playbackRate": 1,
+      "audioUrl": "media://59959fe082e344104d60161fad323fdc87902d925248d952e501a189bfe70d9b.wav"
+    },
+    {
+      "id": "cta",
+      "text": "Are you a real estate agent in Los Angeles County? Claim this county's market reports at agentsautomated.com.",
+      "durationSeconds": 7.1,
+      "ttsModel": "inworld-tts-2-flash",
+      "ttsVoice": "Ashley",
+      "ttsStyle": "shorts",
+      "playbackRate": 1,
+      "audioUrl": "media://52dd8248904d703ed0ff92ebe62bda93d49badf4567d9bd0b587861ed1be20bf.wav"
+    }
+  ],
+  "agent": null
+}

@@ -1,0 +1,44 @@
+{
+  "layout": "native-scenes-v1",
+  "segments": [
+    {
+      "id": "hook",
+      "text": "Hancock Park and Larchmont, 90004. Listings rose 1.9% from last year."
+    },
+    {
+      "id": "context",
+      "text": "Budget around the $1.28M median, down 26.3%."
+    },
+    {
+      "id": "shift",
+      "text": "Compare 165 available homes."
+    },
+    {
+      "id": "proof",
+      "text": "Plan around a median 60 days, down 11.8%."
+    },
+    {
+      "id": "cta",
+      "text": "Are you a real estate agent in Los Angeles County? Claim this county's market reports at agentsautomated.com."
+    }
+  ],
+  "stats": {
+    "medianPrice": 1279344.0,
+    "medianPriceChange": -26.262593659942365,
+    "activeListings": 165.0,
+    "activeListingsChange": 1.8518518518518519,
+    "daysOnMarket": 60.0,
+    "daysOnMarketChange": -11.764705882352942,
+    "soldHomes": 36.0,
+    "soldHomesChange": -26.53061224489796
+  },
+  "hookMetric": {
+    "value": "1.9%",
+    "label": "Listings up",
+    "context": "Compared with this time last year"
+  },
+  "area": "Hancock Park & Larchmont (90004)",
+  "maxDurationSeconds": 30,
+  "targetDurationSeconds": 24,
+  "regenerationAttempt": 0
+}
