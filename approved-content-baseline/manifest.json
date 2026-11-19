@@ -893,7 +893,7 @@
       "scripts/reconcile_publications.py": "a9c3c43a6080b940e884148056b60908b987d61e84255d1060f9f2466434d9a0",
       "scripts/refresh_public_copy_review.py": "226a53c2bb64e31dc42eaa03c386189290b98eae0f708a1c78fbb267fa051532",
       "scripts/register_deck_payloads.py": "4dcf25478bc6ab6b85d808addb0fe496f71a839834db75e4f2da69af046260ce",
-      "scripts/render_content_review.py": "0f364224323b12dabc4d14bcf90458aff3e967702ab9fbcb570a928d61379a42",
+      "scripts/render_content_review.py": "6d1e9a604a363a8b0fa20d09984dd8a6fe8b403f88c56db3c35c8fede3d6359b",
       "scripts/render_content_videos.cjs": "0b61a2066036211d9b02b440b8da76cc3f74a783c85a6728760bce467bc2c538",
       "scripts/render_review_pdf_pages.py": "39226ec716e30cec3b4503423ed41caa5f06ac0965df378aa909896330894c4c",
       "scripts/render_voice_review.cjs": "3f7f1a06bfe854d1f09971d55b5c9b255a230a1369dbdb39b1bd889331476d82",
@@ -4241,7 +4241,7 @@
   "approvalStatus": "user-approved",
   "approval": {
     "explicitUserApproval": true,
-    "recordedAt": "2026-11-19T04:27:59.601324+00:00",
+    "recordedAt": "2026-11-19T12:49:19.979079+00:00",
     "scope": "User approved FINAL-redfin as baseline; fresh files 5, 6, 10 after identical desktop/mobile screenshots; approved 1fps SSIM >=0.99 and exact audio/scenes/text/props; approved file 9 path-comment/derived-hash exception. No export changes or further rendering.",
     "sourceReviewHashes": [
       {
