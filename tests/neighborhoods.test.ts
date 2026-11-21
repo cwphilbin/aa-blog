@@ -12,7 +12,7 @@ const fixture=JSON.parse(readFileSync(new URL('../review/monthly-reports.json',i
 test('monthly report carries stored names, source-authored title and stable URL slug', () => {
   const raw=structuredClone(fixture.report);
   raw.neighborhoodNames=names;
-  raw.title='Lancaster (93536) home values fell 6% vs last year';
+  raw.title='Lancaster & Quartz Hill (93536) home values fell 6% vs last year';
   raw.hook=raw.title+'.';
   raw.tldr='In Lancaster & Quartz Hill (93536), '+raw.tldr;
   const parsed=parseMonthlyReport(raw,'93536',fixture.sourceKey,true)!;
@@ -23,7 +23,7 @@ test('monthly report carries stored names, source-authored title and stable URL 
   const market={zip:'93536',name:'Lancaster & Quartz Hill',url:'https://agentsautomated.com/market/93536',posts:[post]};
   const content=renderReport({market,post,agent:null});
   assert.match(content,/Lancaster &amp; Quartz Hill \(93536\)/);
-  assert.ok(content.includes(raw.title));
+  assert.ok(content.includes(raw.title.replaceAll('&','&amp;')));
 });
 
 test('subdomain title and metadata use report copy while retaining the canonical URL', () => {

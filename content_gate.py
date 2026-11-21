@@ -78,11 +78,21 @@ def decoded_media(path, ffmpeg=None):
 
 
 def normalized_embed(text):
-    """Ignore only esbuild module-path comments and their derived app hash."""
+    """Ignore build paths/hash and only the approved CS08 60-to-65 validator delta."""
     modules=r'(?:report-kit/(?:site-header|render|controller)|neighborhoods|money|app)\.js'
     text=re.sub(r'  // (?:[^\\\r\n]*aa-blog/)?public/embed/'+modules+r'(?=\\n|\n)',
                 '  // <generated bundle path>',text)
     text=re.sub(r'(?<=data-embed-app-sha=")[a-f0-9]{64}(?=")','<derived app hash>',text)
+    # Explicitly approved CS08 change: the retained embed bundles its client
+    # validator. Compare only these two 65 predicates as their old 60 spelling;
+    # source fingerprints and validate_headline still enforce the new rule.
+    start=text.find('function assertHeadline(value, zip, names) {')
+    end=text.find('CS08: exact stored name/fallback required',start) if start>=0 else -1
+    if 0<=start<end<start+2000:
+        body=text[start:end]
+        body=re.sub(r'(value\.length > )65(?= \|\| /YoY\|;/i\.test\(value\)\))',r'\g<1>60',body)
+        body=re.sub(r'(\.length (?:\\u003c|<)= )65(?= \? full : names\.name_1;)',r'\g<1>60',body)
+        text=text[:start]+body+text[end:]
     return s3_references(text.encode('utf-8')).decode('utf-8')
 
 
@@ -198,15 +208,15 @@ def validate_reader_cta(text, asset):
 
 
 def validate_headline(text, zip_code=None, names=None):
-    if not isinstance(text,str) or len(text)>60 or re.search(r'YoY|;',text,re.I):fail('CS08','headline/subject must be <=60, without YoY or semicolon')
+    if not isinstance(text,str) or len(text)>65 or re.search(r'YoY|;',text,re.I):fail('CS08','headline/subject must be <=65, without YoY or semicolon')
     value=text.removeprefix('[TEST] ')
     match=re.fullmatch(r'(.+) \((\d{5})\) (.+ (?:fell|rose|unchanged) \d+(?:\.\d+)?% vs last year)',value)
     if not match or (zip_code and match[2]!=zip_code):fail('CS08','headline/subject pattern or ZIP changed')
     if names:
         full=names['name_1']+(' & '+names['name_2'] if names.get('name_2') else '')
         full_title=full+' ('+match[2]+') '+match[3]
-        expected=full if len(full_title)<=60 else names['name_1']
-        if match[1]!=expected:fail('CS08','use the exact stored full name, falling back to name_1 only above 60 characters')
+        expected=full if len(full_title)<=65 else names['name_1']
+        if match[1]!=expected:fail('CS08','use the exact stored full name, falling back to name_1 only above 65 characters')
     validate_public_text(value,'headline/subject')
 
 
@@ -227,7 +237,7 @@ def validate_contract(contract):
         if r.get('shortDimensions') != [1080,1920]:fail('CS05','native dimensions changed '+z)
         if r.get('voice') not in ('Alex','Ashley') or r.get('ttsModel')!='inworld-tts-2-flash' or r.get('playbackRates')!=[1]:fail('CS03','voice/model/pace changed '+z)
         if r.get('forbiddenNarration') or r.get('readsAllSlideNumbers') or r.get('factualAudit')!='PASS':fail('CS01/CS07','narration violates the factual/natural contract '+z)
-        if not 0<int(r.get('headlineCharacters',0))<=60 or not 0<int(r.get('subjectCharacters',0))<=60:fail('CS08','headline/subject limit '+z)
+        if not 0<int(r.get('headlineCharacters',0))<=65 or not 0<int(r.get('subjectCharacters',0))<=65:fail('CS08','headline/subject limit '+z)
         if not 0<int(r.get('openingWords',0))<=25 or r.get('openingSentences')!=1:fail('CS08','opening length/shape '+z)
         titles=r.get('youtubeTitleCharacters',[])
         if len(titles)!=2 or any(not 0<n<=100 for n in titles):fail('CS11','YouTube title limit '+z)
@@ -238,7 +248,7 @@ def validate_contract(contract):
         if any(bad.search(t) for t in texts):fail('CS07','prohibited narration '+z)
         audits=r.get('slideAudit',[])
         if len(audits)<5 or any(a.get('readsAllNumbers') is not False or a.get('validNumbers') is not True for a in audits):fail('CS07','slide recitation or factual validation failed '+z)
-        if len(r.get('subject',''))>60 or len(r.get('headline',''))>60:fail('CS08','literal headline/subject limit '+z)
+        if len(r.get('subject',''))>65 or len(r.get('headline',''))>65:fail('CS08','literal headline/subject limit '+z)
         for value in (r.get('headline',''),r.get('subject','')):validate_headline(value,z,r.get('neighborhoodNames'))
         for value in texts+r.get('youtubeDescriptions',[])+r.get('youtubeTitles',[]):validate_public_text(value,z)
         if len(r.get('youtubeTitles',[]))!=2 or any(len(t)>100 for t in r['youtubeTitles']):fail('CS11','literal YouTube title limit '+z)
@@ -327,7 +337,7 @@ def verify_baseline(repo, *, repos=None, customer_repo=None, deps=None, chrome=N
             for name in FILES if name.endswith('.mp4')}
         compare_baseline(approved,current)
     if input_hashes(inputs)!=approved['inputFiles']:fail('CS14','renderer mutated approved inputs')
-    print('PASS approved baseline: exact audio/scenes/text/props; every 1fps SSIM >=0.99; six text files byte-identical; embed exact except generated paths/hash; prompts/models unchanged')
+    print('PASS approved baseline: exact audio/scenes/text/props; every 1fps SSIM >=0.99; six text files byte-identical; embed exact except generated paths/hash and approved CS08 limit predicates; prompts/models unchanged')
     return current
 
 

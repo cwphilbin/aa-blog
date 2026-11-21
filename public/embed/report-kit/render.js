@@ -5,11 +5,11 @@ export function safeUrl(value=''){try{const s=String(value);if(/[\\\u0000-\u001f
 const image=(url,alt,cls='',lazy=true)=>safeUrl(url)?`<img class="${cls}" src="${esc(safeUrl(url))}" alt="${esc(alt)}" ${lazy?'loading="lazy"':''}>`:'';
 export function assertCustomerText(...values){if(values.flat(Infinity).some(v=>/Redfin|historical/i.test(String(v||''))))throw Error('CS04/CS07: prohibited customer-facing wording');}
 export function assertHeadline(value,zip,names){
- if(typeof value!=='string'||value.length>60||/YoY|;/i.test(value))throw Error('CS08: invalid headline limit or wording');
+ if(typeof value!=='string'||value.length>65||/YoY|;/i.test(value))throw Error('CS08: invalid headline limit or wording');
  const match=/^(.+) \((\d{5})\) (.+ (?:fell|rose|unchanged) \d+(?:\.\d+)?% vs last year)$/.exec(value);
  if(!match||match[2]!==zip)throw Error('CS08: invalid headline pattern or ZIP');
  const full=names.name_1+(names.name_2?' & '+names.name_2:'');
- const expected=(full+' ('+zip+') '+match[3]).length<=60?full:names.name_1;
+ const expected=(full+' ('+zip+') '+match[3]).length<=65?full:names.name_1;
  if(match[1]!==expected)throw Error('CS08: exact stored name/fallback required');
  assertCustomerText(value);
 }
