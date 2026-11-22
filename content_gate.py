@@ -78,18 +78,26 @@ def decoded_media(path, ffmpeg=None):
 
 
 def normalized_embed(text):
-    """Ignore build paths/hash and only the approved CS08 60-to-65 validator delta."""
+    """Ignore build paths/hash and only explicitly approved CS08 validator deltas."""
     modules=r'(?:report-kit/(?:site-header|render|controller)|neighborhoods|money|app)\.js'
     text=re.sub(r'  // (?:[^\\\r\n]*aa-blog/)?public/embed/'+modules+r'(?=\\n|\n)',
                 '  // <generated bundle path>',text)
     text=re.sub(r'(?<=data-embed-app-sha=")[a-f0-9]{64}(?=")','<derived app hash>',text)
-    # Explicitly approved CS08 change: the retained embed bundles its client
-    # validator. Compare only these two 65 predicates as their old 60 spelling;
-    # source fingerprints and validate_headline still enforce the new rule.
+    # The embed bundles its validator. Normalize only the explicitly approved
+    # 65/75 ZIP limits and grouped-percentage grammar to the retained baseline.
+    # Any other ZIP, bound, condition, text, style or script delta still fails.
     start=text.find('function assertHeadline(value, zip, names) {')
     end=text.find('CS08: exact stored name/fallback required',start) if start>=0 else -1
     if 0<=start<end<start+2000:
         body=text[start:end]
+        exception_line='    const limit = ["30313", "30314", "33617", "92648", "98101"].includes(zip) ? 75 : 65;\n'
+        grouped=r'(?:\d{1,3}(?:,\d{3})+|\d+)'
+        for encode in (lambda value:value,lambda value:json.dumps(value)[1:-1].replace('<',r'\u003c')):
+            line=encode(exception_line)
+            if line in body:
+                body=body.replace(line,'').replace('value.length > limit','value.length > 65')
+                body=body.replace('length <= limit','length <= 65').replace(r'length \u003c= limit',r'length \u003c= 65')
+            body=body.replace(encode(grouped),encode(r'\d+'))
         body=re.sub(r'(value\.length > )65(?= \|\| /YoY\|;/i\.test\(value\)\))',r'\g<1>60',body)
         body=re.sub(r'(\.length (?:\\u003c|<)= )65(?= \? full : names\.name_1;)',r'\g<1>60',body)
         text=text[:start]+body+text[end:]
@@ -207,16 +215,22 @@ def validate_reader_cta(text, asset):
         fail('CS09','removed bottom reader CTA or button: '+asset)
 
 
+def headline_limit(zip_code):
+    return 75 if zip_code in ('30313','30314','33617','92648','98101') else 65
+
+
 def validate_headline(text, zip_code=None, names=None):
-    if not isinstance(text,str) or len(text)>65 or re.search(r'YoY|;',text,re.I):fail('CS08','headline/subject must be <=65, without YoY or semicolon')
+    if not isinstance(text,str):fail('CS08','missing headline/subject')
     value=text.removeprefix('[TEST] ')
-    match=re.fullmatch(r'(.+) \((\d{5})\) (.+ (?:fell|rose|unchanged) \d+(?:\.\d+)?% vs last year)',value)
+    match=re.fullmatch(r'(.+) \((\d{5})\) (.+ (?:fell|rose|unchanged) (?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?% vs last year)',value)
     if not match or (zip_code and match[2]!=zip_code):fail('CS08','headline/subject pattern or ZIP changed')
+    limit=headline_limit(match[2])
+    if len(text)>limit or re.search(r'YoY|;',text,re.I):fail('CS08','headline/subject exceeds ZIP-specific limit or contains YoY or semicolon')
     if names:
         full=names['name_1']+(' & '+names['name_2'] if names.get('name_2') else '')
         full_title=full+' ('+match[2]+') '+match[3]
-        expected=full if len(full_title)<=65 else names['name_1']
-        if match[1]!=expected:fail('CS08','use the exact stored full name, falling back to name_1 only above 65 characters')
+        expected=full if len(full_title)<=limit else names['name_1']
+        if match[1]!=expected:fail('CS08','use the exact stored full name, falling back to name_1 only above this ZIP’s character limit')
     validate_public_text(value,'headline/subject')
 
 
@@ -237,7 +251,7 @@ def validate_contract(contract):
         if r.get('shortDimensions') != [1080,1920]:fail('CS05','native dimensions changed '+z)
         if r.get('voice') not in ('Alex','Ashley') or r.get('ttsModel')!='inworld-tts-2-flash' or r.get('playbackRates')!=[1]:fail('CS03','voice/model/pace changed '+z)
         if r.get('forbiddenNarration') or r.get('readsAllSlideNumbers') or r.get('factualAudit')!='PASS':fail('CS01/CS07','narration violates the factual/natural contract '+z)
-        if not 0<int(r.get('headlineCharacters',0))<=65 or not 0<int(r.get('subjectCharacters',0))<=65:fail('CS08','headline/subject limit '+z)
+        if not 0<int(r.get('headlineCharacters',0))<=headline_limit(z) or not 0<int(r.get('subjectCharacters',0))<=headline_limit(z):fail('CS08','headline/subject limit '+z)
         if not 0<int(r.get('openingWords',0))<=25 or r.get('openingSentences')!=1:fail('CS08','opening length/shape '+z)
         titles=r.get('youtubeTitleCharacters',[])
         if len(titles)!=2 or any(not 0<n<=100 for n in titles):fail('CS11','YouTube title limit '+z)
@@ -248,7 +262,7 @@ def validate_contract(contract):
         if any(bad.search(t) for t in texts):fail('CS07','prohibited narration '+z)
         audits=r.get('slideAudit',[])
         if len(audits)<5 or any(a.get('readsAllNumbers') is not False or a.get('validNumbers') is not True for a in audits):fail('CS07','slide recitation or factual validation failed '+z)
-        if len(r.get('subject',''))>65 or len(r.get('headline',''))>65:fail('CS08','literal headline/subject limit '+z)
+        if len(r.get('subject',''))>headline_limit(z) or len(r.get('headline',''))>headline_limit(z):fail('CS08','literal headline/subject limit '+z)
         for value in (r.get('headline',''),r.get('subject','')):validate_headline(value,z,r.get('neighborhoodNames'))
         for value in texts+r.get('youtubeDescriptions',[])+r.get('youtubeTitles',[]):validate_public_text(value,z)
         if len(r.get('youtubeTitles',[]))!=2 or any(len(t)>100 for t in r['youtubeTitles']):fail('CS11','literal YouTube title limit '+z)
@@ -337,7 +351,7 @@ def verify_baseline(repo, *, repos=None, customer_repo=None, deps=None, chrome=N
             for name in FILES if name.endswith('.mp4')}
         compare_baseline(approved,current)
     if input_hashes(inputs)!=approved['inputFiles']:fail('CS14','renderer mutated approved inputs')
-    print('PASS approved baseline: exact audio/scenes/text/props; every 1fps SSIM >=0.99; six text files byte-identical; embed exact except generated paths/hash and approved CS08 limit predicates; prompts/models unchanged')
+    print('PASS approved baseline: exact audio/scenes/text/props; every 1fps SSIM >=0.99; six text files byte-identical; embed exact except generated paths/hash and approved CS08 validator deltas; prompts/models unchanged')
     return current
 
 

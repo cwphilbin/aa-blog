@@ -162,13 +162,14 @@ only what the prompt asks; everything else stays exactly the same.
   `<full neighborhood name> (<ZIP>) <stat> <direction> <X>% vs last year`, e.g.
   `Hancock Park (90004) home values fell 26.3% vs last year`. Select the striking
   verified statistic using the existing code salience rule; do not change data.
-  If its headline still exceeds 65 characters after the stored-name fallback,
+  If its headline still exceeds its ZIP’s character limit after the stored-name fallback,
   try the next-strongest available verified statistic in that same order until
   one fits. Preserve the existing stable tie order, format, and precision;
   never invent or abbreviate a name, statistic, or comparison to make it fit.
 - Use the full stored `name_1 & name_2` when name_2 exists, else name_1. Maximum
-  65 characters including spaces and punctuation; only when the full name makes
-  it exceed 65 use name_1 alone. Never drop ZIP or abbreviate a stored name.
+  65 characters including spaces and punctuation, except 30313, 30314, 33617,
+  92648, and 98101 only, whose maximum is 75. Only when the full name exceeds
+  that ZIP’s limit use name_1 alone. Never drop ZIP or abbreviate a stored name.
   No `YoY`, semicolon, advice clause, second statistic, or invented comparison.
   The practical meaning remains in the opening; do not append it to the headline.
 - The opening is one sentence, at most 25 words, grounded in that selected fact
@@ -265,7 +266,7 @@ only what the prompt asks; everything else stays exactly the same.
 - Also block if `Redfin` or `historical` appears in any customer-facing text,
   metadata, narration, PDF slide, or native video scene. Inspect actual rendered
   browser/scene text and PDF text. Block a headline/subject containing `YoY`, a
-  semicolon, more than 65 characters, or a different CS08 pattern/name fallback.
+  semicolon, more than its CS08 ZIP-specific limit, or a different CS08 pattern/name fallback.
 - Inspect measured encoded duration, native composition identity/visual inputs,
   structured numerical validation, actual browser layout/scrolling, metadata,
   and full media decode. Source-string assertions alone do not prove a render.

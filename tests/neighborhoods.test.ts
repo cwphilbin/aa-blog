@@ -42,3 +42,18 @@ test('labels preserve leading-zero ZIPs and do not infer or trust malformed name
   assert.equal(storedNeighborhoodNames({cityName:'unverified'}),undefined);
   assert.throws(()=>storedNeighborhoodNames({neighborhoodNames:{name_1:'Bad\nname',name_2:'',full:'Bad'}}));
 });
+
+test('headline caps are 75 only for the five approved ZIPs and percentages keep valid grouping', async () => {
+  const {assertHeadline}=await import('../public/embed/report-kit/render.js');
+  for(const zip of ['30313','30314','33617','92648','98101','90004','93536','30312']){
+    const limit=['30313','30314','33617','92648','98101'].includes(zip)?75:65;
+    for(const size of [limit,limit+1]){
+      const tail='home sales rose 9% vs last year';
+      const name='A'.repeat(size-` (${zip}) ${tail}`.length);
+      const run=()=>assertHeadline(`${name} (${zip}) ${tail}`,zip,{name_1:name,name_2:'',full:name});
+      if(size===limit)assert.doesNotThrow(run);else assert.throws(run,/CS08/);
+    }
+  }
+  for(const pct of ['1,569.2','1,900','12,345,678.9'])assert.doesNotThrow(()=>assertHeadline(`Speonk (11972) days on market rose ${pct}% vs last year`,'11972',{name_1:'Speonk',name_2:'',full:'Speonk'}));
+  for(const pct of ['1,56.2','19,00','1,,900','+1,900','-1,900'])assert.throws(()=>assertHeadline(`Speonk (11972) days on market rose ${pct}% vs last year`,'11972',{name_1:'Speonk',name_2:'',full:'Speonk'}),/CS08/);
+});
