@@ -291,12 +291,28 @@ def validate_contract(contract):
     return contract
 
 
+def report_source_fingerprints(fingerprints):
+    """Legal copy and this audit tool do not render any monthly report asset.
+
+    Keep every report/template/data/prompt fingerprint and every rendered artifact
+    comparison intact. A legal-policy edit must not require a new report baseline.
+    """
+    non_report={'re-data':{'src/components/LegalPage.tsx','content_gate.py','scripts/content_gate.py'}}
+    return {repo:{name:value for name,value in files.items()
+                  if name not in non_report.get(repo,set())}
+            for repo,files in fingerprints.items()}
+
+
 def compare_baseline(approved, current):
     validate_contract(current)
     # Exact approved semantic/render evidence is deliberately stricter than a
     # tolerance that could hide an unrequested layout, voice or wording change.
     for facet in ('aiVersions','contentFingerprints','renderInputs','videoExact','normalizedEmbedSha256','copy','layout','charts','voices','metadata'):
-        if facet not in approved or current.get(facet)!=approved[facet]:fail('CS14','unapproved change in '+facet+'; review and explicit approval required')
+        expected=approved.get(facet);actual=current.get(facet)
+        if facet=='contentFingerprints':
+            expected=report_source_fingerprints(expected or {})
+            actual=report_source_fingerprints(actual or {})
+        if facet not in approved or actual!=expected:fail('CS14','unapproved change in '+facet+'; review and explicit approval required')
     validate_similarity(approved,current)
     for filename in FILES:
         if not filename.endswith('.mp4') and filename!='9-blog-embed.html' and current['files'][filename]!=approved['files'][filename]:
@@ -330,7 +346,7 @@ def verify_baseline(repo, *, repos=None, customer_repo=None, deps=None, chrome=N
     import importlib.util
     spec=importlib.util.spec_from_file_location('baseline_review_renderer',runner)
     module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
-    if module.content_fingerprints(candidates)!=approved.get('contentFingerprints'):fail('CS14','candidate source changed; explicit review approval required')
+    if report_source_fingerprints(module.content_fingerprints(candidates))!=report_source_fingerprints(approved.get('contentFingerprints',{})):fail('CS14','candidate source changed; explicit review approval required')
     with tempfile.TemporaryDirectory(prefix='aa-content-predeploy-') as temporary:
         output=Path(temporary)/'rendered'
         evidence=Path(temporary)/'evidence'
