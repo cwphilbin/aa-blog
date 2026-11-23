@@ -1,3 +1,4 @@
+import { publicationExcluded } from '../../public/embed/publication-holds.js';
 import { moneyText } from '../../public/embed/money.js';
 import { storedNeighborhoodNames } from '../../public/embed/neighborhoods.js';
 export interface MonthlyReport {
@@ -15,6 +16,7 @@ export function publicUrl(value: unknown): string {
 export function parseMonthlyReport(raw: unknown, zip: string, sourceKey: string, preview=false): MonthlyReport | undefined {
   try {
     const r=raw as any;
+    if(publicationExcluded(zip,r.month))return;
     if(r.schemaVersion!==1||r.sourceType!=='craftmypdf'||r.status!=='ready'||r.zip!==zip||(!preview&&(r.privateArtifacts||r.reviewSetId)))return;
     if(!Array.isArray(r.pages)||!Array.isArray(r.narration)||r.pages.length!==r.narration.length||!r.packageVersion)return;
     const match=/^([A-Za-z]+) (\d{4})$/.exec(r.contentLabel||'');if(!match||!months.includes(match[1]))return;
@@ -33,10 +35,10 @@ export function parseMonthlyReport(raw: unknown, zip: string, sourceKey: string,
       if(beat.role==='local_happenings'&&r.localHappenings){const n=r.localHappenings;if(typeof n.body!=='string'||typeof n.headline!=='string')return;sections.push({title:'Local happenings',headline:moneyText(n.headline),text:moneyText(n.body),sourceUrl:publicUrl(n.sourceUrl)});continue;}
       const imageUrl=publicUrl(p.chartImageUrl||p.imageUrl);
       if(!imageUrl||!imageUrl.startsWith(`https://aa-zip-metrics-prod.s3.us-east-2.amazonaws.com/reports/${r.month}/${zip}/page-`))return;
-      sections.push({title:moneyText(r.chartTakeaways?.[String(beat.pageNumber)]||p.title||'Market figures'),imageUrl,alt:p.title||'Market chart',text:moneyText(beat.text)});
+      sections.push({title:moneyText(r.chartTakeaways?.[String(beat.pageNumber)]||p.title||'Market figures',beat.role==='median_price_per_sqft'),imageUrl,alt:p.title||'Market chart',text:moneyText(beat.text,beat.role==='median_price_per_sqft')});
     }
     if(!sections.length)return;
-    return {source:'GenerateZipScript',sourceKey,packageVersion:r.packageVersion,month,label:r.contentLabel,headline:moneyText(headline),tldr:moneyText(r.tldr||''),...(names?{neighborhoodNames:names}:{}),...(typeof r.so_what==='string'&&r.so_what.trim()?{so_what:r.so_what}:{}),sections,preview};
+    return {source:'GenerateZipScript',sourceKey,packageVersion:r.packageVersion,month,label:r.contentLabel,headline:moneyText(headline),tldr:moneyText(r.tldr||'',r.selectedHeadlineRole==='median_price_per_sqft'),...(names?{neighborhoodNames:names}:{}),...(typeof r.so_what==='string'&&r.so_what.trim()?{so_what:r.so_what}:{}),sections,preview};
   }catch{return;}
 }
 export function reportPost(report: MonthlyReport, videoUrl='') {

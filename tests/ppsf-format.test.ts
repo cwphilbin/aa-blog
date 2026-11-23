@@ -1,0 +1,7 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {moneyText} from '../public/embed/money.js';
+import {parseMonthlyReport,reportPost} from '../src/lib/monthly-report.ts';
+import {renderReport,renderCard} from '../public/embed/report-kit/render.js';
+import {readFileSync} from 'node:fs';
+test('PPSF stays whole dollars with separators and punctuation, ordinary home prices keep units',()=>{assert.equal(moneyText('$1,097, up 23.2%',true),'$1,097, up 23.2%');assert.equal(moneyText('$1.097K, down 2%',true),'$1,097, down 2%');assert.equal(moneyText('$759, up 4%',true),'$759, up 4%');assert.equal(moneyText('$1097.4',true),'$1,097');assert.equal(moneyText('$1.28M and $520K'),'$1.28M and $520K');});
+test('parser and server/embed rendering keep PPSF amounts whole across repeated passes',()=>{const f=JSON.parse(readFileSync(new URL('../review/monthly-reports.json',import.meta.url),'utf8'))[0];const raw=structuredClone(f.report);const beat=raw.narration.find(b=>b.role==='median_price_per_sqft');assert.ok(beat);beat.text='Price per square foot is $1,097, up 23.2% from last year.';const report=parseMonthlyReport(raw,'93536',f.sourceKey,true)!;assert.ok(report.sections.some(s=>s.text===beat.text));const post=reportPost(report),market={zip:'93536',name:'Existing market',posts:[post]};const html=renderReport({market,post});assert.ok(html.includes('$1,097, up 23.2%'));assert.ok(!html.includes('$1.097K'));});

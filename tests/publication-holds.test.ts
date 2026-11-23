@@ -1,0 +1,10 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {publicationExcluded} from '../public/embed/publication-holds.js';
+import {parseMonthlyReport} from '../src/lib/monthly-report.ts';
+import {attachMonthlyReports} from '../src/lib/monthly-reports.ts';
+const held=['11930','34138','34139','34140','34681','37228','43217','90743','92282','92347','93254','93441','95639','95830','98224','94074'];
+const older=['30332','33122','85264','85337','92059','92086','92254','94018','94060','94514','95615'];
+test('exact approved October holds do not suppress another ZIP or month',()=>{for(const z of [...held,...older]){assert.equal(publicationExcluded(z,'2026-10'),true);assert.equal(publicationExcluded(z,'2026-11'),false);}for(const z of ['90004','93536','11569'])assert.equal(publicationExcluded(z,'2026-10'),false);});
+test('held packages are excluded even when a valid older package exists',()=>{const raw=JSON.parse(readFileSync(new URL('../review/monthly-reports.json',import.meta.url),'utf8'))[0].report;for(const zip of [...held,...older]){const copy={...raw,zip,month:'2026-10'};assert.equal(parseMonthlyReport(copy,zip,'reports/2026-10/'+zip+'/narration.json',true),undefined);}});
+test('excluded report retains market, existing legacy URLs and October URL without changing source data',async()=>{const zip='30332',raw={month:'2026-10',zip,title:'retained source'};const text=JSON.stringify(raw),m:any={zip,name:'Existing name',url:'https://agentsautomated.com/market/'+zip,posts:[{slug:'september-2026-market-update',title:'old'}]};const keys=[{Key:'reports/2026-10/'+zip+'/narration.json'}];await attachMonthlyReports([m],{send:async c=>c.input.Prefix?{Contents:keys}:{Body:{transformToString:async()=>text}}} as any);assert.deepEqual(m.posts,[]);assert.deepEqual(m.legacySlugs,['september-2026-market-update','october-2026-market-update']);assert.equal(JSON.stringify(raw),text);});

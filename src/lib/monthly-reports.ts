@@ -1,3 +1,4 @@
+import { publicationExcluded } from '../../public/embed/publication-holds.js';
 import { GetObjectCommand, ListObjectsV2Command, type S3Client } from '@aws-sdk/client-s3';
 import { readFile } from 'node:fs/promises';
 import type { MarketFile } from '../types';
@@ -14,6 +15,14 @@ export async function attachMonthlyReports(markets:MarketFile[],s3:S3Client){
   await mapWithConcurrency(keys,8,async key=>{
     const zip=key.split('/')[2];const result=await s3.send(new GetObjectCommand({Bucket,Key:key}));
     let raw;try{raw=JSON.parse(await result.Body!.transformToString());}catch{console.warn(`[monthly] Malformed narration package for ZIP ${zip}; no fallback.`);return;}
+    if(publicationExcluded(zip,key.split('/')[1])){
+      let market=markets.find(m=>m.zip===zip);
+      if(!market){market={zip,name:`ZIP ${zip}`,url:`https://agentsautomated.com/market/${zip}`,territoryCode:'',updatedAt:key.split('/')[1]+'-01',agent:{} as MarketFile['agent'],posts:[],legacySlugs:[]};markets.push(market);}
+      const [year,month]=key.split('/')[1].split('-');
+      const slug=new Date(Date.UTC(Number(year),Number(month)-1,1)).toLocaleString('en-US',{month:'long',timeZone:'UTC'}).toLowerCase()+'-'+year+'-market-update';
+      market.legacySlugs=[...new Set([...(market.legacySlugs||[]),slug])];
+      return;
+    }
     const report=parseMonthlyReport(raw,zip,key);if(!report){console.warn(`[monthly] Unusable narration package for ZIP ${zip}; no fallback.`);return;}
     let market=markets.find(m=>m.zip===zip);
     if(!market){market={zip,name:`ZIP ${zip}`,url:`https://agentsautomated.com/market/${zip}`,territoryCode:'',updatedAt:report.month+'-01',agent:{} as MarketFile['agent'],posts:[],legacySlugs:[]};markets.push(market);}

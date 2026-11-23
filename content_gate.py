@@ -78,7 +78,7 @@ def decoded_media(path, ffmpeg=None):
 
 
 def normalized_embed(text):
-    """Ignore build paths/hash and only explicitly approved CS08 validator deltas."""
+    """Ignore build paths/hash and exact approved CS08/CS04 implementation deltas."""
     modules=r'(?:report-kit/(?:site-header|render|controller)|neighborhoods|money|app)\.js'
     text=re.sub(r'  // (?:[^\\\r\n]*aa-blog/)?public/embed/'+modules+r'(?=\\n|\n)',
                 '  // <generated bundle path>',text)
@@ -101,6 +101,12 @@ def normalized_embed(text):
         body=re.sub(r'(value\.length > )65(?= \|\| /YoY\|;/i\.test\(value\)\))',r'\g<1>60',body)
         body=re.sub(r'(\.length (?:\\u003c|<)= )65(?= \? full : names\.name_1;)',r'\g<1>60',body)
         text=text[:start]+body+text[end:]
+    # User-approved CS04 whole-dollar PPSF correction only. Exact literals,
+    # including rounding, locale and metric context; all other script deltas fail.
+    approved_ppsf = [('function moneyText(value = "", pricePerSqFt = false) {', 'function moneyText(value = "") {'), ('      if (pricePerSqFt) {\n        const scale = { K: 1e3, M: 1e6, B: 1e9 }[unit] || 1;\n        const punctuation = amount.endsWith(",") ? "," : "";\n        return `${sign}$${Math.round(n * scale).toLocaleString("en-US")}${punctuation}`;\n      }\n', ''), ('moneyText(r.tldr, /per (?:square )?(?:foot|sq\\.?\\s*ft)/i.test(r.headline))', 'moneyText(r.tldr)'), ('moneyText(p, /square foot|sq\\.?\\s*ft/i.test(s.title))', 'moneyText(p)'), ('moneyText(s.title, /square foot|sq\\.?\\s*ft/i.test(s.title))', 'moneyText(s.title)'), ('moneyText(p.summary || "", /per (?:square )?(?:foot|sq\\.?\\s*ft)/i.test(p.title))', 'moneyText(p.summary || "")')]
+    for after, before in approved_ppsf:
+        for encode in (lambda value:value,lambda value:json.dumps(value)[1:-1].replace('<',r'\u003c')):
+            text=text.replace(encode(after),encode(before))
     return s3_references(text.encode('utf-8')).decode('utf-8')
 
 
