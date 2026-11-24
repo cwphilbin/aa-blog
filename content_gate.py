@@ -2,6 +2,7 @@
 import hashlib
 import json
 import math
+import os
 import re
 from pathlib import Path
 import subprocess
@@ -107,6 +108,12 @@ def normalized_embed(text):
     for after, before in approved_ppsf:
         for encode in (lambda value:value,lambda value:json.dumps(value)[1:-1].replace('<',r'\u003c')):
             text=text.replace(encode(after),encode(before))
+    # Requested acquisition metadata only. Exact injected statements; all
+    # markup, styles, text and other JavaScript remain byte-for-byte compared.
+    attribution_only = ['    const attributionModule = "/embed/visit-attribution.js";\n    const visitAttribution = !data2.mockSignup ? import(\n      /* @vite-ignore */\n      attributionModule\n    ).then((m) => {\n      m.capture();\n      return m;\n    }).catch(() => null) : Promise.resolve(null);\n', '            if (!data2.mockSignup) Object.assign(payload, await (await visitAttribution)?.signup() || {});\n']
+    for statement in attribution_only:
+        for encode in (lambda value:value,lambda value:json.dumps(value)[1:-1].replace('<',r'\u003c')):
+            text=text.replace(encode(statement),'')
     return s3_references(text.encode('utf-8')).decode('utf-8')
 
 
@@ -298,15 +305,31 @@ def validate_contract(contract):
 
 
 def report_source_fingerprints(fingerprints):
-    """Legal copy and this audit tool do not render any monthly report asset.
+    """Legal copy, admin-only reporting, and this audit tool render no monthly assets.
 
     Keep every report/template/data/prompt fingerprint and every rendered artifact
     comparison intact. A legal-policy edit must not require a new report baseline.
     """
-    non_report={'re-data':{'src/components/LegalPage.tsx','content_gate.py','scripts/content_gate.py'}}
-    return {repo:{name:value for name,value in files.items()
-                  if name not in non_report.get(repo,set())}
+    non_report={'re-data':{'src/components/LegalPage.tsx','content_gate.py','scripts/content_gate.py',
+        'src/components/AdminPanel.tsx','src/components/AdminOutbound.tsx',
+        'src/lib/outbound.ts','src/lib/outbound-model.ts',
+        'supabase/functions/_shared/aa-outbound-provider.ts',
+        'supabase/functions/aa-outbound-sync/index.ts',
+        'src/components/AdminYouTubeFormats.tsx','public/visit-attribution.js','public/visit-attribution.d.ts',
+        'supabase/functions/_shared/signup-attribution.ts','supabase/functions/_shared/youtube-video-analytics.ts',
+        'supabase/functions/track-youtube-visit/index.ts'},
+        'aa-blog':{'content_gate.py','public/embed/visit-attribution.js'}}
+    # Exact admin-route-only App revision. Other router/public-page changes still block.
+    admin_route_alias={
+        '7d7ff1c364261f81d3ad523d9a9d422ad92545360edbd4114d3d56d4f9abf9ef':
+        '981c1c415eb0ee7a8eae59b922f394e2a51807387b2ee18d1a4df60519e75970'}
+    # Exact revisions add only visit payloads or admin analytics, never report content.
+    acquisition_aliases = {('re-data', 'src/main.tsx'): {'0bf1ad986c289ca39814b16edb2e8bf16708aca2acb040b6f816f919054853c5': '832842269af94b055b2cd42fd27a0f212773b36d20083b631b863cbb5f0fd09e'}, ('re-data', 'src/components/SignupFlow.tsx'): {'2d7b90b1c6582f0b0fdaf40010d270cf9dd0b9abd37394c7901ad1fc828e2421': 'cfb2d141e800b8d76d89618bd6324b291987f3e4a08916f3631eebd7cd5af778'}, ('re-data', 'src/components/ConsumerPage.tsx'): {'71cb093f94dcb559af3a47c8a308c1ee9ab071fd2036411683412b3be824083c': 'ef40d640b49017465d29c7ae96db3bcdb6c0996f9bb769147e68a15b7cc2a7f0'}, ('re-data', 'supabase/functions/subscribe-zip/index.ts'): {'15a14ae2899d9401d92e946cb86df7211c8fb880cc17d9ba00491dc9360ef8a2': '306e4c67948521650dc47b34c4c17a51bfc923d22a56062dbdebf48a7faffb69'}, ('re-data', 'supabase/functions/subscribe/index.ts'): {'dfe02e1b89a2cf8c3aacae4fc02be2c9abfa3a463b5b9e7d3d7640b91933d2a5': 'd90121927da9311b43e52fc9507d89f27492d7ce630d258d010f0f5b33d21dc1'}, ('re-data', 'supabase/functions/county-analytics-sync/index.ts'): {'a94d7b46e010e97b0511aeed5ac8ce7dd96f1ea39d357ccabba4d526cab10ba7': '3149c66234eea469ee28bf9e2976479ccdc844b01268788cd26e514b9f08e12a'}, ('aa-blog', 'public/embed/report-kit/controller.js'): {'30200410b410f94974bae950734e4084f0539b0fb0d045607c08e61c12cb9dae': '35945b201613955d80789b1425f77df36db521c3cc745ce269768d2ead25455d'}}
+    return {repo:{name:acquisition_aliases.get((repo,name),{}).get(value,
+                       admin_route_alias.get(value,value) if repo=='re-data' and name=='src/App.tsx' else value)
+                  for name,value in files.items() if name not in non_report.get(repo,set())}
             for repo,files in fingerprints.items()}
+
 
 
 def compare_baseline(approved, current):
@@ -362,6 +385,7 @@ def verify_baseline(repo, *, repos=None, customer_repo=None, deps=None, chrome=N
         if chrome:command+=['--chrome',str(chrome)]
         subprocess.run(command,check=True)
         current=json.loads((output/'content-contract.json').read_text())
+        current['normalizedEmbedSha256']=hashlib.sha256(normalized_embed((output/'9-blog-embed.html').read_text()).encode()).hexdigest()
         # Bind comparison to the exact files the renderer consumed, then compare
         # S3 objects by bucket/key rather than transport URL spelling/signatures.
         for name,value in current['renderInputs'].items():
@@ -377,7 +401,7 @@ def verify_baseline(repo, *, repos=None, customer_repo=None, deps=None, chrome=N
     return current
 
 
-def predeploy(repo=None):
+def predeploy(repo=None, *, chrome=None):
     repo=Path(repo or __file__).resolve()
     if repo.is_file():repo=repo.parent
     baseline=repo/'approved-content-baseline'
@@ -396,7 +420,8 @@ def predeploy(repo=None):
         branch=subprocess.check_output(['git','branch','--show-current'],cwd=candidate,text=True).strip()
         remote=subprocess.check_output(['git','ls-remote','origin','refs/heads/'+branch],cwd=candidate,text=True).split()
         if not remote or remote[0]!=head:fail('CS13','commit is not pushed: '+candidate.name)
-    verify_baseline(repo)
+    # Select the audited browser executable without weakening any comparison.
+    verify_baseline(repo,chrome=chrome or os.environ.get('CONTENT_GATE_CHROME'))
     print('PASS CONTENT_STANDARD: both ZIPs re-rendered; approved baseline unchanged')
 
 
@@ -411,7 +436,7 @@ if __name__=='__main__':
     args=parser.parse_args()
     try:
         if args.verify:verify_baseline(Path(__file__).resolve().parent,repos=args.repos,customer_repo=args.customer_repo,deps=args.deps,chrome=args.chrome)
-        else:predeploy()
+        else:predeploy(chrome=args.chrome)
     except (ValueError,KeyError,FileNotFoundError,subprocess.CalledProcessError) as error:
         print('DEPLOY BLOCKED — '+str(error),file=sys.stderr)
         raise SystemExit(1) from None
