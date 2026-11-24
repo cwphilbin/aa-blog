@@ -111,9 +111,14 @@ def normalized_embed(text):
     # Requested acquisition metadata only. Exact injected statements; all
     # markup, styles, text and other JavaScript remain byte-for-byte compared.
     attribution_only = ['    const attributionModule = "/embed/visit-attribution.js";\n    const visitAttribution = !data2.mockSignup ? import(\n      /* @vite-ignore */\n      attributionModule\n    ).then((m) => {\n      m.capture();\n      return m;\n    }).catch(() => null) : Promise.resolve(null);\n', '            if (!data2.mockSignup) Object.assign(payload, await (await visitAttribution)?.signup() || {});\n']
+    def encoded(value):return json.dumps(value)[1:-1].replace('<',r'\u003c')
     for statement in attribution_only:
-        for encode in (lambda value:value,lambda value:json.dumps(value)[1:-1].replace('<',r'\u003c')):
-            text=text.replace(encode(statement),'')
+        # The actual iframe srcdoc serializes its bundle twice; the standalone
+        # fixture uses a different collision-free local name. Match only these
+        # exact two injected statements in either representation.
+        for literal in (statement,statement.replace('data2.mockSignup','data.mockSignup')):
+            for encode in (lambda value:value,encoded,lambda value:encoded(encoded(value))):
+                text=text.replace(encode(literal),'')
     return s3_references(text.encode('utf-8')).decode('utf-8')
 
 
