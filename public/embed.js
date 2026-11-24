@@ -15,6 +15,12 @@
     if (zip) url.searchParams.set('zip', zip);
     if (mount.dataset.base || config.base) url.searchParams.set('base', mount.dataset.base || config.base);
     url.searchParams.set('parentOrigin', location.protocol === 'file:' ? 'null' : location.origin);
+    // Forward only acquisition tags into the isolated signup frame.
+    var incomingTags = new URLSearchParams(location.search);
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(function (field) {
+      var value = incomingTags.get(field) || '';
+      if (value.trim() && value.trim().length <= 200 && !/[\u0000-\u001f\u007f]/.test(value)) url.searchParams.set(field, value.trim());
+    });
     function savedHash() {
       var params = new URLSearchParams(location.hash.slice(1));
       return params.get(key) || (zip && params.get('post') ? 'view=report&zip=' + encodeURIComponent(zip) + '&post=' + encodeURIComponent(params.get('post')) : '');
