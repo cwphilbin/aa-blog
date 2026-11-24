@@ -318,7 +318,7 @@ def report_source_fingerprints(fingerprints):
         'src/components/AdminYouTubeFormats.tsx','public/visit-attribution.js','public/visit-attribution.d.ts',
         'supabase/functions/_shared/signup-attribution.ts','supabase/functions/_shared/youtube-video-analytics.ts',
         'supabase/functions/track-youtube-visit/index.ts'},
-        'aa-blog':{'content_gate.py','public/embed/visit-attribution.js'}}
+        'aa-blog':{'content_gate.py','scripts/content_gate.py','public/embed/visit-attribution.js'}}
     # Exact admin-route-only App revision. Other router/public-page changes still block.
     admin_route_alias={
         '7d7ff1c364261f81d3ad523d9a9d422ad92545360edbd4114d3d56d4f9abf9ef':
