@@ -252,6 +252,19 @@ def validate_headline(text, zip_code=None, names=None):
     validate_public_text(value,'headline/subject')
 
 
+def validate_youtube_tracking(description, month, zip_code, medium):
+    from urllib.parse import parse_qsl, urlsplit
+    if not re.fullmatch(r'\d{4}-(?:0[1-9]|1[0-2])',month or ''):fail('CS12','missing report month '+zip_code)
+    links=re.findall(r"(?<![\w@/])(?:https?://)?(?:www\.)?agentsautomated\.com(?![\w-]|\.[\w-])(?:[/?#][^\s<>\"']*)?",description)
+    if not links:fail('CS12','missing agentsautomated.com description link '+zip_code)
+    expected=[('utm_source','youtube'),('utm_medium',medium),('utm_campaign',month),('utm_content',zip_code)]
+    for link in links:
+        link=link.rstrip('.,;:!)]}')
+        parsed=urlsplit(link if link.startswith(('https://','http://')) else 'https://'+link)
+        actual=[(k,v) for k,v in parse_qsl(parsed.query,keep_blank_values=True) if k.lower().startswith('utm_')]
+        if actual!=expected:fail('CS12','incorrect YouTube tracking tags '+zip_code+' '+medium)
+
+
 def validate_contract(contract):
     """Validate measured render/browser evidence; missing checks fail closed."""
     if set(contract.get('files',{})) != set(FILES):fail('CS14','exact eleven assets required')
@@ -285,9 +298,10 @@ def validate_contract(contract):
         for value in texts+r.get('youtubeDescriptions',[])+r.get('youtubeTitles',[]):validate_public_text(value,z)
         if len(r.get('youtubeTitles',[]))!=2 or any(len(t)>100 for t in r['youtubeTitles']):fail('CS11','literal YouTube title limit '+z)
         if len(r.get('youtubeDescriptions',[]))!=2:fail('CS11','both descriptions required '+z)
-        for description in r['youtubeDescriptions']:
+        for medium,description in zip(('longform','shorts'),r['youtubeDescriptions']):
             lines=[' '.join(line.lower().split()) for line in description.splitlines() if line.strip()]
             if len(lines)!=len(set(lines)):fail('CS11','duplicate description lines '+z)
+            validate_youtube_tracking(description,r.get('reportMonth'),z,medium)
         if r.get('decode')!='PASS':fail('CS13','full media decode required '+z)
     layouts=contract.get('browser',[])
     if len(layouts)<12:fail('CS13','six HTML assets at desktop and mobile widths required')

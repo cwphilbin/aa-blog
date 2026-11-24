@@ -249,6 +249,13 @@ only what the prompt asks; everything else stays exactly the same.
 - Keep the first lines useful before Show more. Do not bury the summary under
   links, hashtags, boilerplate, or a verbatim duplicate of the title.
 
+- For new uploads only, tag every agentsautomated.com description link with
+  `?utm_source=youtube&utm_medium=longform&utm_campaign=<YYYY-MM>&utm_content=<ZIP>`
+  for long-form, or
+  `?utm_source=youtube&utm_medium=shorts&utm_campaign=<YYYY-MM>&utm_content=<ZIP>`
+  for Shorts. Use the report month and five-digit ZIP. Preserve all other title,
+  description, CTA, and video content. Never edit already-posted videos.
+
 ## CS13 — Mandatory deploy gate
 
 - Every deploy entrypoint must run the content gate before any upload, publish,
