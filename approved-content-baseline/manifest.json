@@ -912,7 +912,7 @@
       "step-functions/legacy/VideoGenerationMachine.story-disabled.asl.json": "29c54bcc404214b8c1f484818ea9da054202f41b6b8e8c531640302dca2c17a3",
       "iam/native-shorts-script-writer.json": "cad190e26485e9993e9c527aa7e7f9204785b38b09abcf4d1e755c9cee391334",
       "lambdas/shared/render_queue.py": "239eb8f91457b6c121b0dffe5ffbe88cdda6ed0e1ebf9e34037ea16b0fd5acb7",
-      "scripts/deploy_video_throughput.py": "8ff8ed9c02b4a50f9902f63185c0acbee2f88772739786c501fefa8375b0483e",
+      "scripts/deploy_video_throughput.py": "9f1af5e8ae859c4b94069c7b2f7c503f62be3a21b644556caa0705a02a3a257f",
       "step-functions/VideoPublicationMachine.asl.json": "7614c5a0b225c90185f6b79b8167743d2296af43a59149e7f70552ab7a239d33"
     },
     "re-data": {
