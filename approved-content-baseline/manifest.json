@@ -711,7 +711,7 @@
       "lambdas/MonthlyPipelineStatus/evidence.py": "c70a43e162d6b8689a8e54cd0ed6906d3207e4a1a77b0fb32d7845dd2ebba51a",
       "lambdas/MonthlyPipelineStatus/lambda_function.py": "59b21b8859eea81dfc84e346f13f250aef540e08065624f2359c567807f69eed",
       "lambdas/MonthlyPublishRelease/lambda_function.py": "bed8571a161c588ee031b0f045bb39825112355fe8b8e67d6a9f6430bf5a002c",
-      "lambdas/MonthlyPublishingPlanner/lambda_function.py": "de51dacfc356f1cd0cb1bda173f47544a9c0b19cb6bfc6280778a90fb3a21876",
+      "lambdas/MonthlyPublishingPlanner/lambda_function.py": "95392878b103f48ec6cc976c8977c24981d73f94f744101a21d5fbab29de927b",
       "lambdas/PublishToBlotato/lambda_function.py": "136f3dd216f644aad862ff8c6bc5d4d05c720188e0c77dda66c629666d94d9d5",
       "lambdas/RedfinTestContent/lambda_function.py": "61086fc2a017ee83e01293cab8b6ecfc36a9c21bf0be07dc77358e4f86147934",
       "lambdas/RedfinTestContent/test-agent-93536.json": "97a1c8a000fe74c6259b37ebe5f92f35279142644409536c0a7936554367ed9c",
@@ -908,9 +908,12 @@
       "step-functions/AgentVideoAutomationWorkflow.asl.json": "e3d8c352518cd7895c66b27342579f3ce8fa0183af8292a66f468064c054abdd",
       "step-functions/MonthlyPublishMachine.asl.json": "b61b005221631493af3b5e280ff8a2e6e5e91959a560e8b35a7d0a582822754e",
       "step-functions/RedfinTestContentMachine.asl.json": "73f09a2dad29fdcc9f005da06504e7677f3689f6a8f702ed5a575ada03ea9b43",
-      "step-functions/VideoGenerationMachine.asl.json": "f02cf802237584bdc9374000c385db69659dae4501166fa137bbe81aa4247666",
+      "step-functions/VideoGenerationMachine.asl.json": "2021d7fe5ddc8f5a82c65fc7bea1ac337aff5e3a22d781e8668c29e8e42ab00e",
       "step-functions/legacy/VideoGenerationMachine.story-disabled.asl.json": "29c54bcc404214b8c1f484818ea9da054202f41b6b8e8c531640302dca2c17a3",
-      "iam/native-shorts-script-writer.json": "cad190e26485e9993e9c527aa7e7f9204785b38b09abcf4d1e755c9cee391334"
+      "iam/native-shorts-script-writer.json": "cad190e26485e9993e9c527aa7e7f9204785b38b09abcf4d1e755c9cee391334",
+      "lambdas/shared/render_queue.py": "239eb8f91457b6c121b0dffe5ffbe88cdda6ed0e1ebf9e34037ea16b0fd5acb7",
+      "scripts/deploy_video_throughput.py": "8ff8ed9c02b4a50f9902f63185c0acbee2f88772739786c501fefa8375b0483e",
+      "step-functions/VideoPublicationMachine.asl.json": "7614c5a0b225c90185f6b79b8167743d2296af43a59149e7f70552ab7a239d33"
     },
     "re-data": {
       "supabase/functions/_shared/prompts/examples.v1.ts": "0643947f82691b139fa97d847da1854b6d2aab543547ecf601e0923e9709f11d",
@@ -1249,7 +1252,7 @@
       "customer_homes/redfin/daily_mail.py": "6ad812a4a7d008f98129d76bd7f2791fcc52d3f1d103f5ec1620827f38a7442b",
       "customer_homes/redfin/daily_status.py": "ec8c06562b41d339384cb18d11676a61ee79c09b2f7a246c294a5484b490ef75",
       "customer_homes/redfin/dashboard.py": "48978ffe451c04619790a286d39dc287b566c751bbe399e41947434f40414e17",
-      "customer_homes/redfin/deploy_pipeline.py": "e4f972a66a9d9b36b33c9baa601970792b353cec0ee886dc8c119de95f587a14",
+      "customer_homes/redfin/deploy_pipeline.py": "e7776c1150c08aa7589444c3ef8641d8069405431caf1f99a21dc423aa691371",
       "customer_homes/redfin/e2e_review.py": "6b609c753d76960d364ddec3fa41929caacef4efcc28ce654308ef4632130551",
       "customer_homes/redfin/eligibility.py": "c8a91e8a0182dc5430d1b67106f76a92bc0ba47370480aec335a8144511ebedf",
       "customer_homes/redfin/email_previews.py": "44e47c26c58d613ca836a8fa58644a965e30f6dfebdd7f8604720cb393f01f6f",
