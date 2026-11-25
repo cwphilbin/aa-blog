@@ -3,19 +3,19 @@
   "segments": [
     {
       "id": "hook",
-      "text": "Hancock Park and Larchmont, 90004. Listings rose 1.9% from last year."
+      "text": "Hancock Park and Larchmont, 90004. From August\u2013October, listings rose 1.9% from last year."
     },
     {
       "id": "context",
-      "text": "Budget around the $1.28M median, down 26.3%."
+      "text": "Budget $1.28M median, down 26.3%."
     },
     {
       "id": "shift",
-      "text": "Compare 165 available homes."
+      "text": "Compare 165 homes."
     },
     {
       "id": "proof",
-      "text": "Plan around a median 60 days, down 11.8%."
+      "text": "Plan: median 60 days, down 11.8%."
     },
     {
       "id": "cta",
@@ -40,5 +40,5 @@
   "area": "Hancock Park & Larchmont (90004)",
   "maxDurationSeconds": 30,
   "targetDurationSeconds": 24,
-  "regenerationAttempt": 0
+  "regenerationAttempt": 2
 }

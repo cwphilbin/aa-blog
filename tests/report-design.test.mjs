@@ -13,8 +13,18 @@ test('pipeline so_what follows TL;DR and precedes evidence, with no invented fal
 
 test('all report surfaces reject provider/historical wording and named headline regressions',()=>{
  const names={name_1:'Lancaster',name_2:'Quartz Hill',full:'Lancaster, Quartz Hill'};
- const p=structuredClone(post);p.title=p.monthlyReport.headline='Lancaster (93536) home sales fell 14.3% vs last year';p.monthlyReport.neighborhoodNames=names;
+ const p=structuredClone(post);p.title=p.monthlyReport.headline='Lancaster & Quartz Hill (93536) home sales fell 14.3% vs last year';p.monthlyReport.neighborhoodNames=names;
  assert.doesNotThrow(()=>renderReport({market,post:p}));
  for(const word of ['Redfin','historical']){const bad=structuredClone(p);bad.monthlyReport.sections[0].text='The '+word+' market report.';assert.throws(()=>renderReport({market,post:bad}),/CS04\/CS07/);}
  for(const headline of ['Lancaster (93536) sales down 14.3% YoY; price wisely','Lancaster (93536) sales fell 14.3%; vs last year','x'.repeat(61)]){const bad=structuredClone(p);bad.title=bad.monthlyReport.headline=headline;assert.throws(()=>renderReport({market,post:bad}),/CS08/);}
+});
+
+
+test('new period policy uses both names and source date; retained v3 reports keep archived wording',()=>{
+ const p=structuredClone(post);p.monthlyReport.neighborhoodNames={name_1:'Lancaster',name_2:'Quartz Hill',full:'Lancaster, Quartz Hill'};
+ p.monthlyReport.contentStandardVersion='content-standard-2026-11-24-periods-v4';
+ p.title=p.monthlyReport.headline='Lancaster & Quartz Hill (93536) home sales fell 14.3% vs last year';
+ const html=renderReport({market,post:p});assert.ok(html.includes('*3 months ending October 2026'));assert.ok(!html.includes('rolling average'));
+ p.monthlyReport.headline='Lancaster (93536) home sales fell 14.3% vs last year';assert.throws(()=>renderReport({market,post:p}),/CS08/);
+ p.monthlyReport.contentStandardVersion='content-standard-2026-11-17-v3';const archived=renderReport({market,post:p});assert.ok(archived.includes('*3-month rolling average'));
 });

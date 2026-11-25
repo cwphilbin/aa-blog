@@ -1,16 +1,16 @@
 {
-  "identity": "5d4622a50f35e2ecf9b4f65f1b2b95c637b32069af090f5cfefa9122e350a602",
-  "sha256": "8ecab4c9e3b1b32048c908bc04f5e7c65ce5d204bdef464631b2a42ee75fe797",
+  "identity": "507b3568e84c2039c73474a19714a5fff09a393291d9e1b091ea2d4d496d1931",
+  "sha256": "a35c3527169d0175d6325179285f8c52435616d6f62cfd558b80128c3f7e6625",
   "composition": "ZipMarketReportShorts",
   "width": 1080,
   "height": 1920,
-  "durationInFrames": 755,
+  "durationInFrames": 799,
   "fps": 30,
   "nativeSceneText": [
-    "93536 / Los Angeles County\nOctober 2026\nListings down\n9.9%\nCompared with this time last year\n484\n23,383\n505\n23,816\n527\n24,249\n548\n24,682\n569\n25,115\nMay\nJun\nJul\nAug\nSep\nOct\nLancaster & Quartz Hill (93536)\nLos Angeles\n*3-month rolling average\nLancaster\nand\nQuartz\ncolby test test\nTest Realtor Group\n(916) 212-8640\n Lancaster & Quartz Hill (93536) vs Los Angeles",
-    "93536 / Los Angeles County\nOctober 2026\nMedian price\n$520K\n-6.0%\nvs last year\nMedian sale price\n$469K\n$600K\n$730K\n$860K\n$990K\nMay\nJun\nJul\nAug\nSep\nOct\nLancaster & Quartz Hill (93536)\nLos Angeles\n*3-month rolling average\nBudget\naround\nthe\ncolby test test\nTest Realtor Group\n(916) 212-8640\n Lancaster & Quartz Hill (93536) vs Los Angeles",
-    "93536 / Los Angeles County\nOctober 2026\nActive listings\n492\n-9.9%\nvs last year\nActive listings\n484\n23,383\n505\n23,816\n527\n24,249\n548\n24,682\n569\n25,115\nMay\nJun\nJul\nAug\nSep\nOct\nLancaster & Quartz Hill (93536)\nLos Angeles\n*3-month rolling average\nCompare\n492\navailable\nhomes.\ncolby test test\nTest Realtor Group\n(916) 212-8640\n Lancaster & Quartz Hill (93536) vs Los Angeles",
-    "93536 / Los Angeles County\nOctober 2026\nMedian days on market\n54\n-5.3%\nvs last year\nMedian days on market\n33\n39\n45\n50\n56\nMay\nJun\nJul\nAug\nSep\nOct\nLancaster & Quartz Hill (93536)\nLos Angeles\n*3-month rolling average\nmedian\n54\ndays,\ncolby test test\nTest Realtor Group\n(916) 212-8640\n Lancaster & Quartz Hill (93536) vs Los Angeles",
-    "93536 / Los Angeles County\nOctober 2026\nListings down\n9.9%\nCompared with this time last year\n484\n23,383\n505\n23,816\n527\n24,249\n548\n24,682\n569\n25,115\nMay\nJun\nJul\nAug\nSep\nOct\nLancaster & Quartz Hill (93536)\nLos Angeles\n*3-month rolling average\nCall\ncolby\ntest\ncolby test test\nTest Realtor Group\n(916) 212-8640\n Lancaster & Quartz Hill (93536) vs Los Angeles"
+    "93536 / Los Angeles County\nOctober 2026\nListings down\n9.9%\nCompared with this time last year\n484\n23,383\n505\n23,816\n527\n24,249\n548\n24,682\n569\n25,115\nMay\nJun\nJul\nAug\nSep\nOct\nLancaster & Quartz Hill (93536)\nLos Angeles\n*3 months ending October 2026\nLancaster\nand\nQuartz\ncolby test test\nTest Realtor Group\n(916) 212-8640\n Lancaster & Quartz Hill (93536) vs Los Angeles",
+    "93536 / Los Angeles County\nOctober 2026\nMedian price\n$520K\n-6.0%\nvs last year\nMedian sale price\n$469K\n$600K\n$730K\n$860K\n$990K\nMay\nJun\nJul\nAug\nSep\nOct\nLancaster & Quartz Hill (93536)\nLos Angeles\n*3 months ending October 2026\nBudget\naround\nthe\ncolby test test\nTest Realtor Group\n(916) 212-8640\n Lancaster & Quartz Hill (93536) vs Los Angeles",
+    "93536 / Los Angeles County\nOctober 2026\nActive listings\n492\n-9.9%\nvs last year\nActive listings\n484\n23,383\n505\n23,816\n527\n24,249\n548\n24,682\n569\n25,115\nMay\nJun\nJul\nAug\nSep\nOct\nLancaster & Quartz Hill (93536)\nLos Angeles\n*3 months ending October 2026\nCompare\n492\nhomes.\ncolby test test\nTest Realtor Group\n(916) 212-8640\n Lancaster & Quartz Hill (93536) vs Los Angeles",
+    "93536 / Los Angeles County\nOctober 2026\nMedian days on market\n54\n-5.3%\nvs last year\nMedian days on market\n33\n39\n45\n50\n56\nMay\nJun\nJul\nAug\nSep\nOct\nLancaster & Quartz Hill (93536)\nLos Angeles\n*3 months ending October 2026\nmedian\n54\ndays,\ncolby test test\nTest Realtor Group\n(916) 212-8640\n Lancaster & Quartz Hill (93536) vs Los Angeles",
+    "93536 / Los Angeles County\nOctober 2026\nListings down\n9.9%\nCompared with this time last year\n484\n23,383\n505\n23,816\n527\n24,249\n548\n24,682\n569\n25,115\nMay\nJun\nJul\nAug\nSep\nOct\nLancaster & Quartz Hill (93536)\nLos Angeles\n*3 months ending October 2026\nCall\ncolby\ntest\ncolby test test\nTest Realtor Group\n(916) 212-8640\n Lancaster & Quartz Hill (93536) vs Los Angeles"
   ]
 }

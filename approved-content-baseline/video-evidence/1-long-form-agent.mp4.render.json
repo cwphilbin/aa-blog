@@ -1,10 +1,10 @@
 {
-  "identity": "34171b5d907bb8456fbdbf28f51db666cb8bebce8fe7a38140618b2ab694ed4f",
-  "sha256": "f36fcd24abe7346b09a414d6187b4e0eba496a5284334eec2ce2a44b25bca9a6",
+  "identity": "613c441325c5ff563f704d3e72cedbb6375359a8cbcac7d31f93e9914015de23",
+  "sha256": "108217ff63af38ae34e0ebf14dfd6ea3f003f608a800977e61b081f3c50388bf",
   "composition": "ZipMarketReport",
   "width": 1920,
   "height": 1080,
-  "durationInFrames": 3831,
+  "durationInFrames": 3844,
   "fps": 30,
   "nativeSceneText": []
 }

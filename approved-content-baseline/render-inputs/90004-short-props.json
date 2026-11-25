@@ -112,43 +112,43 @@
   "shortsSegments": [
     {
       "id": "hook",
-      "text": "Hancock Park and Larchmont, 90004. Listings rose 1.9% from last year.",
-      "durationSeconds": 7.86,
+      "text": "Hancock Park and Larchmont, 90004. From August\u2013October, listings rose 1.9% from last year.",
+      "durationSeconds": 9.59,
       "ttsModel": "inworld-tts-2-flash",
       "ttsVoice": "Ashley",
       "ttsStyle": "shorts",
       "playbackRate": 1,
-      "audioUrl": "media://8d47ab0834ed280d320a0b414279aa4a4154b336f5ae348453f23137277c8ba6.wav"
+      "audioUrl": "media://59fa0d6bba40867ae17f50663b468d3ee1926e8d3a0dd7e09acaf472205f5a50.wav"
     },
     {
       "id": "context",
-      "text": "Budget around the $1.28M median, down 26.3%.",
-      "durationSeconds": 6.36,
+      "text": "Budget $1.28M median, down 26.3%.",
+      "durationSeconds": 5.65,
       "ttsModel": "inworld-tts-2-flash",
       "ttsVoice": "Ashley",
       "ttsStyle": "shorts",
       "playbackRate": 1,
-      "audioUrl": "media://e9e3588221f68da194290befda740823f0756ffaa1c5723cd37aa41d4968eaf0.wav"
+      "audioUrl": "media://97518471712d0ae7fbef348511277ba24dfbf7247edf85d63ffa54b64a583b45.wav"
     },
     {
       "id": "shift",
-      "text": "Compare 165 available homes.",
-      "durationSeconds": 3.17,
+      "text": "Compare 165 homes.",
+      "durationSeconds": 2.82,
       "ttsModel": "inworld-tts-2-flash",
       "ttsVoice": "Ashley",
       "ttsStyle": "shorts",
       "playbackRate": 1,
-      "audioUrl": "media://5bd24ad3a915b3f225d290c9577f210f5e2446a80cc880bd764ffb71e4d71b9b.wav"
+      "audioUrl": "media://a31e07f6fcc1100461f75aa812654e1650016cb89551334a720f353ad4cdac27.wav"
     },
     {
       "id": "proof",
-      "text": "Plan around a median 60 days, down 11.8%.",
-      "durationSeconds": 4.71,
+      "text": "Plan: median 60 days, down 11.8%.",
+      "durationSeconds": 4.58,
       "ttsModel": "inworld-tts-2-flash",
       "ttsVoice": "Ashley",
       "ttsStyle": "shorts",
       "playbackRate": 1,
-      "audioUrl": "media://59959fe082e344104d60161fad323fdc87902d925248d952e501a189bfe70d9b.wav"
+      "audioUrl": "media://2c056202628ca8c2ecdf7ff8574358da714c64ea2179e40102040c89114fba1e.wav"
     },
     {
       "id": "cta",

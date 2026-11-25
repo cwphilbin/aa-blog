@@ -1,9 +1,9 @@
 [
   {
     "id": "hook",
-    "text": "Lancaster and Quartz Hill, 93536. Listings fell 9.9% from last year.",
-    "audioFile": "/private/tmp/aa-short-scenes-embed-20261117/work/media/17d1e11020d8fec0a973e3bfa1653d2bcc1bd350f4d6c9bfce1d006415259653.wav",
-    "durationSeconds": 7.62,
+    "text": "Lancaster and Quartz Hill, 93536. In the 3 months ending October, listings fell 9.9% from last year.",
+    "audioFile": "/tmp/aa-dec-preview-20261124/media/cd0da03053042fae231cebb35444291c12c259e72857ecd18947ab8c1c1c0e9a.wav",
+    "durationSeconds": 9.27,
     "ttsModel": "inworld-tts-2-flash",
     "ttsVoice": "Ashley",
     "ttsStyle": "shorts",
@@ -12,7 +12,7 @@
   {
     "id": "context",
     "text": "Budget around the $520K median, down 6%.",
-    "audioFile": "/private/tmp/aa-short-scenes-embed-20261117/work/media/9534ef49b0c3d73dd91cef6d813e85fc973bdfd88ff6325680ede399f6ee8a9e.wav",
+    "audioFile": "/tmp/aa-dec-preview-20261124/media/9534ef49b0c3d73dd91cef6d813e85fc973bdfd88ff6325680ede399f6ee8a9e.wav",
     "durationSeconds": 4.43,
     "ttsModel": "inworld-tts-2-flash",
     "ttsVoice": "Ashley",
@@ -21,9 +21,9 @@
   },
   {
     "id": "shift",
-    "text": "Compare 492 available homes.",
-    "audioFile": "/private/tmp/aa-short-scenes-embed-20261117/work/media/f65d87e8622ca95d3f85bdc682910e8af366d489cd1f7579f616db1315bdea53.wav",
-    "durationSeconds": 3.18,
+    "text": "Compare 492 homes.",
+    "audioFile": "/tmp/aa-dec-preview-20261124/media/b5cea9739a1533ac55696a308132b82bcd0b3d575a629e655beaff7f6a7cdca8.wav",
+    "durationSeconds": 2.99,
     "ttsModel": "inworld-tts-2-flash",
     "ttsVoice": "Ashley",
     "ttsStyle": "shorts",
@@ -32,7 +32,7 @@
   {
     "id": "proof",
     "text": "Plan around a median 54 days, down 5.3%.",
-    "audioFile": "/private/tmp/aa-short-scenes-embed-20261117/work/media/3bc4b26f96410b9f55a96e803a942a29af3795d047dba72b36dfd8517ee03863.wav",
+    "audioFile": "/tmp/aa-dec-preview-20261124/media/3bc4b26f96410b9f55a96e803a942a29af3795d047dba72b36dfd8517ee03863.wav",
     "durationSeconds": 4.63,
     "ttsModel": "inworld-tts-2-flash",
     "ttsVoice": "Ashley",
@@ -42,7 +42,7 @@
   {
     "id": "cta",
     "text": "Call colby test test at (916) 212-8640.",
-    "audioFile": "/private/tmp/aa-content-corrections-20261117/work/media/a16836436a74f5a0a2bb4c60d5693aef3e41a94f9311bd027a124c73104ef43e.wav",
+    "audioFile": "/tmp/aa-dec-preview-20261124/media/a16836436a74f5a0a2bb4c60d5693aef3e41a94f9311bd027a124c73104ef43e.wav",
     "durationSeconds": 5.25,
     "ttsModel": "inworld-tts-2-flash",
     "ttsVoice": "Ashley",

@@ -3,7 +3,7 @@
   "segments": [
     {
       "id": "hook",
-      "text": "Lancaster and Quartz Hill, 93536. Listings fell 9.9% from last year."
+      "text": "Lancaster and Quartz Hill, 93536. In the 3 months ending October, listings fell 9.9% from last year."
     },
     {
       "id": "context",
@@ -11,7 +11,7 @@
     },
     {
       "id": "shift",
-      "text": "Compare 492 available homes."
+      "text": "Compare 492 homes."
     },
     {
       "id": "proof",

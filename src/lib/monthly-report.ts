@@ -2,7 +2,7 @@ import { publicationExcluded } from '../../public/embed/publication-holds.js';
 import { moneyText } from '../../public/embed/money.js';
 import { storedNeighborhoodNames } from '../../public/embed/neighborhoods.js';
 export interface MonthlyReport {
-  source: 'GenerateZipScript'; sourceKey: string; packageVersion: string;
+  contentStandardVersion?: string; source: 'GenerateZipScript'; sourceKey: string; packageVersion: string;
   month: string; label: string; headline: string; tldr: string; so_what?: string; preview: boolean;
   neighborhoodNames?: {name_1:string;name_2:string;full:string};
   sections: { title: string; imageUrl?: string; alt?: string; text: string; headline?: string; sourceUrl?: string }[];
@@ -38,7 +38,7 @@ export function parseMonthlyReport(raw: unknown, zip: string, sourceKey: string,
       sections.push({title:moneyText(r.chartTakeaways?.[String(beat.pageNumber)]||p.title||'Market figures',beat.role==='median_price_per_sqft'),imageUrl,alt:p.title||'Market chart',text:moneyText(beat.text,beat.role==='median_price_per_sqft')});
     }
     if(!sections.length)return;
-    return {source:'GenerateZipScript',sourceKey,packageVersion:r.packageVersion,month,label:r.contentLabel,headline:moneyText(headline),tldr:moneyText(r.tldr||'',r.selectedHeadlineRole==='median_price_per_sqft'),...(names?{neighborhoodNames:names}:{}),...(typeof r.so_what==='string'&&r.so_what.trim()?{so_what:r.so_what}:{}),sections,preview};
+    return {contentStandardVersion:r.contentStandardVersion,source:'GenerateZipScript',sourceKey,packageVersion:r.packageVersion,month,label:r.contentLabel,headline:moneyText(headline),tldr:moneyText(r.tldr||'',r.selectedHeadlineRole==='median_price_per_sqft'),...(names?{neighborhoodNames:names}:{}),...(typeof r.so_what==='string'&&r.so_what.trim()?{so_what:r.so_what}:{}),sections,preview};
   }catch{return;}
 }
 export function reportPost(report: MonthlyReport, videoUrl='') {

@@ -2,7 +2,6 @@
 import hashlib
 import json
 import math
-import os
 import re
 from pathlib import Path
 import subprocess
@@ -190,7 +189,10 @@ def validate_similarity(approved,current):
 def ai_versions(repos):
     paths={p.name:Path(p) for p in repos}
     video=paths['aa-video-pipeline'];data=paths['re-data']
-    prompts=video/'lambdas/shared/prompts/v1'
+    registry=(video/'lambdas/shared/prompt_registry.py').read_text()
+    version=re.search(r"^VERSION = '([0-9]+)'",registry,re.M)
+    if not version:fail('Part I','explicit prompt version missing')
+    version=version[1];prompts=video/'lambdas/shared/prompts'/('v'+version)
     required=[video/'lambdas/shared/prompt_registry.py',video/'lambdas/shared/tts_config.json',
               *sorted(prompts.glob('*.json')),
               *sorted((data/'supabase/functions/_shared/prompts').glob('*.ts'))]
@@ -200,7 +202,7 @@ def ai_versions(repos):
     for p in required:
         root=video if p.is_relative_to(video) else data
         sources[root.name+'/'+str(p.relative_to(root))]=sha(p)
-    return {'promptVersion':'1','models':json.loads((prompts/'models.json').read_text()),'sources':sources}
+    return {'promptVersion':version,'models':json.loads((prompts/'models.json').read_text()),'sources':sources}
 
 
 def input_hashes(directory):
@@ -212,7 +214,7 @@ def prompt_package_files(repo):
     """The prompt loader/data must travel with every Python Lambda bundle."""
     shared=Path(repo)/'lambdas/shared'
     files={'prompt_registry.py':(shared/'prompt_registry.py').read_bytes()}
-    files.update({str(p.relative_to(shared)):p.read_bytes() for p in sorted((shared/'prompts/v1').glob('*.json'))})
+    files.update({str(p.relative_to(shared)):p.read_bytes() for p in sorted((shared/'prompts').glob('v*/*.json'))})
     return files
 
 
@@ -230,6 +232,11 @@ def fail(rule, detail):
 
 def validate_public_text(text, asset):
     if not isinstance(text,str) or not text.strip():fail('CS13','missing rendered customer text: '+asset)
+    if re.search(r'3[ -]month rolling average',text,re.I):fail('CS04','use the dated three-month footnote: '+asset)
+    months='January|February|March|April|May|June|July|August|September|October|November|December'
+    for sentence in re.split(r'(?<=[.!?])\s+(?=[A-Z])',text):
+        if re.search(r'\b\d[\d,]*\s+(?:homes?|sales|listings)\b',sentence,re.I) and re.search(r'\b(?:in|during|throughout)\s+(?:'+months+r')\b',sentence,re.I):
+            fail('CS04','three-month count attributed to one month: '+asset)
     if re.search(r'Redfin|historical',text,re.I):fail('CS04/CS07','prohibited customer-facing wording: '+asset)
 
 
@@ -238,8 +245,18 @@ def validate_reader_cta(text, asset):
         fail('CS09','removed bottom reader CTA or button: '+asset)
 
 
+def validate_period_footnote(text, month, asset):
+    if not re.fullmatch(r'\d{4}-(0[1-9]|1[0-2])',month):fail('CS04','missing source month: '+asset)
+    names='January February March April May June July August September October November December'.split()
+    expected='*3 months ending '+names[int(month[5:7])-1]+' '+month[:4]
+    found=re.findall(r'\*3\s+months\s+ending\s+([A-Za-z]+)\s+(\d{4})',text)
+    if not found or any('*3 months ending '+name+' '+year!=expected for name,year in found):
+        fail('CS04','footnote must be '+expected+': '+asset)
+    validate_public_text(text,asset)
+
+
 def headline_limit(zip_code):
-    return 75 if zip_code in ('30313','30314','33617','92648','98101') else 65
+    return 80
 
 
 def validate_headline(text, zip_code=None, names=None):
@@ -329,31 +346,44 @@ def validate_contract(contract):
 
 
 def report_source_fingerprints(fingerprints):
-    """Legal copy, admin-only reporting, and this audit tool render no monthly assets.
+    """Legal copy and this audit tool do not render any monthly report asset.
 
     Keep every report/template/data/prompt fingerprint and every rendered artifact
     comparison intact. A legal-policy edit must not require a new report baseline.
     """
-    non_report={'re-data':{'src/components/LegalPage.tsx','content_gate.py','scripts/content_gate.py',
-        'src/components/AdminPanel.tsx','src/components/AdminOutbound.tsx',
-        'src/lib/outbound.ts','src/lib/outbound-model.ts',
-        'supabase/functions/_shared/aa-outbound-provider.ts',
-        'supabase/functions/aa-outbound-sync/index.ts',
-        'src/components/AdminYouTubeFormats.tsx','public/visit-attribution.js','public/visit-attribution.d.ts',
-        'supabase/functions/_shared/signup-attribution.ts','supabase/functions/_shared/youtube-video-analytics.ts',
-        'supabase/functions/track-youtube-visit/index.ts'},
-        'aa-blog':{'content_gate.py','scripts/content_gate.py'}}
-    # Exact admin-route-only App revision. Other router/public-page changes still block.
-    admin_route_alias={
-        '7d7ff1c364261f81d3ad523d9a9d422ad92545360edbd4114d3d56d4f9abf9ef':
-        '981c1c415eb0ee7a8eae59b922f394e2a51807387b2ee18d1a4df60519e75970'}
-    # Exact revisions add only visit payloads or admin analytics, never report content.
-    acquisition_aliases = {('re-data', 'src/main.tsx'): {'0bf1ad986c289ca39814b16edb2e8bf16708aca2acb040b6f816f919054853c5': '832842269af94b055b2cd42fd27a0f212773b36d20083b631b863cbb5f0fd09e'}, ('re-data', 'src/components/SignupFlow.tsx'): {'2d7b90b1c6582f0b0fdaf40010d270cf9dd0b9abd37394c7901ad1fc828e2421': 'cfb2d141e800b8d76d89618bd6324b291987f3e4a08916f3631eebd7cd5af778'}, ('re-data', 'src/components/ConsumerPage.tsx'): {'71cb093f94dcb559af3a47c8a308c1ee9ab071fd2036411683412b3be824083c': 'ef40d640b49017465d29c7ae96db3bcdb6c0996f9bb769147e68a15b7cc2a7f0'}, ('re-data', 'supabase/functions/subscribe-zip/index.ts'): {'15a14ae2899d9401d92e946cb86df7211c8fb880cc17d9ba00491dc9360ef8a2': '306e4c67948521650dc47b34c4c17a51bfc923d22a56062dbdebf48a7faffb69'}, ('re-data', 'supabase/functions/subscribe/index.ts'): {'dfe02e1b89a2cf8c3aacae4fc02be2c9abfa3a463b5b9e7d3d7640b91933d2a5': 'd90121927da9311b43e52fc9507d89f27492d7ce630d258d010f0f5b33d21dc1'}, ('re-data', 'supabase/functions/county-analytics-sync/index.ts'): {'a94d7b46e010e97b0511aeed5ac8ce7dd96f1ea39d357ccabba4d526cab10ba7': '3149c66234eea469ee28bf9e2976479ccdc844b01268788cd26e514b9f08e12a'}, ('aa-blog', 'public/embed/report-kit/controller.js'): {'8894120747e402ae8fd819cfe55561512133c8ac576652d554c39aa3d2cb3eee': '35945b201613955d80789b1425f77df36db521c3cc745ce269768d2ead25455d'}, ('aa-blog', 'public/embed.js'): {'a338f0270dbb3e412de3179bec1254338bd9d0075b30dbb8c5d7da11d7908233': 'e31da88bc0992afe8aa2ff52b1008df1264d3664991df95d09f7ed5842528667'}}
-    return {repo:{name:acquisition_aliases.get((repo,name),{}).get(value,
-                       admin_route_alias.get(value,value) if repo=='re-data' and name=='src/App.tsx' else value)
-                  for name,value in files.items() if name not in non_report.get(repo,set())}
+    non_report={'re-data':{'src/components/LegalPage.tsx','content_gate.py','scripts/content_gate.py'}}
+    return {repo:{name:value for name,value in files.items()
+                  if name not in non_report.get(repo,set())}
             for repo,files in fingerprints.items()}
 
+
+def wording_references(baseline, approved):
+    """Exact references for the approved CS04/CS08 changes to five retained files.
+
+    The six user-reviewed assets remain the primary baseline bytes. Retained
+    files 1/2/9/10/11 keep their original bytes; their separately audited wording
+    projections must be present and hash-exact. Rendering/decoding/browser checks
+    and all exact comparisons still run for every current fixture.
+    """
+    projection=approved.get('wordingProjection')
+    if projection is None:return {}
+    allowed={FILES[i] for i in (0,1,8,9,10)}
+    if (projection.get('explicitUserApproval') is not True or
+        projection.get('rules')!=['CS04','CS08'] or
+        set(projection.get('files',{}))!=allowed or
+        not re.fullmatch(r'[a-f0-9]{64}',projection.get('auditSha256',''))):
+        fail('CS14','invalid scoped December wording projection')
+    directory=Path(baseline)/'wording-projection'
+    audit=directory/'audit.json'
+    if not audit.is_file() or sha(audit)!=projection['auditSha256']:
+        fail('CS14','wording projection audit missing or changed')
+    result={}
+    for name,digest in projection['files'].items():
+        path=directory/name
+        if not path.is_file() or sha(path)!=digest:
+            fail('CS14','wording projection missing or changed: '+name)
+        result[name]=path
+    return result
 
 
 def compare_baseline(approved, current):
@@ -368,7 +398,7 @@ def compare_baseline(approved, current):
         if facet not in approved or actual!=expected:fail('CS14','unapproved change in '+facet+'; review and explicit approval required')
     validate_similarity(approved,current)
     for filename in FILES:
-        if not filename.endswith('.mp4') and filename!='9-blog-embed.html' and current['files'][filename]!=approved['files'][filename]:
+        if not filename.endswith('.mp4') and filename!='9-blog-embed.html' and current['files'][filename]!=approved.get('wordingProjection',{}).get('files',{}).get(filename,approved['files'][filename]):
             fail('CS14','unapproved byte change: '+filename)
 
 
@@ -388,6 +418,7 @@ def verify_baseline(repo, *, repos=None, customer_repo=None, deps=None, chrome=N
     for filename in FILES:
         p=baseline/filename
         if not p.is_file() or sha(p)!=approved.get('files',{}).get(filename):fail('CS14','approved file missing or changed: '+filename)
+    references=wording_references(baseline,approved)
     inputs=baseline/'render-inputs'
     if not inputs.is_dir() or input_hashes(inputs)!=approved.get('inputFiles'):fail('CS14','approved render inputs missing or changed')
     if input_hashes(baseline/'video-evidence')!=approved.get('videoEvidenceFiles'):fail('CS14','approved video evidence missing or changed')
@@ -409,23 +440,22 @@ def verify_baseline(repo, *, repos=None, customer_repo=None, deps=None, chrome=N
         if chrome:command+=['--chrome',str(chrome)]
         subprocess.run(command,check=True)
         current=json.loads((output/'content-contract.json').read_text())
-        current['normalizedEmbedSha256']=hashlib.sha256(normalized_embed((output/'9-blog-embed.html').read_text()).encode()).hexdigest()
         # Bind comparison to the exact files the renderer consumed, then compare
         # S3 objects by bucket/key rather than transport URL spelling/signatures.
         for name,value in current['renderInputs'].items():
             if sha(render_inputs/name)!=value:fail('CS14','rendered input hash mismatch: '+name)
         current['renderInputs']={name:comparison_sha(render_inputs/name) for name in current['renderInputs']}
-        current['videoSSIM']={name:video_similarity(baseline/name,output/name,
+        current['videoSSIM']={name:video_similarity(references.get(name,baseline/name),output/name,
             fps=approved['videoExact'][name]['composition']['fps'],
             frames=approved['videoExact'][name]['composition']['durationInFrames'])
             for name in FILES if name.endswith('.mp4')}
         compare_baseline(approved,current)
     if input_hashes(inputs)!=approved['inputFiles']:fail('CS14','renderer mutated approved inputs')
-    print('PASS approved baseline: exact audio/scenes/text/props; every 1fps SSIM >=0.99; six text files byte-identical; embed exact except generated paths/hash and approved CS08 validator deltas; prompts/models unchanged')
+    print('PASS approved baseline: exact audio/scenes/text/props; every 1fps SSIM >=0.99; approved text files/projections byte-identical; embed exact except generated paths/hash and approved CS08 validator deltas; prompts/models unchanged')
     return current
 
 
-def predeploy(repo=None, *, chrome=None):
+def predeploy(repo=None):
     repo=Path(repo or __file__).resolve()
     if repo.is_file():repo=repo.parent
     baseline=repo/'approved-content-baseline'
@@ -444,8 +474,7 @@ def predeploy(repo=None, *, chrome=None):
         branch=subprocess.check_output(['git','branch','--show-current'],cwd=candidate,text=True).strip()
         remote=subprocess.check_output(['git','ls-remote','origin','refs/heads/'+branch],cwd=candidate,text=True).split()
         if not remote or remote[0]!=head:fail('CS13','commit is not pushed: '+candidate.name)
-    # Select the audited browser executable without weakening any comparison.
-    verify_baseline(repo,chrome=chrome or os.environ.get('CONTENT_GATE_CHROME'))
+    verify_baseline(repo)
     print('PASS CONTENT_STANDARD: both ZIPs re-rendered; approved baseline unchanged')
 
 
@@ -460,7 +489,7 @@ if __name__=='__main__':
     args=parser.parse_args()
     try:
         if args.verify:verify_baseline(Path(__file__).resolve().parent,repos=args.repos,customer_repo=args.customer_repo,deps=args.deps,chrome=args.chrome)
-        else:predeploy(chrome=args.chrome)
+        else:predeploy()
     except (ValueError,KeyError,FileNotFoundError,subprocess.CalledProcessError) as error:
         print('DEPLOY BLOCKED — '+str(error),file=sys.stderr)
         raise SystemExit(1) from None

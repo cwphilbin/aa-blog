@@ -68,10 +68,24 @@ only what the prompt asks; everything else stays exactly the same.
 - Price per square foot uses whole dollars, e.g. `$759` and `$589`, with thousands
   separators when necessary. Formatting belongs in code, before channel output.
 - Visible report dates show the report month and year only, e.g. `October 2026`,
-  not a day or a three-month date range. The YouTube title suffix may use the
+  not a day. The dated three-month footnote below is required separately;
+  a sales-count sentence may name the actual three-month range. The YouTube title suffix may use the
   explicitly approved compact form `Oct 2026`. Never use the render date as the
   report date. Charts retain suitable monthly/year axis ticks.
-- Chart footnote is exactly `*3-month rolling average`. Never show or say
+- Chart/report footnote is exactly `*3 months ending <Month YYYY>`, derived
+  from the source PERIOD END, e.g. `*3 months ending November 2026`. Never
+  describe these observations as a rolling average. ZIP observations cover the
+  three calendar months ending in that period month: homes_sold is a total of
+  closed sales; median_sale_price is the median final sale price; median_ppsf
+  is the median of sold homes’ sale prices per square foot; median_dom is the
+  median listing-to-contract time for homes going under contract in the window.
+  Medians are not averages of three monthly medians. Preserve source numbers.
+  Never attribute a window count to one month (`30 homes sold in October`).
+  Say `30 homes sold from August–October` or `in the 3 months ending October`,
+  deriving the exact window in code, including year rollover. Apply the period
+  to slides, long-form/Short narration and captions, blog, email and YouTube
+  descriptions. The Short can establish the shared window once; its hard
+  30-second limit and normal voice pace remain unchanged. Never show or say
   `Source: Redfin` or `Redfin` in customer-facing output:
   blog, email, subdomain, embed, YouTube descriptions, decks, or video speech and
   slides. Keep the underlying provider and internal source identifiers unchanged.
@@ -167,9 +181,9 @@ only what the prompt asks; everything else stays exactly the same.
   one fits. Preserve the existing stable tie order, format, and precision;
   never invent or abbreviate a name, statistic, or comparison to make it fit.
 - Use the full stored `name_1 & name_2` when name_2 exists, else name_1. Maximum
-  65 characters including spaces and punctuation, except 30313, 30314, 33617,
-  92648, and 98101 only, whose maximum is 75. Only when the full name exceeds
-  that ZIP’s limit use name_1 alone. Never drop ZIP or abbreviate a stored name.
+  80 characters including spaces and punctuation, for every ZIP. Always try
+  both stored names; only when the full headline exceeds 80 characters use
+  name_1 alone. The former five-ZIP exception is superseded. Never drop ZIP or abbreviate a stored name.
   No `YoY`, semicolon, advice clause, second statistic, or invented comparison.
   The practical meaning remains in the opening; do not append it to the headline.
 - The opening is one sentence, at most 25 words, grounded in that selected fact
@@ -244,7 +258,7 @@ only what the prompt asks; everything else stays exactly the same.
   rigid versus templates, signed numbers, `percentage points`, or `relative`.
 - Then put the existing market-page link and the separate actual agent CTA.
   Format phones as `(916) 212-8640`. For an unclaimed ZIP use the existing county
-  recruiting CTA instead of inventing an agent or phone. Keep the rolling-average
+  recruiting CTA instead of inventing an agent or phone. Keep the dated three-month
   footnote; never include the prohibited provider credit or `historical` wording.
 - Keep the first lines useful before Show more. Do not bury the summary under
   links, hashtags, boilerplate, or a verbatim duplicate of the title.
@@ -273,7 +287,11 @@ only what the prompt asks; everything else stays exactly the same.
 - Also block if `Redfin` or `historical` appears in any customer-facing text,
   metadata, narration, PDF slide, or native video scene. Inspect actual rendered
   browser/scene text and PDF text. Block a headline/subject containing `YoY`, a
-  semicolon, more than its CS08 ZIP-specific limit, or a different CS08 pattern/name fallback.
+  semicolon, more than the CS08 80-character limit, or a different CS08 pattern/name fallback.
+- Block an undated/old rolling-average footnote, a footnote whose ending month
+  differs from the source period, a single-month claim for a three-month count,
+  or count narration without the actual three-month window. Check real PDF,
+  native Short scene text, narration, blog, email and YouTube descriptions.
 - Inspect measured encoded duration, native composition identity/visual inputs,
   structured numerical validation, actual browser layout/scrolling, metadata,
   and full media decode. Source-string assertions alone do not prove a render.

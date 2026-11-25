@@ -5,7 +5,7 @@
   "zip": "90004",
   "month": "2026-10",
   "contentLabel": "October 2026",
-  "title": "Hancock Park (90004) home sales fell 26.5% vs last year",
+  "title": "Hancock Park & Larchmont (90004) home sales fell 26.5% vs last year",
   "pdfSource": {
     "bucket": "aa-zip-metrics-prod",
     "key": "private/reviews/redfin-final-20261116-v2/90004/source.pdf",
@@ -323,7 +323,7 @@
       "pageNumber": 7,
       "role": "homes_sold",
       "title": "Homes sold",
-      "text": "Homes sold total 36 over the 3-month period, down 26.5% from a year ago. Sellers should weigh these completed transactions when reviewing their asking price.",
+      "text": "Homes sold total 36 in the 3 months ending October, down 26.5% from a year ago. Sellers should weigh these completed transactions when reviewing their asking price.",
       "dataUnavailable": false,
       "takeaway": "Homes sold"
     },
@@ -1178,7 +1178,7 @@
       "median_price_per_sqft": "Price per square foot was $759 versus $819 a year ago (-7.3%).",
       "active_listings": "Available homes totaled 165 versus 162 a year ago (+1.9%).",
       "days_on_market": "Median days on market was 60 days versus 68 days a year ago (-11.8%).",
-      "homes_sold": "October's report shows a 3-month total of 36 homes sold versus 49 a year ago (-26.5%).",
+      "homes_sold": "36 homes sold in the 3 months ending October versus 49 a year ago (-26.5%).",
       "asking_mix": "Above-asking sales were 20% versus 32.65% a year ago (-38.7% relative; -12.65 percentage points); At-asking sales were 11.39% versus 8.16% a year ago (+39.6% relative; +3.23 percentage points); Below-asking sales were 68.55% versus 59.18% a year ago (+15.8% relative; +9.37 percentage points).",
       "sale_to_list": "Sale-to-final-list averaged 97.05% versus 98.89% a year ago (-1.9% relative; -1.84 percentage points); Sale-to-original-list averaged 94.56% versus 95.21% a year ago (-0.7% relative; -0.65 percentage points)."
     }
@@ -1192,7 +1192,7 @@
   },
   "tldr": "In Hancock Park and Larchmont, 90004, homes sold are down 26.5% from last year, so buyers should compare budgets carefully with recent completed sale prices.",
   "narrationStyle": "aws-editorial-v2",
-  "hook": "Hancock Park (90004) home sales fell 26.5% vs last year",
+  "hook": "Hancock Park & Larchmont (90004) home sales fell 26.5% vs last year",
   "chartTakeaways": {
     "3": "Median sale prices",
     "4": "Price per square foot",
@@ -1235,7 +1235,7 @@
     "full": "Hancock Park, Larchmont, Windsor Square"
   },
   "neighborhoodNamesVersion": "stored-neighborhoods-v1",
-  "contentStandardVersion": "content-standard-2026-11-17-v3",
+  "contentStandardVersion": "content-standard-2026-11-24-periods-v4",
   "contentFacts": {
     "median_sales_price": {
       "available": true,
@@ -1298,7 +1298,8 @@
       "prior": "49",
       "fiveYear": null,
       "unit": "count",
-      "decisionFocus": "sellers use completed transaction evidence when reviewing their asking price; counts are a 3-month total, not October alone"
+      "period": "in the 3 months ending October",
+      "decisionFocus": "sellers use completed transaction evidence when reviewing their asking price; counts cover the code-supplied 3-month window, never the ending month alone"
     },
     "asking_mix": {
       "available": true,
@@ -1316,7 +1317,7 @@
     }
   },
   "selectedHeadlineRole": "homes_sold",
-  "packageVersion": "83fc305336213c3778e5128589ce4886bed593b8506dc17d026710a54d49e5e4",
+  "packageVersion": "1ce26c08d414472c02bb251dd1bf5b4c8fa232be1da522f591f75c4688ae94fe",
   "nativeShortCharts": {
     "chart_month_labels": [
       "Nov",

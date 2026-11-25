@@ -1308,7 +1308,7 @@
       "pageNumber": 7,
       "role": "homes_sold",
       "title": "Homes sold",
-      "text": "Homes sold total 36 over the 3-month period, down 26.5% from a year ago. Sellers should weigh these completed transactions when reviewing their asking price.",
+      "text": "Homes sold total 36 in the 3 months ending October, down 26.5% from a year ago. Sellers should weigh these completed transactions when reviewing their asking price.",
       "dataUnavailable": false,
       "takeaway": "Homes sold"
     },
@@ -1824,11 +1824,11 @@
       }
     ]
   },
-  "scriptText": "In Hancock Park and Larchmont, 90004, home prices are down 26.3% from a year ago, so buyers should compare recent sales.\n\nQuick note for agents: Los Angeles County is open for sponsorship. Learn more at agentsautomated.com.\n\nMedian sale prices are now $1.28M, down 26.3% from a year ago and down 10% from five years ago. Buyers comparing budgets should use the latest completed sales as their reference point.\n\nPrice per square foot is $759, down 7.3% from a year ago. Buyers comparing homes of similar size and condition should look closely at what those homes actually sold for.\n\nThere are 165 homes available, up 1.9% from a year ago and up 12.2% from five years ago. Buyers have a slightly wider selection to choose from.\n\nThe median days on market is 60, down 11.8% from a year ago. Sellers can plan a marketing timeline around that figure, though it is not a promised sale date.\n\nHomes sold total 36 over the 3-month period, down 26.5% from a year ago. Sellers should weigh these completed transactions when reviewing their asking price.\n\nMost homes sold below asking, more common than last year.\n\nLos Angeles County broke ground October 3 on a reimagined Charles White Park in Altadena, with an inclusive playground designed by Disney Imagineers, a splash pad, lighted pickleball courts, a new recreation center, native shade trees, accessible walkways, a demonstration garden, and public art across the five-acre park.\n\nHomes are selling for about 3% under their final asking price. Sellers can review completed comparable sales before choosing an asking price.\n\nBuyers can use recent completed sales to set realistic budgets, while sellers should price against final sale evidence rather than optimistic asking prices. Are you a real estate agent in Los Angeles County? Claim this county's market reports at agentsautomated.com.",
+  "scriptText": "In Hancock Park and Larchmont, 90004, home prices are down 26.3% from a year ago, so buyers should compare recent sales.\n\nQuick note for agents: Los Angeles County is open for sponsorship. Learn more at agentsautomated.com.\n\nMedian sale prices are now $1.28M, down 26.3% from a year ago and down 10% from five years ago. Buyers comparing budgets should use the latest completed sales as their reference point.\n\nPrice per square foot is $759, down 7.3% from a year ago. Buyers comparing homes of similar size and condition should look closely at what those homes actually sold for.\n\nThere are 165 homes available, up 1.9% from a year ago and up 12.2% from five years ago. Buyers have a slightly wider selection to choose from.\n\nThe median days on market is 60, down 11.8% from a year ago. Sellers can plan a marketing timeline around that figure, though it is not a promised sale date.\n\nHomes sold total 36 in the 3 months ending October, down 26.5% from a year ago. Sellers should weigh these completed transactions when reviewing their asking price.\n\nMost homes sold below asking, more common than last year.\n\nLos Angeles County broke ground October 3 on a reimagined Charles White Park in Altadena, with an inclusive playground designed by Disney Imagineers, a splash pad, lighted pickleball courts, a new recreation center, native shade trees, accessible walkways, a demonstration garden, and public art across the five-acre park.\n\nHomes are selling for about 3% under their final asking price. Sellers can review completed comparable sales before choosing an asking price.\n\nBuyers can use recent completed sales to set realistic budgets, while sellers should price against final sale evidence rather than optimistic asking prices. Are you a real estate agent in Los Angeles County? Claim this county's market reports at agentsautomated.com.",
   "scriptRevision": "aws-editorial-v2",
   "narrationPolicy": "aws-editorial-v2:restored-intro-so-what-v3:explicit-deck-facts-v1:content-standard-2026-11-17-v3",
   "headingsVersion": "displayed-percentage-headings-v1",
-  "reportHook": "Hancock Park (90004) home sales fell 26.5% vs last year",
+  "reportHook": "Hancock Park & Larchmont (90004) home sales fell 26.5% vs last year",
   "so_what": "Buyers can use recent completed sales to set realistic budgets, while sellers should price against final sale evidence rather than optimistic asking prices.",
   "reportTldr": "In Hancock Park and Larchmont, 90004, homes sold are down 26.5% from last year, so buyers should compare budgets carefully with recent completed sale prices.",
   "chartTakeaways": {
@@ -2187,7 +2187,7 @@
       "median_price_per_sqft": "Price per square foot was $759 versus $819 a year ago (-7.3%).",
       "active_listings": "Available homes totaled 165 versus 162 a year ago (+1.9%).",
       "days_on_market": "Median days on market was 60 days versus 68 days a year ago (-11.8%).",
-      "homes_sold": "October's report shows a 3-month total of 36 homes sold versus 49 a year ago (-26.5%).",
+      "homes_sold": "36 homes sold in the 3 months ending October versus 49 a year ago (-26.5%).",
       "asking_mix": "Above-asking sales were 20% versus 32.65% a year ago (-38.7% relative; -12.65 percentage points); At-asking sales were 11.39% versus 8.16% a year ago (+39.6% relative; +3.23 percentage points); Below-asking sales were 68.55% versus 59.18% a year ago (+15.8% relative; +9.37 percentage points).",
       "sale_to_list": "Sale-to-final-list averaged 97.05% versus 98.89% a year ago (-1.9% relative; -1.84 percentage points); Sale-to-original-list averaged 94.56% versus 95.21% a year ago (-0.7% relative; -0.65 percentage points)."
     }
@@ -3974,7 +3974,7 @@
     "full": "Hancock Park, Larchmont, Windsor Square"
   },
   "localReview": true,
-  "contentStandardVersion": "content-standard-2026-11-17-v3",
+  "contentStandardVersion": "content-standard-2026-11-24-periods-v4",
   "contentFacts": {
     "median_sales_price": {
       "available": true,
@@ -4037,7 +4037,8 @@
       "prior": "49",
       "fiveYear": null,
       "unit": "count",
-      "decisionFocus": "sellers use completed transaction evidence when reviewing their asking price; counts are a 3-month total, not October alone"
+      "period": "in the 3 months ending October",
+      "decisionFocus": "sellers use completed transaction evidence when reviewing their asking price; counts cover the code-supplied 3-month window, never the ending month alone"
     },
     "asking_mix": {
       "available": true,

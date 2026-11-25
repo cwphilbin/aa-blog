@@ -1,6 +1,6 @@
 {
   "payloadSha256": "c20fcbc280cafc615bef1b2f1b60115877d35a95799c006804e13e9bb4892f7c",
-  "pdfSha256": "3d064adc9496bbf7b3a768ec0092673797e7634fd1d1bf3ed4cb75da4cf4df78",
+  "pdfSha256": "87a4b97cbf91163a9667b507338292775919d97518205687b50482e9ed5b965f",
   "sourceCommits": {
     "aa-video-pipeline": "29cfe202d67de5e4e1c3c34644c253d3556ee808",
     "re-data": "a293b05a6f0566d0de3060aebe01bb65d84ea4d6",
@@ -73,5 +73,10 @@
       []
     ],
     "outsideDeletionPixels": "identical"
+  },
+  "decemberWording": {
+    "sourcePdfSha256": "3d064adc9496bbf7b3a768ec0092673797e7634fd1d1bf3ed4cb75da4cf4df78",
+    "footnote": "*3 months ending October 2026",
+    "onlyTextBandChanged": true
   }
 }

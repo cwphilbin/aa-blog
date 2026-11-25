@@ -43,10 +43,10 @@ test('labels preserve leading-zero ZIPs and do not infer or trust malformed name
   assert.throws(()=>storedNeighborhoodNames({neighborhoodNames:{name_1:'Bad\nname',name_2:'',full:'Bad'}}));
 });
 
-test('headline caps are 75 only for the five approved ZIPs and percentages keep valid grouping', async () => {
+test('current headline cap is 80 for every ZIP and percentages keep valid grouping', async () => {
   const {assertHeadline}=await import('../public/embed/report-kit/render.js');
   for(const zip of ['30313','30314','33617','92648','98101','90004','93536','30312']){
-    const limit=['30313','30314','33617','92648','98101'].includes(zip)?75:65;
+    const limit=80;
     for(const size of [limit,limit+1]){
       const tail='home sales rose 9% vs last year';
       const name='A'.repeat(size-` (${zip}) ${tail}`.length);

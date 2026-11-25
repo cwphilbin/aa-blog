@@ -1330,7 +1330,7 @@
       "pageNumber": 7,
       "role": "homes_sold",
       "title": "Homes sold",
-      "text": "A total of 186 homes sold over the 3-month period, down 14.3% from a year ago. Sellers can use these completed sales as evidence when reviewing their asking price.",
+      "text": "A total of 186 homes sold in the 3 months ending October, down 14.3% from a year ago. Sellers can use these completed sales as evidence when reviewing their asking price.",
       "dataUnavailable": false,
       "takeaway": "Homes sold"
     },
@@ -1846,11 +1846,11 @@
       }
     ]
   },
-  "scriptText": "In Lancaster and Quartz Hill, 93536, home prices are down 6% from a year ago, so buyers should negotiate carefully.\n\ncolby test test of Test Realtor Group serves Lancaster and Quartz Hill and brings you this October market update with the latest pricing, inventory, and sales data for your neighborhood.\n\nThe median sale price is now $520K, down 6% from a year ago and up 3.9% from five years ago. For buyers, that makes budgets easier to test against recently completed sales.\n\nPrice per square foot is now $257, down 2.1% from a year ago. Buyers comparing homes of similar size and condition can use this to judge whether a price is reasonable.\n\nThere are 492 homes available now, down 9.9% from a year ago and down 25.1% from five years ago. Buyers have a smaller selection to choose from, so comparing options quickly matters.\n\nThe median days on market is 54, down 5.3% from a year ago. Sellers can use that figure to plan a marketing timeline, though it is not a promised sale date.\n\nA total of 186 homes sold over the 3-month period, down 14.3% from a year ago. Sellers can use these completed sales as evidence when reviewing their asking price.\n\nAbove asking was the largest sales group, more common than last year.\n\nLos Angeles County broke ground October 3 on a reimagined Charles White Park in Altadena, with an inclusive playground, splash pad, lighted pickleball courts, and a new recreation center planned for the five-acre park.\n\nHomes are selling for about 0.8% under their final asking price. Sellers should expect some room for negotiation, and buyers may find an opening to offer slightly below asking.\n\nBuyers and sellers in Lancaster and Quartz Hill can use recent completed sales to set realistic budgets, offers, and listing prices. Call colby test test 9162128640",
+  "scriptText": "In Lancaster and Quartz Hill, 93536, home prices are down 6% from a year ago, so buyers should negotiate carefully.\n\ncolby test test of Test Realtor Group serves Lancaster and Quartz Hill and brings you this October market update with the latest pricing, inventory, and sales data for your neighborhood.\n\nThe median sale price is now $520K, down 6% from a year ago and up 3.9% from five years ago. For buyers, that makes budgets easier to test against recently completed sales.\n\nPrice per square foot is now $257, down 2.1% from a year ago. Buyers comparing homes of similar size and condition can use this to judge whether a price is reasonable.\n\nThere are 492 homes available now, down 9.9% from a year ago and down 25.1% from five years ago. Buyers have a smaller selection to choose from, so comparing options quickly matters.\n\nThe median days on market is 54, down 5.3% from a year ago. Sellers can use that figure to plan a marketing timeline, though it is not a promised sale date.\n\nA total of 186 homes sold in the 3 months ending October, down 14.3% from a year ago. Sellers can use these completed sales as evidence when reviewing their asking price.\n\nAbove asking was the largest sales group, more common than last year.\n\nLos Angeles County broke ground October 3 on a reimagined Charles White Park in Altadena, with an inclusive playground, splash pad, lighted pickleball courts, and a new recreation center planned for the five-acre park.\n\nHomes are selling for about 0.8% under their final asking price. Sellers should expect some room for negotiation, and buyers may find an opening to offer slightly below asking.\n\nBuyers and sellers in Lancaster and Quartz Hill can use recent completed sales to set realistic budgets, offers, and listing prices. Call colby test test 9162128640",
   "scriptRevision": "aws-editorial-v2",
   "narrationPolicy": "aws-editorial-v2:restored-intro-so-what-v3:explicit-deck-facts-v1:content-standard-2026-11-17-v3",
   "headingsVersion": "displayed-percentage-headings-v1",
-  "reportHook": "Lancaster (93536) home sales fell 14.3% vs last year",
+  "reportHook": "Lancaster & Quartz Hill (93536) home sales fell 14.3% vs last year",
   "so_what": "Buyers and sellers in Lancaster and Quartz Hill can use recent completed sales to set realistic budgets, offers, and listing prices.",
   "reportTldr": "In Lancaster and Quartz Hill, 93536, home sales fell 14.3% from a year ago, so buyers may find room to negotiate.",
   "chartTakeaways": {
@@ -2218,7 +2218,7 @@
       "median_price_per_sqft": "Price per square foot was $257 versus $263 a year ago (-2.1%).",
       "active_listings": "Available homes totaled 492 versus 546 a year ago (-9.9%).",
       "days_on_market": "Median days on market was 54 days versus 57 days a year ago (-5.3%).",
-      "homes_sold": "October's report shows a 3-month total of 186 homes sold versus 217 a year ago (-14.3%).",
+      "homes_sold": "186 homes sold in the 3 months ending October versus 217 a year ago (-14.3%).",
       "asking_mix": "Above-asking sales were 40.88% versus 37.79% a year ago (+8.2% relative; +3.09 percentage points); At-asking sales were 21.47% versus 28.11% a year ago (-23.6% relative; -6.64 percentage points); Below-asking sales were 37.56% versus 34.1% a year ago (+10.1% relative; +3.46 percentage points).",
       "sale_to_list": "Sale-to-final-list averaged 99.23% versus 99.49% a year ago (-0.3% relative; -0.26 percentage points); Sale-to-original-list averaged 97.06% versus 97.07% a year ago (0% relative; -0.01 percentage points)."
     }
@@ -4016,7 +4016,7 @@
     "full": "Lancaster, Quartz Hill, West Lancaster"
   },
   "localReview": true,
-  "contentStandardVersion": "content-standard-2026-11-17-v3",
+  "contentStandardVersion": "content-standard-2026-11-24-periods-v4",
   "contentFacts": {
     "median_sales_price": {
       "available": true,
@@ -4079,7 +4079,8 @@
       "prior": "217",
       "fiveYear": null,
       "unit": "count",
-      "decisionFocus": "sellers use completed transaction evidence when reviewing their asking price; counts are a 3-month total, not October alone"
+      "period": "in the 3 months ending October",
+      "decisionFocus": "sellers use completed transaction evidence when reviewing their asking price; counts cover the code-supplied 3-month window, never the ending month alone"
     },
     "asking_mix": {
       "available": true,

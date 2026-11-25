@@ -1,0 +1,292 @@
+{
+  "explicitUserApproval": true,
+  "approvalDate": "2026-11-25",
+  "rules": [
+    "CS04",
+    "CS08"
+  ],
+  "scope": "Approved full stored names (80-character fallback), actual 3-month period language and dated source-period footer; October facts/dates retained. October fixture renders authorized in temporary storage only.",
+  "previousManifestSha256": "2b14ff3c5179827c00646032f87cf335ce002e72913b67b46ac230f084a4ac29",
+  "primaryReviewFiles": {
+    "6-blog-no-agent.html": "34215959c52cffb2a92773813feb97cf98321fdac4bde0e10dc38562ca031aff",
+    "5-blog-agent.html": "c841910d92b4578c451948e6596ec70f5ab79b1ca2ed06c31e5a6412f32bb37f",
+    "7-email-agent.html": "5200306b0aabd12eed39c248cca050d1e04b7a5d4881b89ff5c3edc2cbb795c7",
+    "3-short-agent.mp4": "3af97eea5bfeb99fbabfcefc421d6d5494e1279d218266755e343342cf548d19",
+    "4-short-no-agent.mp4": "a8515fffa19d70513fbae4049a86ae4b0e11914b0039cce166b0fe44ca6ef3e7",
+    "8-email-no-agent.html": "b6a80f47cce355c7731af533a121abfe484d0d0887dab7e00d836a3d4f09bbd5"
+  },
+  "retainedFiles": {
+    "1-long-form-agent.mp4": "f36fcd24abe7346b09a414d6187b4e0eba496a5284334eec2ce2a44b25bca9a6",
+    "2-long-form-no-agent.mp4": "5ebc062ad352b8b214aa9cba231ae7e72f00faa021e4f922dd6600a23e7a9d91",
+    "9-blog-embed.html": "416c6802d7f19674a66f5f910d57ab7a409bce5bca6c85fb146d42868d935623",
+    "10-subdomain.html": "5bfeb50733c29d0c972849376867c39e5b9b89b0d054b5a17fd88098850f5f69",
+    "11-youtube-metadata.txt": "904f2789a6f5db11049cdce5bdb3626d776e829bf29216763ce5778a48d69328"
+  },
+  "fixtureInputProvenance": {
+    "93536": {
+      "sourceMonth": "2026-10",
+      "sourcePeriodEnd": "2026-10-31",
+      "pages": [
+        {
+          "page": 3,
+          "beforeSha256": "0ce0a1061cc7cfa7e0886b71165ef5e0a1981619d65601be8b3b409f6c8d186a",
+          "afterSha256": "01055dd5af937716dae8ffc93e766355aceec6e073db7974465579bcfeb5a544",
+          "changedRows": [
+            1893,
+            1943
+          ],
+          "outsideRowsIdentical": true
+        },
+        {
+          "page": 4,
+          "beforeSha256": "2d1548d3a61df4b87d95314708de3883ff1266918d6a876b54d590a2979d34d4",
+          "afterSha256": "7e758f0206f8f8b7ccca102530d3fbb2f18367ca02a5bed761d4b3e4ea1d1912",
+          "changedRows": [
+            1893,
+            1943
+          ],
+          "outsideRowsIdentical": true
+        },
+        {
+          "page": 5,
+          "beforeSha256": "abff518cd930574e1c10146f84a989a9a93c11ac08c187e710c1cc822988be0a",
+          "afterSha256": "91a92e6b19e580698c54206010cc9e02b7e1639bc5ca1d7ea94816e04edfaee2",
+          "changedRows": [
+            1893,
+            1943
+          ],
+          "outsideRowsIdentical": true
+        },
+        {
+          "page": 6,
+          "beforeSha256": "c72865067be793a3054b86e73da5a9bf75677d8de61fdc56ad060d541c47812f",
+          "afterSha256": "8831e88c441cfb5b1d4200f2d933b8d8d2645062762fd709e8b06fd2ac45e6b7",
+          "changedRows": [
+            1893,
+            1943
+          ],
+          "outsideRowsIdentical": true
+        },
+        {
+          "page": 7,
+          "beforeSha256": "c8d5110989e7ea9a73a19298c8b106cdc74f9598a36a788e8b49d603f96c23db",
+          "afterSha256": "9c7fc75e585a1fd59f26984282abcdadf7987bf02f94c394c2811f844d8e97f3",
+          "changedRows": [
+            1893,
+            1943
+          ],
+          "outsideRowsIdentical": true
+        },
+        {
+          "page": 8,
+          "beforeSha256": "27589fc47a42a13ca3e4497ba2b7dff9c77bb993f6dc5e895ad844df096b9aba",
+          "afterSha256": "79a4f5375a96f686a9a01d4e9050786f2336abc02d51e78368342e7a0539ea4c",
+          "changedRows": [
+            1893,
+            1943
+          ],
+          "outsideRowsIdentical": true
+        },
+        {
+          "page": 10,
+          "beforeSha256": "c438e9545f8cc719a33f4b7b02b8344999a25d287b5509f384a263298b682969",
+          "afterSha256": "7124f4f8dc271638cd9c88d23f5ecc43516026bcd2fa91893796a8662efc024a",
+          "changedRows": [
+            1892,
+            1941
+          ],
+          "outsideRowsIdentical": true
+        }
+      ],
+      "changedNarrationRoles": [
+        "homes_sold"
+      ],
+      "voiceModelRateUnchanged": true
+    },
+    "90004": {
+      "sourceMonth": "2026-10",
+      "sourcePeriodEnd": "2026-10-31",
+      "pages": [
+        {
+          "page": 3,
+          "beforeSha256": "1b3f7b642d74b44503476eee5cf07052b784ba3d4171da12151c17ed904dde0a",
+          "afterSha256": "a43010294b4674e555c49162e5d8c86c62af15fe49840864167c23bddb02bdd1",
+          "changedRows": [
+            1893,
+            1943
+          ],
+          "outsideRowsIdentical": true
+        },
+        {
+          "page": 4,
+          "beforeSha256": "2c3e20525239ec624fbb0731c82066d6adec6b2e83c43ca6f9afa7c1d110d6e3",
+          "afterSha256": "896d281236b5e4075a46b4c596cf5db2dc229924fe68805163e1230d4a3975fd",
+          "changedRows": [
+            1893,
+            1943
+          ],
+          "outsideRowsIdentical": true
+        },
+        {
+          "page": 5,
+          "beforeSha256": "6fc2733bedd8e9789999835ab6e803dd8aff4160fe6a564992590963b4e414c3",
+          "afterSha256": "6230178a480ad3ec2666518de1a789404629a8790522bc450b668459e286b7a5",
+          "changedRows": [
+            1893,
+            1943
+          ],
+          "outsideRowsIdentical": true
+        },
+        {
+          "page": 6,
+          "beforeSha256": "d6a1b8de9f1a30f3a689cdb4906c0e56fae3ddfa6464250e2b19609163b88952",
+          "afterSha256": "52e27f305065470b6ded8302de7426ff62ad1dfb1b379bd20004181f4239f1eb",
+          "changedRows": [
+            1893,
+            1943
+          ],
+          "outsideRowsIdentical": true
+        },
+        {
+          "page": 7,
+          "beforeSha256": "0cc0a71409b11c660119b6fe5c4de25075d59c7b585b0273cbceb1e494584a41",
+          "afterSha256": "3649ef6d65458119c1840fe9de3632cfaf1650fc91854f6001d2ffbccc7b705d",
+          "changedRows": [
+            1893,
+            1943
+          ],
+          "outsideRowsIdentical": true
+        },
+        {
+          "page": 8,
+          "beforeSha256": "5e940e448fcc200070cd3e7c2640394706d2c1833fa987ea10586db41def90f9",
+          "afterSha256": "cc8fad05a5b2b126ece9d5728ba80244c6c9597621df8832165036758aaa83c6",
+          "changedRows": [
+            1893,
+            1943
+          ],
+          "outsideRowsIdentical": true
+        },
+        {
+          "page": 10,
+          "beforeSha256": "704acad6ff0517432c57a2cddd3836bd382d85046b1e7b074ad45679dbaa5de4",
+          "afterSha256": "825fba36a0dae36d9ababecdd4129e88389770643d0005373fe47bd92d1ca5a3",
+          "changedRows": [
+            1892,
+            1941
+          ],
+          "outsideRowsIdentical": true
+        }
+      ],
+      "changedNarrationRoles": [
+        "homes_sold"
+      ],
+      "voiceModelRateUnchanged": true
+    }
+  },
+  "approvedShortComparison": {
+    "3-short-agent.mp4": {
+      "exactNativeScenes": true,
+      "exactDecodedAudio": true,
+      "SSIM": {
+        "sampleFps": 1,
+        "threshold": 0.99,
+        "minimum": 0.99934,
+        "scores": [
+          1.0,
+          0.999806,
+          0.999651,
+          0.999541,
+          0.999481,
+          0.999515,
+          0.999441,
+          0.999487,
+          0.99934,
+          0.999591,
+          0.999868,
+          0.999784,
+          0.999643,
+          0.999667,
+          0.999903,
+          0.999746,
+          0.999648,
+          0.999935,
+          0.999801,
+          0.999713,
+          0.99966,
+          0.999691,
+          0.999807,
+          0.999655,
+          0.999623,
+          0.999946,
+          0.999755
+        ]
+      }
+    },
+    "4-short-no-agent.mp4": {
+      "exactNativeScenes": true,
+      "exactDecodedAudio": true,
+      "SSIM": {
+        "sampleFps": 1,
+        "threshold": 0.99,
+        "minimum": 0.999395,
+        "scores": [
+          1.0,
+          0.999711,
+          0.999642,
+          0.999584,
+          0.999595,
+          0.999395,
+          0.999509,
+          0.999512,
+          0.999488,
+          0.999916,
+          0.999856,
+          0.999759,
+          0.999737,
+          0.99966,
+          0.999632,
+          0.999605,
+          0.999907,
+          0.999956,
+          0.999623,
+          0.99983,
+          0.999686,
+          0.999675,
+          0.999566,
+          0.999973,
+          0.999887,
+          0.999864,
+          0.999596,
+          0.999476,
+          0.999466,
+          0.999428
+        ]
+      }
+    }
+  },
+  "reportChecks": {
+    "93536": {
+      "factsChartsIdentityDatesUnchanged": true,
+      "onlyLongNarrationRoleChanged": "homes_sold",
+      "headline": "Lancaster & Quartz Hill (93536) home sales fell 14.3% vs last year",
+      "headlineCharacters": 66,
+      "normalVoiceAndPace": true
+    },
+    "90004": {
+      "factsChartsIdentityDatesUnchanged": true,
+      "onlyLongNarrationRoleChanged": "homes_sold",
+      "headline": "Hancock Park & Larchmont (90004) home sales fell 26.5% vs last year",
+      "headlineCharacters": 67,
+      "normalVoiceAndPace": true
+    }
+  },
+  "youtubeMetadataOnlyDatedFootnotesChanged": true,
+  "projectionHashes": {
+    "1-long-form-agent.mp4": "108217ff63af38ae34e0ebf14dfd6ea3f003f608a800977e61b081f3c50388bf",
+    "2-long-form-no-agent.mp4": "7f1294d981e67ae526aa262cc259346dfafe633a0878d669136f5cfb71a03a6b",
+    "9-blog-embed.html": "c53c2a9e83b850a02375296a9d4d4122d6451f84c2ff78c47b991f1b17e550db",
+    "10-subdomain.html": "94c7425c60fc572b87e1ee806bdb3d0625fb541e020a5ee6805fdd9d2da7d69b",
+    "11-youtube-metadata.txt": "9e22536c2e7df8b10ea13049d501798de4a361ec0378a144f2bb26794c8289dc"
+  }
+}

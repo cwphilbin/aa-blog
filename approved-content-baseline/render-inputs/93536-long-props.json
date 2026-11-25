@@ -128,15 +128,15 @@
       "pageNumber": 7,
       "role": "homes_sold",
       "title": "Homes sold",
-      "text": "A total of 186 homes sold over the 3-month period, down 14.3% from a year ago. Sellers can use these completed sales as evidence when reviewing their asking price.",
+      "text": "A total of 186 homes sold in the 3 months ending October, down 14.3% from a year ago. Sellers can use these completed sales as evidence when reviewing their asking price.",
       "dataUnavailable": false,
       "takeaway": "Homes sold",
-      "durationSeconds": 11.86,
+      "durationSeconds": 12.27,
       "ttsModel": "inworld-tts-2-flash",
       "ttsVoice": "Ashley",
       "ttsStyle": "long_form",
       "playbackRate": 1,
-      "audioUrl": "media://7a88ffc547ebfda8fcd1d1ee822c1ce653cd6ca5484bb59e7db0526055cb2cde.wav",
+      "audioUrl": "media://d707e60af0535a482e5e0e89224272aac13c3d602723764d4364ea2e7bc7b808.wav",
       "imageUrl": "media://93536-page-07.png"
     },
     {
