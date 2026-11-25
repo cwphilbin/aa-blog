@@ -1033,7 +1033,7 @@
       "supabase/functions/_shared/signup-attribution.ts": "d2b8142db4b97bfe732b15cb9adefe7ce203c13fb5e34a4f0aba87feb52f3eb9",
       "supabase/functions/_shared/youtube-public-metadata.ts": "c858c87f514308d398abdd453263b399327dc1aae16cf9b98b9a3ce8ccc72e14",
       "supabase/functions/_shared/youtube-video-analytics.ts": "ef77a048382aa80e28ae36876775efd7d3c89ee766613ade992770c74f35a5d8",
-      "supabase/functions/_shared/zip-email/content.ts": "8d28fde4014f03ce0a1aa3b31d5bd02fcee78f60595df29dbfeb1e890653e3c0",
+      "supabase/functions/_shared/zip-email/content.ts": "0684b1dbf1d41439cc8778204a63839c1976010d82237b2812b79d5540900b2c",
       "supabase/functions/_shared/zip-email/runtime.ts": "e1d4a733a0e7718a93d00452d7bbb97cca1398337df39a69059a2988a87f7c5b",
       "supabase/functions/_shared/zip-neighborhoods.json": "d6310bc00c1006b51862690049743453116b0e60ed1b640c5feed8927eef2f33",
       "supabase/functions/_shared/zip-neighborhoods.ts": "1dd1d8e2f6dc67e168be101d2a0139cc5ecc4e0da36bf80a43bbdc1a994cddef",
@@ -4897,10 +4897,10 @@
     "files": {
       "1-long-form-agent.mp4": "108217ff63af38ae34e0ebf14dfd6ea3f003f608a800977e61b081f3c50388bf",
       "2-long-form-no-agent.mp4": "7f1294d981e67ae526aa262cc259346dfafe633a0878d669136f5cfb71a03a6b",
-      "9-blog-embed.html": "6fe22a4d40ad3df2870c07491c769d065fc99e12a26ed6fab31a1e5532d6bbe6",
+      "9-blog-embed.html": "1293a8ed0811ed709b35dd97d2253d0e6f9e4d11878a6e0811d02b1ffe92e6f3",
       "10-subdomain.html": "94c7425c60fc572b87e1ee806bdb3d0625fb541e020a5ee6805fdd9d2da7d69b",
       "11-youtube-metadata.txt": "9e22536c2e7df8b10ea13049d501798de4a361ec0378a144f2bb26794c8289dc"
     },
-    "auditSha256": "3b79b7be7bc55a00cbaea1d2f43f307ab01d322b7888c86cc124bd1b8912885d"
+    "auditSha256": "596629c294a43bcbcdc7bd16813167af0e1c2591e2b7b2366e5809c0e40d82a3"
   }
 }
