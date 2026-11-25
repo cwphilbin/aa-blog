@@ -119,6 +119,11 @@ def normalized_embed(text):
         for literal in (statement,statement.replace('data2.mockSignup','data.mockSignup'),statement.replace('location.search','globalThis.__AA_REVIEW_QUERY')):
             for encode in (lambda value:value,encoded,lambda value:encoded(encoded(value))):
                 text=text.replace(encode(literal),'')
+    # Explicit 2026-11-24 approval: the loader bytes changed only for the
+    # already-shipped acquisition handoff (re-data 66fda7c). Compare every
+    # other loader fingerprint and every non-attribution byte exactly.
+    text=text.replace('data-embed-loader-sha="a338f0270dbb3e412de3179bec1254338bd9d0075b30dbb8c5d7da11d7908233"',
+                      'data-embed-loader-sha="e31da88bc0992afe8aa2ff52b1008df1264d3664991df95d09f7ed5842528667"')
     return s3_references(text.encode('utf-8')).decode('utf-8')
 
 
