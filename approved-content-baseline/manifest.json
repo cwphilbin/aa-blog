@@ -664,11 +664,6 @@
   "actualAgentEmbed": true,
   "contentFingerprints": {
     "aa-video-pipeline": {
-      "lambdas/shared/prompts/v2/approved-examples.json": "bb00eba91c8f88506a761c2d3728e01060d653992e2cf9d4edd905e9d5580c30",
-      "lambdas/shared/prompts/v2/inventory.json": "39504816d74ea5e1d6132de5e1e5f6f9b98059e62e102059db3968f66beec428",
-      "lambdas/shared/prompts/v2/models.json": "052bc4beb00954158da6a085d2ccb0dbdf1ca9de0ca2f894a14c5e259c7e3fd9",
-      "lambdas/shared/prompts/v2/templates.json": "a390a4b7fe4ec2cc9ddcdef5d30ec5e4e893b8d5cf78474ce3b014f6dc52add5",
-      "scripts/deploy_december_wording.py": "dc6734dfad0b50767076a9a05465244f180f57e71b3a313dc414130979b7e6b8",
       "CONTENT_STANDARD.md": "96883df17de0bfa7a69a8ba7d69ea3e8a92bdb28f595e01ec90955aa5e62b197",
       "content_gate.py": "1de204b6d4d44b36f5113b66a3193ea099a5a6c3dfa3041b28774c035db54e85",
       "iam/native-shorts-script-writer.json": "cad190e26485e9993e9c527aa7e7f9204785b38b09abcf4d1e755c9cee391334",
@@ -762,6 +757,10 @@
       "lambdas/shared/prompts/v1/inventory.json": "39504816d74ea5e1d6132de5e1e5f6f9b98059e62e102059db3968f66beec428",
       "lambdas/shared/prompts/v1/models.json": "052bc4beb00954158da6a085d2ccb0dbdf1ca9de0ca2f894a14c5e259c7e3fd9",
       "lambdas/shared/prompts/v1/templates.json": "fea8a71bd7516625af7baea8e17a092541f5c35575bb6c8a3ca23d0c2c979f35",
+      "lambdas/shared/prompts/v2/approved-examples.json": "bb00eba91c8f88506a761c2d3728e01060d653992e2cf9d4edd905e9d5580c30",
+      "lambdas/shared/prompts/v2/inventory.json": "39504816d74ea5e1d6132de5e1e5f6f9b98059e62e102059db3968f66beec428",
+      "lambdas/shared/prompts/v2/models.json": "052bc4beb00954158da6a085d2ccb0dbdf1ca9de0ca2f894a14c5e259c7e3fd9",
+      "lambdas/shared/prompts/v2/templates.json": "a390a4b7fe4ec2cc9ddcdef5d30ec5e4e893b8d5cf78474ce3b014f6dc52add5",
       "lambdas/shared/queue_schedule.py": "aa799af7b1dd645a471c7daee7c63f962de810d3776ab15ad4af645b7f82820b",
       "lambdas/shared/redfin_facts.py": "b686782e8064df3c21345d1c25a4658c437e2cb929fc6d67be55727fde52f963",
       "lambdas/shared/redfin_narration.py": "72affcd3b460f0a88490062c36ba646e0fbafada79c7cb6594db2766e4effb9e",
@@ -872,6 +871,7 @@
       "scripts/deliver_short_layout_review.py": "c1276025b5ca059adf31fa1c03301cd93701b23e91186040ed6a7588d27fe377",
       "scripts/deliver_voice_review.py": "230c5ce65604165881f3a73f5dd428a2b5dea5d88449974e3a582187c28013a4",
       "scripts/deploy_channel_warmup.py": "0c7da48fa699f533acb4bd977d1dd854325c81fdf5d962c224922b237a89bb06",
+      "scripts/deploy_december_wording.py": "dc6734dfad0b50767076a9a05465244f180f57e71b3a313dc414130979b7e6b8",
       "scripts/deploy_inworld_short_site.cjs": "8fc25a874a956bcfeecba93daf9eeaa6894940bb92d7cee3684076f04a8e3311",
       "scripts/deploy_inworld_tts.py": "480de307e9fe37078dc433009fd5ee8f765824bdb093308e10bd5aeb3596f51f",
       "scripts/deploy_monthly_publishing.py": "18365923390cc93af7faa6694bf8255f703026d6d23208d0b0aa6d4185e90216",
@@ -1084,7 +1084,7 @@
       "public/embed/report-kit/controller.js": "8894120747e402ae8fd819cfe55561512133c8ac576652d554c39aa3d2cb3eee",
       "public/embed/report-kit/design.css": "8fa7965a022b5403422c0ceaf60cadedfd70a602d8e844018e924e701bfe65a0",
       "public/embed/report-kit/offline-entry.js": "1b618e72cfc008a1a9214d1278f57873e7b77acf0122ac29407fac7bd2244f04",
-      "public/embed/report-kit/render.js": "275a6e9b7091ef1bb75ebb7c0031cc60ad9588f56d0a34beaed2f052c83973ae",
+      "public/embed/report-kit/render.js": "46d4f70c3cefb08a6c12efcb69a7af5c3cefa9b86f3362818d89d12673b57517",
       "public/embed/report-kit/site-header.js": "cfbd800ee0766661a2a6baf71ac6b031a2174f74dc3108cebdd4115afd85cfcb",
       "public/embed/style.css": "647f6f68c1f9f9fcdaefeaa154d8b4a464fb7bec5ca3836c5ac82cbf1089dbd5",
       "public/embed/tenant.js": "fa6f1be51594d5a8367cf2afbc732fe151fcbcf856909e6ae012bf4eb14c5e36",
@@ -4549,7 +4549,7 @@
       }
     }
   },
-  "normalizedEmbedSha256": "4fb72d0ea5d58e24d512777c1116a41cce2e6d03871182887ae0ee4e12a7134a",
+  "normalizedEmbedSha256": "6a828394280cdc93bb45e54ee4658bc6ce3f59ef7fd9ad8128d8de0558731dc5",
   "approvalStatus": "user-approved",
   "baselineId": "december-wording-approved-2026-11-25",
   "approval": {
@@ -4897,10 +4897,10 @@
     "files": {
       "1-long-form-agent.mp4": "108217ff63af38ae34e0ebf14dfd6ea3f003f608a800977e61b081f3c50388bf",
       "2-long-form-no-agent.mp4": "7f1294d981e67ae526aa262cc259346dfafe633a0878d669136f5cfb71a03a6b",
-      "9-blog-embed.html": "c53c2a9e83b850a02375296a9d4d4122d6451f84c2ff78c47b991f1b17e550db",
+      "9-blog-embed.html": "6fe22a4d40ad3df2870c07491c769d065fc99e12a26ed6fab31a1e5532d6bbe6",
       "10-subdomain.html": "94c7425c60fc572b87e1ee806bdb3d0625fb541e020a5ee6805fdd9d2da7d69b",
       "11-youtube-metadata.txt": "9e22536c2e7df8b10ea13049d501798de4a361ec0378a144f2bb26794c8289dc"
     },
-    "auditSha256": "26ec7af41daf822c7312daa3fcaa515e37a313fb8098c2ee8e5c70e46c987eb7"
+    "auditSha256": "3b79b7be7bc55a00cbaea1d2f43f307ab01d322b7888c86cc124bd1b8912885d"
   }
 }
