@@ -871,7 +871,7 @@
       "scripts/deliver_short_layout_review.py": "c1276025b5ca059adf31fa1c03301cd93701b23e91186040ed6a7588d27fe377",
       "scripts/deliver_voice_review.py": "230c5ce65604165881f3a73f5dd428a2b5dea5d88449974e3a582187c28013a4",
       "scripts/deploy_channel_warmup.py": "0c7da48fa699f533acb4bd977d1dd854325c81fdf5d962c224922b237a89bb06",
-      "scripts/deploy_december_wording.py": "dc6734dfad0b50767076a9a05465244f180f57e71b3a313dc414130979b7e6b8",
+      "scripts/deploy_december_wording.py": "ef5b4382113c5f9cb2470a4f0ce7b636bc483592bbeb47bffee4f3e47b6e0c8b",
       "scripts/deploy_inworld_short_site.cjs": "8fc25a874a956bcfeecba93daf9eeaa6894940bb92d7cee3684076f04a8e3311",
       "scripts/deploy_inworld_tts.py": "480de307e9fe37078dc433009fd5ee8f765824bdb093308e10bd5aeb3596f51f",
       "scripts/deploy_monthly_publishing.py": "18365923390cc93af7faa6694bf8255f703026d6d23208d0b0aa6d4185e90216",
@@ -4694,7 +4694,14 @@
         "verification": "All four approved/candidate scenes visually inspected; differences confined to chart/legend antialiasing. Exact audio, text, props, composition, source images and all approved media bytes retained. No comparison threshold relaxed."
       }
     },
-    "priorManifestSha256": "2b14ff3c5179827c00646032f87cf335ce002e72913b67b46ac230f084a4ac29"
+    "priorManifestSha256": "2b14ff3c5179827c00646032f87cf335ce002e72913b67b46ac230f084a4ac29",
+    "deploymentHelperRepair": {
+      "scope": "Preserve the exact live customer environment instead of stale template defaults. No monthly rendering, facts, prompts, voices, assets or inputs change.",
+      "sourceFile": "scripts/deploy_december_wording.py",
+      "beforeSha256": "dc6734dfad0b50767076a9a05465244f180f57e71b3a313dc414130979b7e6b8",
+      "afterSha256": "ef5b4382113c5f9cb2470a4f0ce7b636bc483592bbeb47bffee4f3e47b6e0c8b",
+      "renderingFacetsUnchanged": true
+    }
   },
   "comparisonPolicy": {
     "video": {
